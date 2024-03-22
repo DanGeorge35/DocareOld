@@ -14,6 +14,6 @@ add this to the file  android/app/build.gradle (NOT android/build.gradle) and ad
 apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
  
  navigate to android by cd android run
- ./gradleww clean to clean android
+ ./gradlew clean to clean android
 
 ------------------------------------------------------------------
