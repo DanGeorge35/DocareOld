@@ -17,3 +17,8 @@ apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
  ./gradlew clean to clean android
 
 ------------------------------------------------------------------
+
+To generate Release version of the Apk
+---------------------------------------------------
+./gradlew assembleRelease
+---------------------------------------------------
