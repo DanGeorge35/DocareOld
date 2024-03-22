@@ -20,5 +20,6 @@ apply from: file("../../node_modules/react-native-vector-icons/fonts.gradle")
 
 To generate Release version of the Apk
 ---------------------------------------------------
+cd android then 
 ./gradlew assembleRelease
 ---------------------------------------------------
