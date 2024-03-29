@@ -36,31 +36,31 @@ const Contact = ({navigation}) => {
         <FormControl w="100%" maxW="500"   alignItems="left" mt="2">
 
     <Box  mb="1" mt="1" mx="3">
-        <FormControl.Label  >Email Address</FormControl.Label>
+        {/* <FormControl.Label  >Email Address</FormControl.Label> */}
 
           <Input type="text"  
           
-           size="xl"  variant="outline" placeholder="Enter Email Address" minWidth="100%" 
+           size="xl"  variant="outline" placeholder="Email Address" minWidth="100%" 
            
            onChangeText={()=>{console.log("")}}
            />
 
 
-        <FormControl.Label color="dark.100" mt="4" >Phone Number</FormControl.Label>
+        {/* <FormControl.Label color="dark.100" mt="4" >Phone Number</FormControl.Label> */}
 
         <Input type="text"  
 
-        size="xl"  variant="outline" placeholder="Enter Phone Number" minWidth="100%" 
+        size="xl"  variant="outline" placeholder="Phone Number" minWidth="100%" 
         
         //    onChangeText={(val)=>setPhone(val)}
         onChangeText={()=>{console.log("")}}
         />
 
-        <FormControl.Label color="dark.100" mt="4" >Address</FormControl.Label>
+        {/* <FormControl.Label color="dark.100" mt="4" >Address</FormControl.Label> */}
 
         <Input type="text"  
 
-        size="xl"  variant="outline" placeholder="Enter Address " minWidth="100%" 
+        size="xl"  variant="outline" placeholder="Residential Address" minWidth="100%" 
 
         //    onChangeText={(val)=>setPhone(val)}
         onChangeText={()=>{console.log("")}}

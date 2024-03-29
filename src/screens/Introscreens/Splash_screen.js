@@ -19,6 +19,11 @@ const Splash_screen = () => {
         style={styles.rectangle2}
       >
       </LinearGradient>
+      {/* fontSize:40,
+        // fontWeight:'bold',
+        color:'#ffffff',
+        lineHeight: 48.84,
+        fontFamily:'HelveticaNeueRoman' */}
       <Text style={styles.DocareText}>Do'Care</Text>
       <LinearGradient
         colors={['#1C70EE', '#FFFFFF']}

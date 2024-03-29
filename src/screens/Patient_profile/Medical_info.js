@@ -20,54 +20,104 @@ const Medical_info = ({navigation}) => {
   
             <Stack direction="row"  mb="0">
 
-                <Box w="100" h="10" mt="30" ml="5">
+                <Box w="100" h="5" mt="5" ml="5">
                     <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Profile')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
                 </Box>
 
-                <Box  w="100"  mt="30"  position="absolute" right="2"   onPress={() => console.log("Edit")}>
-                        <Text w="205" fontSize="20" fontWeight="500" color="#1C70EE" lineHeight='20' fontFamily="GeneralSans-Bold"  >Save</Text>
-                </Box>
+                
 
             </Stack>
 
-          <Text  w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Medical Information </Text>
+          <Text  w="251" fontSize="22" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Medical Information </Text>
   
   
-          <FormControl w="100%" maxW="500"   alignItems="left" mt="2">
-  
-      <Box  mb="1" mt="1" mx="3">
-          <FormControl.Label  >Email Address</FormControl.Label>
-  
-            <Input type="text"  
-            
-             size="xl"  variant="outline" placeholder="Enter Email Address" minWidth="100%" 
-             
-             onChangeText={()=>{console.log("")}}
-             />
-  
-  
-          <FormControl.Label color="dark.100" mt="4" >Phone Number</FormControl.Label>
-  
-          <Input type="text"  
-  
-          size="xl"  variant="outline" placeholder="Enter Phone Number" minWidth="100%" 
-          
-          //    onChangeText={(val)=>setPhone(val)}
-          onChangeText={()=>{console.log("")}}
-          />
-  
-          <FormControl.Label color="dark.100" mt="4" >Address</FormControl.Label>
-  
-          <Input type="text"  
-  
-          size="xl"  variant="outline" placeholder="Enter Address " minWidth="100%" 
-  
-          //    onChangeText={(val)=>setPhone(val)}
-          onChangeText={()=>{console.log("")}}
-          />
-  
-          </Box>
-      </FormControl>
+        <Stack px="5" mt="5">
+
+             <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Medical History</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+            </Pressable>
+
+            <Pressable onPress={() => navigation.navigate('Current_medication')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Current Medications</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Allergies</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Hospitalisations and Emergency</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Chronic Conditions Management</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Diagnostic Test Results</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Primary Care Physician Information</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+        </Stack>
   
   
   

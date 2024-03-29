@@ -83,7 +83,7 @@ const Create_account = ({navigation}) => {
 
  
 
- <Box mt="10" ml="3"  w="300" h="12">
+          <Box mt="10" ml="3"  w="300" h="12">
 
             <Text fontSize="xl" color="#000000" fontWeight="bold" lineHeight="25"  fontFamily="Inter-Black"  onPress={() => navigation.navigate('Account_type')}><FontAwesome5 name="arrow-left" size={20}  color="#000000" />   Create Account Type </Text>
 
@@ -136,7 +136,6 @@ const styles = StyleSheet.create({
         height:291,
         marginTop:45
     },
-
 
 
     lang_view:{

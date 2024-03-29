@@ -1,6 +1,6 @@
-//import 'react-native-pager-view';
+import 'react-native-pager-view';
 import 'react-native-gesture-handler';
-//import 'react-native-reanimated';
+import 'react-native-reanimated';
 
 import React ,{useState, useEffect} from 'react';
 import Splash_screen from './screens/Introscreens/Splash_screen';
@@ -17,6 +17,7 @@ import Forget_pass from './screens/Forget_password/Forget_pass';
 import Retrieve_otp from './screens/Forget_password/Retrieve_otp';
 import Reset_password from './screens/Forget_password/Reset_password';
 import Successful_page from './screens/Forget_password/Successful_page';
+
 import Profile from './screens/Patient_profile/Profile';
 import Personal_info from './screens/Patient_profile/Personal_info';
 import Contact from './screens/Patient_profile/Contact';
@@ -24,6 +25,12 @@ import Medical_info from './screens/Patient_profile/Medical_info';
 import Location_info from './screens/Patient_profile/Location_info';
 import Communication_pref from './screens/Patient_profile/Communication_pref';
 import Security_settings from './screens/Patient_profile/Security_settings';
+
+
+//========================================================================
+
+import Current_medication from './screens/Patient_profile/Medical_info/Current_medication';
+// import Intro_screen_doc from './screens/introscreens_doctor/Intro_screen_doc';
 
 
 import { NativeBaseProvider, Text, Box } from "native-base";
@@ -35,7 +42,7 @@ const Stack = createStackNavigator();
 
 export default function app() {
 
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(5);
   const [isSignUp , setIsSignUp] = useState(false);
   const [isLoading , setIsLoading] = useState(true);
 
@@ -62,6 +69,7 @@ export default function app() {
   if (isLoading) {
  
     return <Splash_screen />;
+   
   
  }
 
@@ -74,20 +82,19 @@ export default function app() {
         {/* <Stack.Navigator initialRouteName={isSignUp ? 'Intro_screen':'Login_screen'}> */}
 
         <Stack.Navigator initialRouteName='Intro_screen' >
+     
 
           <Stack.Group >
           
           
-
-      <Stack.Screen 
-          name="Intro_screen" 
-          options={{headerShown:false}}
-          component={Intro_screen} 
-          />
+            <Stack.Screen 
+                name="Intro_screen" 
+                options={{headerShown:false}}
+                component={Intro_screen} 
+                />
 
        
-          
-      </Stack.Group>
+          </Stack.Group>
 
 
       <Stack.Screen 
@@ -108,7 +115,7 @@ export default function app() {
           component={Location_info} 
           />
 
-<Stack.Screen 
+      <Stack.Screen 
           name="Medical_info" 
           options={{headerShown:false}}
           component={Medical_info} 
@@ -120,7 +127,7 @@ export default function app() {
           component={Profile} 
           />
 
-           <Stack.Screen 
+      <Stack.Screen 
           name="Personal_info" 
           options={{headerShown:false}}
           component={Personal_info} 
@@ -132,7 +139,7 @@ export default function app() {
           component={Security_settings} 
           />
 
-        <Stack.Screen 
+      <Stack.Screen 
           name="Lang_select" 
           options={{headerShown:false}}
           component={Lang_select} 
@@ -185,6 +192,14 @@ export default function app() {
           options={{headerShown:false}}
           component={Successful_page} 
           />
+
+  <Stack.Screen 
+          name="Current_medication" 
+          options={{headerShown:false}}
+          component={Current_medication} 
+          />
+
+
 
   </Stack.Navigator>
 
