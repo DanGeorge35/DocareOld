@@ -12,14 +12,14 @@ import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,
    import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
    import DateTimePicker from '@react-native-community/datetimepicker';
 
-const Current_medication = () => {
+const Current_medication = ({navigation}) => {
   return (
     <VStack space="5"     backgroundColor="#FFFFFF"  flex={1} >
 
        <Stack direction="row"  space={5} mb="0">
 
         <Box w="100" h="5" mt="5" ml="5">
-            <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Profile')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
+            <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Medical_info')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
         </Box>
         <Text  fontFamily="HelveticaNeueBlack" fontSize="38" fontWeight="bold" color="#1C70EE" >Do'Care</Text>
 
@@ -48,7 +48,6 @@ const Current_medication = () => {
        placeholderTextColor="#000000"
        onChangeText={()=>{console.log("")}}
        />
-
 
 
     <Input type="text"  
@@ -94,7 +93,7 @@ const Current_medication = () => {
 
 
 
-        <Box alignItems="center" mt="40">
+        <Box alignItems="center" mt="20">
         
                 <Button  variant="outline" borderRadius="md" w="300" h="12"  onPress={() => console.log("hello")}>
                     <Text> Add Current Medications     <FontAwesome5 name="plus" size={10} color="#000000" /></Text></Button>

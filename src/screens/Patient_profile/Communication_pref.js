@@ -22,54 +22,64 @@ const Communication_pref = ({navigation}) => {
   
             <Stack direction="row"  mb="0">
 
-                    <Box w="100" h="10" mt="30" ml="5">
+                    <Box w="100" h="5" mt="30" ml="5">
                         <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Profile')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
                     </Box>
 
-                    <Box  w="100"  mt="30"  position="absolute" right="2"   onPress={() => console.log("Edit")}>
-                            <Text w="205" fontSize="20" fontWeight="500" color="#1C70EE" lineHeight='20' fontFamily="GeneralSans-Bold"  >Save</Text>
-                    </Box>
+                    
 
             </Stack>
 
           <Text  w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Communication preference </Text>
+
+
+          <Stack px="5" mt="5">
+
+             <Pressable onPress={() => navigation.navigate('Prefered_lang')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Preferred Language</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+            </Pressable>
+
+            <Pressable onPress={() => navigation.navigate('Com_method')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Communication Method</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                <Pressable onPress={() => navigation.navigate('Privacy_settings')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+
+                    <Stack direction="row" space={10}>
+
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Privacy Settings</Text>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                
+
+                
+              
+
+        </Stack>
   
   
-          <FormControl w="100%" maxW="500"   alignItems="left" mt="2">
-  
-      <Box  mb="1" mt="1" mx="3">
-          <FormControl.Label  >Email Address</FormControl.Label>
-  
-            <Input type="text"  
-            
-             size="xl"  variant="outline" placeholder="Enter Email Address" minWidth="100%" 
-             
-             onChangeText={()=>{console.log("")}}
-             />
-  
-  
-          <FormControl.Label color="dark.100" mt="4" >Phone Number</FormControl.Label>
-  
-          <Input type="text"  
-  
-          size="xl"  variant="outline" placeholder="Enter Phone Number" minWidth="100%" 
-          
-          //    onChangeText={(val)=>setPhone(val)}
-          onChangeText={()=>{console.log("")}}
-          />
-  
-          <FormControl.Label color="dark.100" mt="4" >Address</FormControl.Label>
-  
-          <Input type="text"  
-  
-          size="xl"  variant="outline" placeholder="Enter Address " minWidth="100%" 
-  
-          //    onChangeText={(val)=>setPhone(val)}
-          onChangeText={()=>{console.log("")}}
-          />
-  
-          </Box>
-      </FormControl>
+         
   
   
   

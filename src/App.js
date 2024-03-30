@@ -30,7 +30,14 @@ import Security_settings from './screens/Patient_profile/Security_settings';
 //========================================================================
 
 import Current_medication from './screens/Patient_profile/Medical_info/Current_medication';
-// import Intro_screen_doc from './screens/introscreens_doctor/Intro_screen_doc';
+import Emergency_contact from './screens/Patient_profile/Medical_info/Emergency_contact';
+import Chronic_conditions_mgt from './screens/Patient_profile/Medical_info/Chronic_conditions_mgt';
+import Pry_care_phy_info from './screens/Patient_profile/Medical_info/Pry_care_phy_info';
+import Prefered_lang from './screens/Patient_profile/Communication_pref/Prefered_lang';
+import Com_method from './screens/Patient_profile/Communication_pref/Com_method';
+import Privacy_settings from './screens/Patient_profile/Communication_pref/Privacy_settings';
+import Notification_settings from './screens/Patient_profile/Communication_pref/Notification_settings';
+import Terms from './screens/Patient_profile/Communication_pref/Terms';
 
 
 import { NativeBaseProvider, Text, Box } from "native-base";
@@ -198,6 +205,56 @@ export default function app() {
           options={{headerShown:false}}
           component={Current_medication} 
           />
+
+<Stack.Screen 
+          name="Emergency_contact" 
+          options={{headerShown:false}}
+          component={Emergency_contact} 
+          />
+
+<Stack.Screen 
+          name="Chronic_conditions_mgt" 
+          options={{headerShown:false}}
+          component={Chronic_conditions_mgt} 
+          />
+
+<Stack.Screen 
+          name="Pry_care_phy_info" 
+          options={{headerShown:false}}
+          component={Pry_care_phy_info} 
+          />
+
+    <Stack.Screen 
+          name="Prefered_lang" 
+          options={{headerShown:false}}
+          component={Prefered_lang} 
+          />
+
+    <Stack.Screen 
+          name="Com_method" 
+          options={{headerShown:false}}
+          component={Com_method} 
+          />
+
+    <Stack.Screen 
+          name="Privacy_settings" 
+          options={{headerShown:false}}
+          component={Privacy_settings} 
+          />
+
+    <Stack.Screen 
+          name="Notification_settings" 
+          options={{headerShown:false}}
+          component={Notification_settings} 
+          />
+
+<Stack.Screen 
+          name="Terms" 
+          options={{headerShown:false}}
+          component={Terms} 
+          />
+
+
 
 
 

@@ -69,7 +69,7 @@ const Medical_info = ({navigation}) => {
 
                 </Pressable>
 
-                <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+                <Pressable onPress={() => navigation.navigate('Emergency_contact')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
 
                     <Stack direction="row" space={10}>
 
@@ -81,7 +81,7 @@ const Medical_info = ({navigation}) => {
 
                 </Pressable>
 
-                <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+                <Pressable onPress={() => navigation.navigate('Chronic_conditions_mgt')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
 
                     <Stack direction="row" space={10}>
 
@@ -105,7 +105,7 @@ const Medical_info = ({navigation}) => {
 
                 </Pressable>
 
-                <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+                <Pressable onPress={() => navigation.navigate('Pry_care_phy_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
 
                     <Stack direction="row" space={10}>
 

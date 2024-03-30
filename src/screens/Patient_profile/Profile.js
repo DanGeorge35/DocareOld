@@ -45,7 +45,7 @@ const Profile = ({navigation}) => {
        
         
    
-    <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15" bg="#FFFFFF" pl="10" pt="5" pb="0" h="16">
+    <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
@@ -53,7 +53,7 @@ const Profile = ({navigation}) => {
 
             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Personal Information</Text>
 
-            <Text position="absolute" right="2"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+            <Text position="absolute" right="7"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
@@ -66,7 +66,7 @@ const Profile = ({navigation}) => {
         paddingLeft:30,
         height:64, */}
 
-        <Pressable  onPress={() => navigation.navigate('Contact')} mt="2" bg="#FFFFFF" pl="10" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Contact')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
@@ -74,13 +74,13 @@ const Profile = ({navigation}) => {
 
             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Contact</Text>
 
-            <Text position="absolute" right="2" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
-        <Pressable  onPress={() => navigation.navigate('Medical_info')} mt="2" bg="#FFFFFF" pl="10" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Medical_info')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
@@ -88,13 +88,13 @@ const Profile = ({navigation}) => {
 
             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Medical Information</Text>
 
-            <Text position="absolute" right="2" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
-        <Pressable  onPress={() => navigation.navigate('Location_info')} mt="2" bg="#FFFFFF" pl="10" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Location_info')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
@@ -102,13 +102,13 @@ const Profile = ({navigation}) => {
 
             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Location Information</Text>
 
-            <Text position="absolute" right="2" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
-        <Pressable  onPress={() => navigation.navigate('Communication_pref')} mt="2" bg="#FFFFFF" pl="10" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Communication_pref')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
@@ -116,13 +116,13 @@ const Profile = ({navigation}) => {
 
             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Communication preference</Text>
 
-            <Text position="absolute" right="2" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
-        <Pressable  onPress={() => navigation.navigate('Security_settings')} mt="2" bg="#FFFFFF" pl="10" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Security_settings')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
         <Stack direction="row" space={10}>
 
@@ -130,7 +130,7 @@ const Profile = ({navigation}) => {
 
             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Security Settings</Text>
 
-            <Text position="absolute" right="2" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
         </Stack>
 
