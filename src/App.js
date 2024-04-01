@@ -100,7 +100,6 @@ export default function app() {
                 component={Intro_screen} 
                 />
 
-       
           </Stack.Group>
 
 
