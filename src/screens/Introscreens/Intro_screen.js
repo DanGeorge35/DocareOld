@@ -47,7 +47,8 @@ const Intro_screen = ({navigation}) => {
   return (
     // <ImageBackground source={require('../../../assets/african_doctor.png')} style={styles.container}>
 
-    <HStack  justifyContent="center" alignItem="center">
+  <HStack  flex={1} w="100%" h="100%"  justifyContent="center" alignItem="center">
+
     <ImageBackground source={require('../../../assets/african_doctor.png')}  >
 {/* <View> */}
        
