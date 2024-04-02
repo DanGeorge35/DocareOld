@@ -20,7 +20,7 @@ const Lang_select = ({navigation}) => {
 <LinearGradient  colors={['rgba(19, 15, 38, 0)', 'rgba(12, 12, 12, 1)']} style={styles.container} >
  
     <Box mr="0">
-         <Text fontSize="xl" color="#ffffff" fontWeight="600" lineHeight="25"  fontFamily="Inter-Black"  onPress={() => navigation.navigate('Intro_screens')}><FontAwesome5 name="arrow-left" size={20}  color="#ffffff" />  Language selection</Text>
+         <Text fontSize="xl" color="#ffffff" fontWeight="600" lineHeight="20"  fontFamily="Inter-Black"  onPress={() => navigation.navigate('Intro_screens')}><FontAwesome5 name="arrow-left" size={20}  color="#ffffff" />  Language selection</Text>
 
         
 
@@ -65,8 +65,6 @@ const Lang_select = ({navigation}) => {
          
 
 
-          
-   
 
         <Box alignItems="center">
         

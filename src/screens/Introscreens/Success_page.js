@@ -30,7 +30,7 @@ const Success_page = ({navigation}) => {
         </Box>
 
 
-        <Box alignItems="center">
+        <Box alignItems="center" mt="25%">
               <Button bg="#1C70EE" mt="170" borderRadius="md" w="300" h="12"  onPress={() => navigation.navigate('Login_screen')}>Done</Button>
        </Box>
 
@@ -50,16 +50,6 @@ const styles = StyleSheet.create({
 
    
 
-    get_start_btn:{
-        width:327,
-        height:52,
-         marginTop:100,
-         //color:"red",
-         backgroundColor:"#1C70EE",
-        
-        borderRadius:12,
-        padding: 16,
-    },
 
 });
 

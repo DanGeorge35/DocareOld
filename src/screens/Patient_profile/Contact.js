@@ -40,7 +40,7 @@ const Contact = ({navigation}) => {
 
           <Input type="text"  
           
-           size="xl"  variant="outline" placeholder="Email Address" minWidth="100%" 
+           size="md"   variant="outline" placeholder="Email Address" minWidth="100%" 
            
            onChangeText={()=>{console.log("")}}
            />
@@ -50,7 +50,7 @@ const Contact = ({navigation}) => {
 
         <Input type="text"  
 
-        size="xl"  variant="outline" placeholder="Phone Number" minWidth="100%" 
+        size="md"  mt="2" variant="outline" placeholder="Phone Number" minWidth="100%" 
         
         //    onChangeText={(val)=>setPhone(val)}
         onChangeText={()=>{console.log("")}}
@@ -60,7 +60,7 @@ const Contact = ({navigation}) => {
 
         <Input type="text"  
 
-        size="xl"  variant="outline" placeholder="Residential Address" minWidth="100%" 
+        size="md" mt="2"  variant="outline" placeholder="Residential Address" minWidth="100%" 
 
         //    onChangeText={(val)=>setPhone(val)}
         onChangeText={()=>{console.log("")}}

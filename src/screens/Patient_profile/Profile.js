@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { View, useWindowDimensions, StyleSheet,Dimensions } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import { NativeBaseProvider,HStack,Spacer,FormControl,Input,
-    Box, Badge,CheckIcon,Center,Flex,WarningOutlineIcon,Text,
+import { NativeBaseProvider,HStack,Spacer,FormControl,Input,isHovered,
+    Box, Badge,CheckIcon,Center,Flex,WarningOutlineIcon,Text,isPressed,
     VStack,Select,Stack,Image,Icon,useToast,FlatList,Button,Pressable,
     
    } from "native-base";
@@ -25,13 +25,13 @@ const Profile = ({navigation}) => {
 
          
       
-      <Box w="148" h="119.55" mt="70" alignItems="center">
+      <Box w="148" h="119.55" mt="70" alignItems="center" justifyContent="center">
              <Image source={require( "../../../assets/edit_patient1.png") } alt="Alternate Text" size="lg" borderRadius="full" w="82" h="82" position="relative"  right="0" />
 
             <Text width="148" fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="20" textAlign="center" color="#000" mt="3" > Aniebiet-Oluwa</Text>
         </Box>
 
-        <Box position="absolute" alignItems="center" top="120" right="40%" >
+        <Box position="absolute" alignItems="center" top="120" right="35%" >
             <Image source={require( "../../../assets/edit_patient.png") } alt="Alternate Text" size="xs"   />
         
       </Box>
@@ -44,12 +44,15 @@ const Profile = ({navigation}) => {
 
        
         
-   
-    <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
-            <Stack direction="row" space={10}>
+    <Pressable 
+     onPress={() => navigation.navigate('Personal_info')} mt="-15" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16"
+        // bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"}
+     >
 
-            <Text ><FontAwesome5 name="user" size={22} color="#000000" /></Text>
+            <Stack direction="row" space={10} >
+
+            <Text ><FontAwesome5 name="user" size={21} color="#000000" /></Text>
 
             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Personal Information</Text>
 
@@ -59,13 +62,7 @@ const Profile = ({navigation}) => {
 
         </Pressable>
 
-        {/*  marginTop:10,
-        backgroundColor:'#FFFFFF',
-        paddingTop:20,
-        paddingBottom:0,
-        paddingLeft:30,
-        height:64, */}
-
+        
         <Pressable  onPress={() => navigation.navigate('Contact')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>

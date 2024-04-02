@@ -65,7 +65,7 @@ const { width } = Dimensions.get('window');
         </Stack>
 
         
-        <Text  w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Personal Information </Text>
+    <Text  w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Personal Information </Text>
 
 
 
@@ -76,7 +76,7 @@ const { width } = Dimensions.get('window');
 
           <Input type="text"  
           
-           size="xl"  variant="outline" placeholder="Enter First Name" minWidth="100%" 
+           size="md"  variant="outline" placeholder="Enter First Name" minWidth="100%" 
            
            onChangeText={()=>{console.log("")}}
            />
@@ -86,7 +86,7 @@ const { width } = Dimensions.get('window');
 
         <Input type="text"  
 
-        size="xl"  variant="outline" placeholder="Enter Last Name" minWidth="100%" 
+        size="md"  variant="outline" placeholder="Enter Last Name" minWidth="100%" 
         
         //    onChangeText={(val)=>setPhone(val)}
         onChangeText={()=>{console.log("")}}
@@ -136,7 +136,7 @@ const { width } = Dimensions.get('window');
             >
                     <Input type="text"  
                     
-                    size="xl"  variant="outline" 
+                    size="md"  variant="outline" 
                     placeholder="Date Of Birth"
                     placeholderTextColor="#000000"
                     minWidth="48%" 

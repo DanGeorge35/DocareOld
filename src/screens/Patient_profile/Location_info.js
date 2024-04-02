@@ -38,21 +38,28 @@ const Location_info = ({navigation}) => {
           <FormControl w="100%" maxW="500"   alignItems="left" mt="2">
   
       <Box  mb="1" mt="1" mx="3">
-          <FormControl.Label  >Email Address</FormControl.Label>
+          <FormControl.Label  color="#000000" >Email Address</FormControl.Label>
   
             <Input type="text"  
             
-             size="xl"  variant="outline" placeholder="Enter Email Address" minWidth="100%" 
+             size="md"  variant="outline" placeholder="Enter Email Address" minWidth="100%" 
              
              onChangeText={()=>{console.log("")}}
              />
+
+    {/* <Input type="text"  
+      
+      size="xl" my="2" variant="outline" placeholder="Medication Name e.g.  Metformin" minWidth="100%" 
+      placeholderTextColor="#000000"
+      onChangeText={()=>{console.log("")}}
+      /> */}
   
   
           <FormControl.Label color="dark.100" mt="4" >Phone Number</FormControl.Label>
   
           <Input type="text"  
   
-          size="xl"  variant="outline" placeholder="Enter Phone Number" minWidth="100%" 
+          size="md"  variant="outline" placeholder="Enter Phone Number" minWidth="100%" 
           
           //    onChangeText={(val)=>setPhone(val)}
           onChangeText={()=>{console.log("")}}
@@ -62,7 +69,7 @@ const Location_info = ({navigation}) => {
   
           <Input type="text"  
   
-          size="xl"  variant="outline" placeholder="Enter Address " minWidth="100%" 
+          size="md"  variant="outline" placeholder="Enter Address " minWidth="100%" 
   
           //    onChangeText={(val)=>setPhone(val)}
           onChangeText={()=>{console.log("")}}

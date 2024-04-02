@@ -16,19 +16,19 @@ const Emergency_contact = ({navigation}) => {
   return (
     <VStack space="5" backgroundColor="#FFFFFF"  flex={1} >
 
-            <Stack direction="row"  space={5} mb="0">
+        <Stack direction="row"  mb="0">
 
-                <Box w="100" h="5" mt="5" ml="5">
-                    <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Medical_info')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
-                </Box>
+        <Box w="100" h="8" mt="30" ml="5">
+            <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Medical_info')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
+        </Box>
 
-                <Text  fontFamily="HelveticaNeueBlack" fontSize="38" fontWeight="bold" color="#1C70EE" >Do'Care</Text>
+        <Text  fontFamily="HelveticaNeueBlack" fontSize="30" fontWeight="bold" mt="5" color="#1C70EE" >Do'Care</Text>
 
-                <Box  w="100"  mt="6"  position="absolute" right="-20"    onPress={() => console.log("Save")}>
+            <Box  w="100"  mt="35" position="absolute" right="-25"   onPress={() => console.log("Edit")}>
                     <Text w="205" fontSize="16" fontWeight="500" color="#1C70EE" lineHeight='20' fontFamily="GeneralSans-Bold"  >Save</Text>
-                </Box>
+            </Box>
 
-            </Stack>
+        </Stack>
 
             <Box alignItems="center">
 

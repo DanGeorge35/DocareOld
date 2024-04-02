@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import { View, useWindowDimensions, StyleSheet,Dimensions, Platform } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,
+import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,Switch,
     Box, Badge,CheckIcon,Center,Flex,WarningOutlineIcon,DatePicker,Text,
     VStack,Select,Stack,Image,Icon,useToast,FlatList,Button,Pressable,
     
@@ -13,6 +13,15 @@ import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,
    import DateTimePicker from '@react-native-community/datetimepicker';
 
 const Com_method = ({navigation}) => {
+
+
+    const [switchValue, setSwitchValue] = useState(false);
+
+    const handleSwitchChange = () => {
+      setSwitchValue(!switchValue);
+      console.log(switchValue);
+    };
+
   return (
     <VStack space="5"     backgroundColor="#FFFFFF" flex={1} >
   
@@ -34,7 +43,11 @@ const Com_method = ({navigation}) => {
 
                         <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Phone Calls</Text>
 
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                        {/* <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text> */}
+
+                        <Text ml="36%"> <Switch  colorScheme="info" 
+                         value={switchValue}
+                         onValueChange={handleSwitchChange} /></Text>
 
                     </Stack>
 
@@ -46,7 +59,7 @@ const Com_method = ({navigation}) => {
 
                         <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Text Messages</Text>
 
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                        <Text ml="28%"> <Switch defaultIsChecked colorScheme="info" /></Text>
 
                     </Stack>
 
@@ -58,7 +71,7 @@ const Com_method = ({navigation}) => {
 
                     <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Email</Text>
 
-                    <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                    <Text ml="49%"> <Switch defaultIsChecked colorScheme="info" /></Text>
 
                 </Stack>
 
@@ -70,7 +83,7 @@ const Com_method = ({navigation}) => {
 
                     <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >App Notifications</Text>
 
-                    <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                    <Text ml="22%"> <Switch defaultIsChecked colorScheme="info" /></Text>
 
                 </Stack>
 

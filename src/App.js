@@ -29,6 +29,7 @@ import Security_settings from './screens/Patient_profile/Security_settings';
 
 //========================================================================
 
+import Medical_history from './screens/Patient_profile/Medical_info/Medical_history';
 import Current_medication from './screens/Patient_profile/Medical_info/Current_medication';
 import Emergency_contact from './screens/Patient_profile/Medical_info/Emergency_contact';
 import Chronic_conditions_mgt from './screens/Patient_profile/Medical_info/Chronic_conditions_mgt';
@@ -251,6 +252,12 @@ export default function app() {
           name="Terms" 
           options={{headerShown:false}}
           component={Terms} 
+          />
+
+<Stack.Screen 
+          name="Medical_history" 
+          options={{headerShown:false}}
+          component={Medical_history} 
           />
 
 

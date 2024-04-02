@@ -26,8 +26,6 @@ const Communication_pref = ({navigation}) => {
                         <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Profile')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
                     </Box>
 
-                    
-
             </Stack>
 
           <Text  w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Communication preference </Text>

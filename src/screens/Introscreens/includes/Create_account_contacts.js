@@ -42,7 +42,7 @@ const Create_account_contacts = ({onNext}) => {
     
             </Box>
     
-            <Box alignItems="center" mt="200" >
+            <Box alignItems="center" mt="90%" >
                 <Button  bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>Continue</Button>
             </Box>
         
