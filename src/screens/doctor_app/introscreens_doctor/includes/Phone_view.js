@@ -24,8 +24,8 @@ const Phone_view = ({onForgotPass,onSignUp,onLogin}) => {
           {/* <FormControl.Label >Phone Number</FormControl.Label> */}
   
             <Input type="text"  
-            
-             size="xl"  variant="outline" placeholder="Enter Phone Number" minWidth="300" w="100%"
+            placeholderTextColor="#000000"
+             size="md"  variant="outline" placeholder="Enter Phone Number" minWidth="300" w="100%"
              
           //    onChangeText={(val)=>setPhone(val)}
              onChangeText={()=>{console.log("")}}
@@ -36,7 +36,8 @@ const Phone_view = ({onForgotPass,onSignUp,onLogin}) => {
         base: "100%",
         md: "25%"
       }} type={show ? "text" : "password"}
-      size="xl"
+      size="md"
+      placeholderTextColor="#000000"
       mt="5"
       variant="outline"
       InputRightElement={<Pressable onPress={() => setShow(!show)}>

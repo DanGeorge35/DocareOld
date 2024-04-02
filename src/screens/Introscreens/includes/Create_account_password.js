@@ -28,7 +28,7 @@ const Create_account_password = ({onNext}) => {
         base: "90%",
         md: "25%"
       }} type={show ? "text" : "password"}
-      size="xl"
+      size="md"
       variant="outline"
       InputRightElement={<Pressable onPress={() => setShow(!show)}>
               <Icon as={<FontAwesome5 name={show ? "eye" : "eye-slash"} />} size={5} mr="5" color="dark.400" />
@@ -41,7 +41,7 @@ const Create_account_password = ({onNext}) => {
         base: "90%",
         md: "25%"
       }} type={show ? "text" : "password"}
-      size="xl"
+      size="md"
       variant="outline"
       InputRightElement={<Pressable onPress={() => setShow(!show)}>
               <Icon as={<FontAwesome5 name={show ? "eye" : "eye-slash"} />} size={5} mr="5" color="dark.400" />

@@ -24,7 +24,7 @@ const Create_account_contacts = ({onNext}) => {
     
               <Input type="text"  
               
-               size="xl"  variant="outline" placeholder="Enter Email Address" minWidth="335" w="90%"
+               size="md"  variant="outline" placeholder="Enter Email Address" minWidth="335" w="90%"
                
             //    onChangeText={(val)=>setPhone(val)}
                onChangeText={()=>{console.log("")}}
@@ -34,7 +34,7 @@ const Create_account_contacts = ({onNext}) => {
             <FormControl.Label color="gray.100" mt="6" >Phone Number</FormControl.Label>
     
             <Input type="text"  
-            size="xl"  variant="outline" placeholder="+234" minWidth="335" w="90%"
+            size="md"  variant="outline" placeholder="+234" minWidth="335" w="90%"
             
             //    onChangeText={(val)=>setPhone(val)}
             onChangeText={()=>{console.log("")}}

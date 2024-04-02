@@ -77,7 +77,7 @@ const Login_screen = ({navigation}) => {
             return (
                 <EmailView 
                     onForgotPass={() => navigation.navigate('Forget_pass')}
-                    onSignUp={() => navigation.navigate('Create_account_doc')}
+                    onSignUp={() => navigation.navigate('Personal_info_doc')}
                     onLogin={() => navigation.navigate('Profile')}
                  />
             )
@@ -85,7 +85,7 @@ const Login_screen = ({navigation}) => {
             return (
             <PhoneView 
             onForgotPass={() => navigation.navigate('Forget_pass')}
-            onSignUp={() => navigation.navigate('Create_account_doc')}
+            onSignUp={() => navigation.navigate('Personal_info_doc')}
             onLogin={() => navigation.navigate('Profile')}
          />
             )

@@ -7,11 +7,15 @@ import React ,{useState, useEffect} from 'react';
 
 //========================================================================
 
-import Splash_screen_doc from './screens/introscreens_doctor/Splash_screen_doc';
-import Intro_screen_doc from './screens/introscreens_doctor/Intro_screen_doc';
-import Lang_select from './screens/introscreens_doctor/Lang_select';
-import Login_screen from './screens/introscreens_doctor/Login_screen';
-import Create_account_doc from './screens/introscreens_doctor/Create_account_doc';
+import Splash_screen_doc from './screens/doctor_app/introscreens_doctor/Splash_screen_doc';
+import Intro_screen_doc from './screens/doctor_app/introscreens_doctor/Intro_screen_doc';
+import Lang_select from './screens/doctor_app/introscreens_doctor/Lang_select';
+import Login_screen from './screens/doctor_app/introscreens_doctor/Login_screen';
+
+import Personal_info_doc from './screens/doctor_app/create_account/Personal_info_doc';
+import Upload_pix_doc from './screens/doctor_app/create_account/Upload_pix_doc';
+import Create_password from './screens/doctor_app/create_account/Create_password';
+import Successful_page from './screens/doctor_app/create_account/Successful_page';
 
 
 import { NativeBaseProvider, Text, Box } from "native-base";
@@ -84,9 +88,27 @@ export default function app_doc() {
                     />
 
                 <Stack.Screen 
-                    name="Create_account_doc" 
+                    name="Personal_info_doc" 
                     options={{headerShown:false}}
-                    component={Create_account_doc} 
+                    component={Personal_info_doc} 
+                    />
+
+                  <Stack.Screen 
+                    name="Upload_pix_doc" 
+                    options={{headerShown:false}}
+                    component={Upload_pix_doc} 
+                    />
+
+                  <Stack.Screen 
+                    name="Create_password" 
+                    options={{headerShown:false}}
+                    component={Create_password} 
+                    />
+
+                  <Stack.Screen 
+                    name="Successful_page" 
+                    options={{headerShown:false}}
+                    component={Successful_page} 
                     />
 
 

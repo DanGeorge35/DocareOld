@@ -25,7 +25,7 @@ const Create_account_name = ({onNext}) => {
 
           <Input type="text"  
           
-           size="xl"  variant="outline" placeholder="Enter First Name" minWidth="335" w="90%"
+           size="md"  variant="outline" placeholder="Enter First Name" minWidth="335" w="90%"
            
         //    onChangeText={(val)=>setPhone(val)}
            onChangeText={()=>{console.log("")}}
@@ -36,7 +36,7 @@ const Create_account_name = ({onNext}) => {
 
         <Input type="text"  
 
-        size="xl"  variant="outline" placeholder="Enter Last Name" minWidth="335" w="90%"
+        size="md"  variant="outline" placeholder="Enter Last Name" minWidth="335" w="90%"
         
         //    onChangeText={(val)=>setPhone(val)}
         onChangeText={()=>{console.log("")}}

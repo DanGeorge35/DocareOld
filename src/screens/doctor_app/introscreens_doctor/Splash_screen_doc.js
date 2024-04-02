@@ -13,7 +13,7 @@ const Splash_screen_doc = () => {
         lineHeight: 48.84,
         fontFamily:'HelveticaNeueRoman' */}
       {/* <Text style={styles.DocareText}>Do'Care</Text> */}
-      <Image  w="56" h="56" source={require( "../../../assets/docare_doc.png") } alt="Alternate Text" size="sm" />
+      <Image  w="56" h="56" source={require( "../../../../assets/docare_doc.png") } alt="Alternate Text" size="sm" />
      
 
      

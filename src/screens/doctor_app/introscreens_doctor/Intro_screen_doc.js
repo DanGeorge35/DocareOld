@@ -15,15 +15,15 @@ const Intro_screen_doc = ({navigation}) => {
         
         Make Online And Live Consultation
             Easily With Top Doctors 
-            <Image  w="35.38" h="35.38" source={require( "../../../assets/img/user_doc1.png") } alt="Alternate Text" size="xs" />
+            <Image  w="35.38" h="35.38" source={require( "../../../../assets/img/user_doc1.png") } alt="Alternate Text" size="xs" />
 
-            <Image  w="35.38" h="35.38" source={require( "../../../assets/img/user_doc2.png") } alt="Alternate Text" size="xs" />
+            <Image  w="35.38" h="35.38" source={require( "../../../../assets/img/user_doc2.png") } alt="Alternate Text" size="xs" />
 
             {/* <Image  w="235.38" h="12.38" source={require( "../../../assets/img/sign.png") } alt="Alternate Text" size="xs" /> */}
 
             </Text>
 
-            <Image  w="35.38" h="35.38" source={require( "../../../assets/img/group1.png") } alt="Alternate Text" size="2xl" />
+            <Image  w="35.38" h="35.38" source={require( "../../../../assets/img/group1.png") } alt="Alternate Text" size="2xl" />
 
 
             <Box >

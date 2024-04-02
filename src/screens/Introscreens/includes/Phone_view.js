@@ -25,7 +25,7 @@ const Phone_view = ({onForgotPass,onSignUp,onLogin}) => {
   
             <Input type="text"  
             
-             size="xl"  variant="outline" placeholder="Enter Phone Number" minWidth="300" w="100%"
+             size="md"  variant="outline" placeholder="Enter Phone Number" minWidth="300" w="100%"
              
           //    onChangeText={(val)=>setPhone(val)}
              onChangeText={()=>{console.log("")}}
@@ -36,7 +36,7 @@ const Phone_view = ({onForgotPass,onSignUp,onLogin}) => {
         base: "100%",
         md: "25%"
       }} type={show ? "text" : "password"}
-      size="xl"
+      size="md"
       variant="outline"
       InputRightElement={<Pressable onPress={() => setShow(!show)}>
               <Icon as={<FontAwesome5 name={show ? "eye" : "eye-slash"} />} size={5} mr="5" color="muted.400" />
