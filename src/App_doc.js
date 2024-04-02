@@ -17,6 +17,11 @@ import Upload_pix_doc from './screens/doctor_app/create_account/Upload_pix_doc';
 import Create_password from './screens/doctor_app/create_account/Create_password';
 import Successful_page from './screens/doctor_app/create_account/Successful_page';
 
+import National_ID_verify from './screens/doctor_app/kyc/National_ID_verify';
+import Personal_info_kyc from './screens/doctor_app/kyc/Personal_info_kyc';
+import Work_experience from './screens/doctor_app/kyc/Work_experience';
+import Success_page_kyc from './screens/doctor_app/kyc/Success_page_kyc';
+
 
 import { NativeBaseProvider, Text, Box } from "native-base";
 
@@ -110,6 +115,32 @@ export default function app_doc() {
                     options={{headerShown:false}}
                     component={Successful_page} 
                     />
+
+                  <Stack.Screen 
+                    name="National_ID_verify" 
+                    options={{headerShown:false}}
+                    component={National_ID_verify} 
+                    />
+
+                <Stack.Screen 
+                    name="Personal_info_kyc" 
+                    options={{headerShown:false}}
+                    component={Personal_info_kyc} 
+                    />
+
+                  <Stack.Screen 
+                    name="Work_experience" 
+                    options={{headerShown:false}}
+                    component={Work_experience} 
+                    />
+
+                  <Stack.Screen 
+                    name="Success_page_kyc" 
+                    options={{headerShown:false}}
+                    component={Success_page_kyc} 
+                    />
+
+
 
 
 

@@ -14,7 +14,7 @@ import { NativeBaseProvider,HStack,Spacer,FormControl,Input,
    import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
    import DateTimePicker from '@react-native-community/datetimepicker';
 
-const Successful_page = ({navigation}) => {
+const Success_page_kyc = () => {
   return (
     <VStack   px="1"  backgroundColor="#fff" flex={1} >
         
@@ -23,18 +23,18 @@ const Successful_page = ({navigation}) => {
 
             <Image source={require( "../../../../assets/success.png") } alt="Alternate Text" size="xl" />
 
-            <Text fontWeight="bold" fontSize="xl" mt="5" color="#1C70EE" lineHeight="30.24" textAlign="center" fontFamily="GeneralSans-Bold"> Success </Text>
+            <Text fontWeight="bold" fontSize="xl" mt="5" color="#1C70EE" lineHeight="30.24" textAlign="center" fontFamily="GeneralSans-Bold"> Successful! </Text>
 
             <Box w="300" h="66" mt="1">
-                <Text  fontSize="sm" color="#494949" textAlign="center"> You have successfully created your doctor 
-                    account on Do’Care. Now, kindly complete 
-                        your KYC to start attending patients. 
+                <Text  fontSize="sm" color="#494949" textAlign="center"> Our professionals are taking a 
+look at your KYC submission. 
+We will get back to you in 24 hours.  
                 </Text>
             </Box>
 
 
-            <Box alignItems="center"  bottom="-250">
-                        <Button bg="#1C70EE"  borderRadius="md" w="300"  onPress={() => navigation.navigate('National_ID_verify')}>Proceed to KYC</Button>
+            <Box alignItems="center"  bottom="-50">
+                        <Button bg="#1C70EE"  borderRadius="md" w="300"  onPress={() => navigation.navigate('National_ID_verify')}>Done</Button>
                 </Box>
 
         </Box>
@@ -44,4 +44,4 @@ const Successful_page = ({navigation}) => {
   )
 }
 
-export default Successful_page
+export default Success_page_kyc
