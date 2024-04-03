@@ -94,6 +94,7 @@ const Intro_screen = ({navigation}) => {
 
        
 
+            {/* <Button  w="300" h="10" onPress={() => navigation.navigate('Lang_select')}>Get Started</Button> */}
             <Button  w="300" h="10" onPress={() => navigation.navigate('Lang_select')}>Get Started</Button>
         </Box>
 

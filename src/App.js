@@ -41,6 +41,11 @@ import Notification_settings from './screens/Patient_profile/Communication_pref/
 import Terms from './screens/Patient_profile/Communication_pref/Terms';
 
 
+import Doctors_list_view from './screens/appointment_scheduling/Doctors_list_view';
+
+
+
+
 import { NativeBaseProvider, Text, Box } from "native-base";
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -95,14 +100,22 @@ export default function app() {
           <Stack.Group >
           
           
-            <Stack.Screen 
+            {/* <Stack.Screen 
                 name="Intro_screen" 
                 options={{headerShown:false}}
                 component={Intro_screen} 
+                /> */}
+
+          <Stack.Screen 
+                name="Doctors_list_view" 
+                options={{headerShown:false}}
+                component={Doctors_list_view} 
                 />
+
 
           </Stack.Group>
 
+         
 
       <Stack.Screen 
           name="Contact" 
