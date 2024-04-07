@@ -1,10 +1,14 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import 'react-native-pager-view';
 import 'react-native-gesture-handler';
 import 'react-native-reanimated';
 
-import React ,{useState, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+
+import {StatusBar} from 'react-native';
 import Splash_screen from './screens/Introscreens/Splash_screen';
 import Intro_screen from './screens/Introscreens/Intro_screen';
+import OnboardingScreen from './screens/Introscreens/OnboardingScreen';
 import Lang_select from './screens/Introscreens/Lang_select';
 import Account_type from './screens/Introscreens/Account_type';
 import Login_screen from './screens/Introscreens/Login_screen';
@@ -12,7 +16,7 @@ import Login_screen1 from './screens/Introscreens/Login_screen1';
 import Tabss from './screens/Introscreens/Tabss';
 import Create_account from './screens/Introscreens/Create_account';
 import Success_page from './screens/Introscreens/Success_page';
-
+import AsyncStorage from '@react-native-community/async-storage';
 import Forget_pass from './screens/Forget_password/Forget_pass';
 import Retrieve_otp from './screens/Forget_password/Retrieve_otp';
 import Reset_password from './screens/Forget_password/Reset_password';
@@ -25,7 +29,6 @@ import Medical_info from './screens/Patient_profile/Medical_info';
 import Location_info from './screens/Patient_profile/Location_info';
 import Communication_pref from './screens/Patient_profile/Communication_pref';
 import Security_settings from './screens/Patient_profile/Security_settings';
-
 
 //========================================================================
 
@@ -40,33 +43,51 @@ import Privacy_settings from './screens/Patient_profile/Communication_pref/Priva
 import Notification_settings from './screens/Patient_profile/Communication_pref/Notification_settings';
 import Terms from './screens/Patient_profile/Communication_pref/Terms';
 
-
 import Doctors_list_view from './screens/appointment_scheduling/Doctors_list_view';
 
+import {NativeBaseProvider, Text, Box} from 'native-base';
 
-
-
-import { NativeBaseProvider, Text, Box } from "native-base";
-
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
 
 const Stack = createStackNavigator();
 
 export default function app() {
-
   const [count, setCount] = useState(5);
-  const [isSignUp , setIsSignUp] = useState(false);
-  const [isLoading , setIsLoading] = useState(true);
-
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFirstLaunch, setIsFirstLaunch] = useState(null);
+  const [hasPickedLanguage, setHasPickedLanguage] = useState(null);
+  let routeName;
 
   useEffect(() => {
+    // AsyncStorage.removeItem('alreadyLaunched');
+
+    AsyncStorage.getItem('userLanguage').then(value => {
+      if (value == null) {
+        // No need to wait for `setItem` to finish, although you might want to handle errors
+        setHasPickedLanguage(false);
+      } else {
+        setHasPickedLanguage(true);
+        console.log('Language :', value);
+      }
+    }); // Add some error
+
+    AsyncStorage.getItem('alreadyLaunched').then(value => {
+      if (value == null) {
+        // No need to wait for `setItem` to finish, although you might want to handle errors
+        setIsFirstLaunch(true);
+      } else {
+        setIsFirstLaunch(false);
+      }
+    }); // Add some error
+
     const timer = setInterval(() => {
       if (count > 0) {
         setCount(count - 1);
-      }else{
-        setIsLoading(false)
-        setIsSignUp(false)
+      } else {
+        setIsLoading(false);
+        setIsSignUp(false);
       }
     }, 1000);
 
@@ -78,223 +99,230 @@ export default function app() {
   //   setIsLoading(false)
   // }
 
-
   if (isLoading) {
- 
-    return <Splash_screen />;
-   
-  
- }
+    return (
+      <>
+        <StatusBar barStyle="light-content" backgroundColor="#007bff" />
+        <Splash_screen />
+      </>
+    );
+  }
 
+  console.log(hasPickedLanguage);
+
+  Account_type;
+  if (hasPickedLanguage === null) {
+    routeName = 'Lang_select';
+    // This is the 'tricky' part: The query to AsyncStorage is not finished, but we have to present something to the user. Null will just render nothing, so you can also put a placeholder of some sort, but effectively the interval between the first mount and AsyncStorage retrieving your data won't be noticeable to the user. But if you want to display anything then you can use a LOADER here
+  } else if (hasPickedLanguage == true) {
+    if (isFirstLaunch === null) {
+      routeName = 'Onboarding';
+      // return null; // This is the 'tricky' part: The query to AsyncStorage is not finished, but we have to present something to the user. Null will just render nothing, so you can also put a placeholder of some sort, but effectively the interval between the first mount and AsyncStorage retrieving your data won't be noticeable to the user. But if you want to display anything then you can use a LOADER here
+    } else if (isFirstLaunch == true) {
+      routeName = 'Onboarding';
+    } else {
+      routeName = 'Login_screen';
+    }
+  } else {
+    routeName = 'Lang_select';
+  }
 
   return (
     <NativeBaseProvider>
-
-        <NavigationContainer>
-
+      <StatusBar barStyle="light-content" backgroundColor="#007bff" />
+      <NavigationContainer>
         {/* <Stack.Navigator initialRouteName={isSignUp ? 'Intro_screen':'Login_screen'}> */}
 
-        <Stack.Navigator initialRouteName='Intro_screen' >
-     
-
-          <Stack.Group >
-          
-          
-            {/* <Stack.Screen 
-                name="Intro_screen" 
+        <Stack.Navigator initialRouteName={routeName}>
+          {/* <Stack.Screen
+                name="Intro_screen"
                 options={{headerShown:false}}
-                component={Intro_screen} 
+                component={Intro_screen}
                 /> */}
-
-          <Stack.Screen 
-                name="Doctors_list_view" 
-                options={{headerShown:false}}
-                component={Doctors_list_view} 
-                />
-
-
-          </Stack.Group>
-
-         
-
-      <Stack.Screen 
-          name="Contact" 
-          options={{headerShown:false}}
-          component={Contact} 
+          <Stack.Screen
+            name="Onboarding"
+            options={{headerShown: false}}
+            component={OnboardingScreen}
           />
 
-      <Stack.Screen 
-          name="Communication_pref" 
-          options={{headerShown:false}}
-          component={Communication_pref} 
+          {/* <Stack.Screen
+              name="Doctors_list_view"
+              options={{headerShown: false}}
+              component={Doctors_list_view}
+            /> */}
+
+          <Stack.Screen
+            name="Contact"
+            options={{headerShown: false}}
+            component={Contact}
           />
 
-      <Stack.Screen 
-          name="Location_info" 
-          options={{headerShown:false}}
-          component={Location_info} 
+          <Stack.Screen
+            name="Communication_pref"
+            options={{headerShown: false}}
+            component={Communication_pref}
           />
 
-      <Stack.Screen 
-          name="Medical_info" 
-          options={{headerShown:false}}
-          component={Medical_info} 
+          <Stack.Screen
+            name="Location_info"
+            options={{headerShown: false}}
+            component={Location_info}
           />
 
-     <Stack.Screen 
-          name="Profile" 
-          options={{headerShown:false}}
-          component={Profile} 
+          <Stack.Screen
+            name="Medical_info"
+            options={{headerShown: false}}
+            component={Medical_info}
           />
 
-      <Stack.Screen 
-          name="Personal_info" 
-          options={{headerShown:false}}
-          component={Personal_info} 
+          <Stack.Screen
+            name="Profile"
+            options={{headerShown: false}}
+            component={Profile}
           />
 
-      <Stack.Screen 
-          name="Security_settings" 
-          options={{headerShown:false}}
-          component={Security_settings} 
+          <Stack.Screen
+            name="Personal_info"
+            options={{headerShown: false}}
+            component={Personal_info}
           />
 
-      <Stack.Screen 
-          name="Lang_select" 
-          options={{headerShown:false}}
-          component={Lang_select} 
+          <Stack.Screen
+            name="Security_settings"
+            options={{headerShown: false}}
+            component={Security_settings}
           />
 
-      <Stack.Screen 
-          name="Account_type" 
-          options={{headerShown:false}}
-          component={Account_type} 
+          <Stack.Screen
+            name="Lang_select"
+            options={{headerShown: false}}
+            component={Lang_select}
           />
 
-      <Stack.Screen 
-          name="Login_screen" 
-          options={{headerShown:false}}
-          component={Login_screen} 
+          <Stack.Screen
+            name="Account_type"
+            options={{headerShown: false}}
+            component={Account_type}
           />
 
-    <Stack.Screen 
-          name="Create_account" 
-          options={{headerShown:false}}
-          component={Create_account} 
+          <Stack.Screen
+            name="Login_screen"
+            options={{headerShown: false}}
+            component={Login_screen}
           />
 
-      <Stack.Screen 
-          name="Success_page" 
-          options={{headerShown:false}}
-          component={Success_page} 
+          <Stack.Screen
+            name="Create_account"
+            options={{headerShown: false}}
+            component={Create_account}
           />
 
-      <Stack.Screen 
-          name="Forget_pass" 
-          options={{headerShown:false}}
-          component={Forget_pass} 
+          <Stack.Screen
+            name="Success_page"
+            options={{headerShown: false}}
+            component={Success_page}
           />
 
-<Stack.Screen 
-          name="Retrieve_otp" 
-          options={{headerShown:false}}
-          component={Retrieve_otp} 
+          <Stack.Screen
+            name="Forget_pass"
+            options={{headerShown: false}}
+            component={Forget_pass}
           />
 
-<Stack.Screen 
-          name="Reset_password" 
-          options={{headerShown:false}}
-          component={Reset_password} 
+          <Stack.Screen
+            name="Retrieve_otp"
+            options={{headerShown: false}}
+            component={Retrieve_otp}
           />
 
-<Stack.Screen 
-          name="Successful_page" 
-          options={{headerShown:false}}
-          component={Successful_page} 
+          <Stack.Screen
+            name="Reset_password"
+            options={{headerShown: false}}
+            component={Reset_password}
           />
 
-  <Stack.Screen 
-          name="Current_medication" 
-          options={{headerShown:false}}
-          component={Current_medication} 
+          <Stack.Screen
+            name="Successful_page"
+            options={{headerShown: false}}
+            component={Successful_page}
           />
 
-<Stack.Screen 
-          name="Emergency_contact" 
-          options={{headerShown:false}}
-          component={Emergency_contact} 
+          <Stack.Screen
+            name="Current_medication"
+            options={{headerShown: false}}
+            component={Current_medication}
           />
 
-<Stack.Screen 
-          name="Chronic_conditions_mgt" 
-          options={{headerShown:false}}
-          component={Chronic_conditions_mgt} 
+          <Stack.Screen
+            name="Emergency_contact"
+            options={{headerShown: false}}
+            component={Emergency_contact}
           />
 
-<Stack.Screen 
-          name="Pry_care_phy_info" 
-          options={{headerShown:false}}
-          component={Pry_care_phy_info} 
+          <Stack.Screen
+            name="Chronic_conditions_mgt"
+            options={{headerShown: false}}
+            component={Chronic_conditions_mgt}
           />
 
-    <Stack.Screen 
-          name="Prefered_lang" 
-          options={{headerShown:false}}
-          component={Prefered_lang} 
+          <Stack.Screen
+            name="Pry_care_phy_info"
+            options={{headerShown: false}}
+            component={Pry_care_phy_info}
           />
 
-    <Stack.Screen 
-          name="Com_method" 
-          options={{headerShown:false}}
-          component={Com_method} 
+          <Stack.Screen
+            name="Prefered_lang"
+            options={{headerShown: false}}
+            component={Prefered_lang}
           />
 
-    <Stack.Screen 
-          name="Privacy_settings" 
-          options={{headerShown:false}}
-          component={Privacy_settings} 
+          <Stack.Screen
+            name="Com_method"
+            options={{headerShown: false}}
+            component={Com_method}
           />
 
-    <Stack.Screen 
-          name="Notification_settings" 
-          options={{headerShown:false}}
-          component={Notification_settings} 
+          <Stack.Screen
+            name="Privacy_settings"
+            options={{headerShown: false}}
+            component={Privacy_settings}
           />
 
-<Stack.Screen 
-          name="Terms" 
-          options={{headerShown:false}}
-          component={Terms} 
+          <Stack.Screen
+            name="Notification_settings"
+            options={{headerShown: false}}
+            component={Notification_settings}
           />
 
-<Stack.Screen 
-          name="Medical_history" 
-          options={{headerShown:false}}
-          component={Medical_history} 
+          <Stack.Screen
+            name="Terms"
+            options={{headerShown: false}}
+            component={Terms}
           />
 
+          <Stack.Screen
+            name="Medical_history"
+            options={{headerShown: false}}
+            component={Medical_history}
+          />
+        </Stack.Navigator>
 
+        {/* <Splash_screen/> */}
+        {/* <Intro_screen/> */}
+        {/* <Lang_select/> */}
+        {/* <Account_type/> */}
+        {/* <Login_screen/> */}
+        {/* <Create_account/> */}
 
+        {/* <Success_page/> */}
+        {/* <Tabss/> */}
+        {/* <Forget_pass/> */}
+        {/* <Retrieve_otp/> */}
+        {/* <Reset_password/> */}
 
-
-  </Stack.Navigator>
-
-          {/* <Splash_screen/> */}
-          {/* <Intro_screen/> */}
-          {/* <Lang_select/> */}
-          {/* <Account_type/> */}
-          {/* <Login_screen/> */}
-          {/* <Create_account/> */}
-          
-          {/* <Success_page/> */}
-          {/* <Tabss/> */}
-          {/* <Forget_pass/> */}
-          {/* <Retrieve_otp/> */}
-          {/* <Reset_password/> */}
-
-          {/* <Successful_page/> */}
-          </NavigationContainer>
+        {/* <Successful_page/> */}
+      </NavigationContainer>
     </NativeBaseProvider>
-  )
+  );
 }
-
