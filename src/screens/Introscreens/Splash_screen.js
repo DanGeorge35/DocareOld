@@ -1,4 +1,4 @@
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, StyleSheet, ActivityIndicator} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -25,6 +25,8 @@ const Splash_screen = () => {
           resizeMode="contain" // Set resizeMode to control how the image should be resized
         />
         <Text style={styles.DocareText}>DOCARE</Text>
+
+        <ActivityIndicator size="large" color="#fff" style={styles.indicator} />
       </View>
       <LinearGradient
         colors={['#1C70EE', '#FFFFFF']}
@@ -67,6 +69,9 @@ const styles = StyleSheet.create({
     marginLeft: -100, // Adjust the left margin to center the inner container perfectly
   },
 
+  indicator: {
+    marginTop: 200,
+  },
   DocareText: {
     fontSize: 40,
     fontWeight: 'bold',

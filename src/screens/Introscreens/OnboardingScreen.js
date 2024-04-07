@@ -22,8 +22,8 @@ const OnboardingScreen = ({navigation}) => {
 
       <Onboarding
         DoneButtonComponent={Done}
-        onSkip={() => navigation.replace('Lang_select')}
-        onDone={() => navigation.navigate('Lang_select')}
+        onSkip={() => navigation.replace('Login_screen')}
+        onDone={() => navigation.navigate('Login_screen')}
         pages={[
           {
             backgroundColor: '#1C70EE',

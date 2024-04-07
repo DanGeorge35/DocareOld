@@ -66,9 +66,10 @@ export default function app() {
     AsyncStorage.getItem('userLanguage').then(value => {
       if (value == null) {
         // No need to wait for `setItem` to finish, although you might want to handle errors
-        setUserLanguage(true);
+        setHasPickedLanguage(false);
       } else {
-        setUserLanguage(false);
+        setHasPickedLanguage(true);
+        console.log('Language :', value);
       }
     }); // Add some error
 
@@ -107,9 +108,12 @@ export default function app() {
     );
   }
 
+  console.log(hasPickedLanguage);
+
+  Account_type;
   if (hasPickedLanguage === null) {
     routeName = 'Lang_select';
-    // return null; // This is the 'tricky' part: The query to AsyncStorage is not finished, but we have to present something to the user. Null will just render nothing, so you can also put a placeholder of some sort, but effectively the interval between the first mount and AsyncStorage retrieving your data won't be noticeable to the user. But if you want to display anything then you can use a LOADER here
+    // This is the 'tricky' part: The query to AsyncStorage is not finished, but we have to present something to the user. Null will just render nothing, so you can also put a placeholder of some sort, but effectively the interval between the first mount and AsyncStorage retrieving your data won't be noticeable to the user. But if you want to display anything then you can use a LOADER here
   } else if (hasPickedLanguage == true) {
     if (isFirstLaunch === null) {
       routeName = 'Onboarding';
@@ -125,7 +129,7 @@ export default function app() {
 
   return (
     <NativeBaseProvider>
-      <StatusBar barStyle="light-content" backgroundColor="#ffffff" />
+      <StatusBar barStyle="light-content" backgroundColor="#007bff" />
       <NavigationContainer>
         {/* <Stack.Navigator initialRouteName={isSignUp ? 'Intro_screen':'Login_screen'}> */}
 
