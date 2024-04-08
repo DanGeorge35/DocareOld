@@ -1,28 +1,7 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {View, useWindowDimensions, StyleSheet, Text} from 'react-native';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {
-  NativeBaseProvider,
-  HStack,
-  Spacer,
-  FormControl,
-  Input,
-  Box,
-  Badge,
-  CheckIcon,
-  Center,
-  Flex,
-  WarningOutlineIcon,
-  VStack,
-  Select,
-  Stack,
-  Image,
-  Icon,
-  useToast,
-  FlatList,
-  Button,
-  Pressable,
-} from 'native-base';
+import {Input, Box, Badge, VStack, Stack, Image, Button} from 'native-base';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
