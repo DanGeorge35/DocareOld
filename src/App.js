@@ -226,7 +226,7 @@ export default function app() {
 
           <Stack.Screen
             name="Create_account"
-            options={{headerShown: false}}
+            options={Header('Create Account', '#007bff')}
             component={Create_account}
           />
 
