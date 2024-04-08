@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {
   View,
@@ -14,16 +15,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 import EmailView from './includes/Email_view';
 import PhoneView from './includes/Phone_view';
-
-const getLabelStyle = index => {
-  // Define different colors for each tab
-  const colors = ['red', 'green', 'blue']; // Add more colors if needed
-  return {
-    fontSize: 16,
-    fontWeight: 'bold',
-    color: colors[index % colors.length], // Apply different color for each tab
-  };
-};
 
 const renderTabBar = props => (
   <TabBar
