@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {View, useWindowDimensions, StyleSheet, Text} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';

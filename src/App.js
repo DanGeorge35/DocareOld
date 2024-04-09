@@ -101,6 +101,19 @@ export default function app() {
   //   setIsLoading(false)
   // }
 
+  const Header = (title, backgroundColor) => {
+    return {
+      title: title, // Change the title of the header
+      headerStyle: {
+        backgroundColor: backgroundColor, // Change the background color of the header
+      },
+      headerTintColor: '#fff', // Change the text color of the header
+      headerTitleStyle: {
+        fontWeight: 'bold', // Change the font weight of the header title
+      },
+    };
+  };
+
   if (isLoading) {
     return (
       <>
@@ -215,7 +228,7 @@ export default function app() {
 
           <Stack.Screen
             name="Create_account"
-            options={{headerShown: false}}
+            options={Header('Create Account', '#007bff')}
             component={Create_account}
           />
 
@@ -227,19 +240,19 @@ export default function app() {
 
           <Stack.Screen
             name="Forget_pass"
-            options={{headerShown: false}}
+            options={Header('Forgot Password', '#007bff')}
             component={Forget_pass}
           />
 
           <Stack.Screen
             name="Retrieve_otp"
-            options={{headerShown: false}}
+            options={Header('Retrieve OTP', '#007bff')}
             component={Retrieve_otp}
           />
 
           <Stack.Screen
             name="Reset_password"
-            options={{headerShown: false}}
+            options={Header('Reset Password', '#007bff')}
             component={Reset_password}
           />
 
