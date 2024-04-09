@@ -16,7 +16,9 @@ import Login_screen1 from './screens/Introscreens/Login_screen1';
 import Tabss from './screens/Introscreens/Tabss';
 import Create_account from './screens/Introscreens/Create_account';
 import Success_page from './screens/Introscreens/Success_page';
-import AsyncStorage from '@react-native-community/async-storage';
+//import AsyncStorage from '@react-native-community/async-storage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 import Forget_pass from './screens/Forget_password/Forget_pass';
 import Retrieve_otp from './screens/Forget_password/Retrieve_otp';
 import Reset_password from './screens/Forget_password/Reset_password';
