@@ -48,7 +48,7 @@ const Phone_view = ({onForgotPass, onSignUp, onLogin}) => {
         borderBottomRightRadius: 20,
       }}>
       <Box mb="2" mt="2">
-        <FormControl.Label>Phone Number</FormControl.Label>
+        
 
         <Input
           type="text"
@@ -94,6 +94,7 @@ const Phone_view = ({onForgotPass, onSignUp, onLogin}) => {
         {/* <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
           {errPhone}
           </FormControl.ErrorMessage> */}
+          
       </Box>
 
       <Pressable pb="4" pt="3" mb="4" mt="2" onPress={onForgotPass}>

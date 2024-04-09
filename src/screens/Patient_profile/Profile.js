@@ -14,112 +14,99 @@ import { NativeBaseProvider,HStack,Spacer,FormControl,Input,isHovered,
 const Profile = ({navigation}) => {
     const { width } = Dimensions.get('window');
   return (
-    <VStack space="2.5"  style={{width}}   backgroundColor="#F9F9FA" flex={1} >
+    <VStack space="2"  style={{width}}   backgroundColor="#F9F9FA" flex={1} >
        
-    <Stack direction="row"  backgroundColor="#FFFFFF" h="215" >
+   
 
-        
-        <Box w="100" h="10" mt="30" ml="5">
-             <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Login_screen')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
-          </Box>
-
-         
-      
-      <Box w="148" h="119.55" mt="70" alignItems="center" justifyContent="center">
+        <Box backgroundColor="#FFF"  py="5" alignItems="center" justifyContent="center" >
              <Image source={require( "../../../assets/edit_patient1.png") } alt="Alternate Text" size="lg" borderRadius="full" w="82" h="82" position="relative"  right="0" />
 
-            <Text width="148" fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="20" textAlign="center" color="#000" mt="3" > Aniebiet-Oluwa</Text>
+            <Text width="148" fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="20" color="#000" mt="3" > Aniebiet-Oluwa</Text>
         </Box>
 
-        <Box position="absolute" alignItems="center" top="120" right="35%" >
+        <Box position="absolute" alignItems="center" top="20" right="36%" >
             <Image source={require( "../../../assets/edit_patient.png") } alt="Alternate Text" size="xs"   />
         
-      </Box>
+        </Box>
 
-
-    </Stack>
-
-
-    <Stack>
-
-       
-        
+   
+ 
 
     <Pressable 
-     onPress={() => navigation.navigate('Personal_info')} mt="-15" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16"
+     onPress={() => navigation.navigate('Personal_info')} mt="-5" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16"
         // bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"}
      >
 
             <Stack direction="row" space={10} >
 
-            <Text ><FontAwesome5 name="user" size={21} color="#000000" /></Text>
+                <Text ><FontAwesome5 name="user" size={21} color="#000000" /></Text>
 
-            <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Personal Information</Text>
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Personal Information</Text>
 
-            <Text position="absolute" right="7"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                <Text position="absolute" right="7"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
         
-        <Pressable  onPress={() => navigation.navigate('Contact')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Contact')}  bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
-            <Text ><MaterialIcons name="call" size={22} color="#000000" /></Text>
+                <Text ><MaterialIcons name="call" size={22} color="#000000" /></Text>
 
-            <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Contact</Text>
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Contact</Text>
 
-            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
-        <Pressable  onPress={() => navigation.navigate('Medical_info')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Medical_info')}  bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
-            <Text ><FontAwesome5 name="file" size={22} color="#000000" /></Text>
+                <Text ><FontAwesome5 name="file" size={22} color="#000000" /></Text>
 
-            <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Medical Information</Text>
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Medical Information</Text>
 
-            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
-        <Pressable  onPress={() => navigation.navigate('Location_info')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Location_info')}  bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
-            <Text ><MaterialIcons name="map" size={22} color="#000000" /></Text>
+                <Text ><MaterialIcons name="map" size={22} color="#000000" /></Text>
 
-            <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Location Information</Text>
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Location Information</Text>
 
-            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
-        <Pressable  onPress={() => navigation.navigate('Communication_pref')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Communication_pref')} bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
             <Stack direction="row" space={10}>
 
-            <Text ><MaterialIcons name="tty" size={22} color="#000000" /></Text>
+                <Text ><MaterialIcons name="tty" size={22} color="#000000" /></Text>
 
-            <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Communication preference</Text>
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Communication preference</Text>
 
-            <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                <Text position="absolute" right="7" ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
 
             </Stack>
 
         </Pressable>
 
-        <Pressable  onPress={() => navigation.navigate('Security_settings')} mt="2" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
+        <Pressable  onPress={() => navigation.navigate('Security_settings')}  bg="#FFFFFF" pl="5" pt="5" pb="0" h="16">
 
         <Stack direction="row" space={10}>
 
@@ -133,7 +120,7 @@ const Profile = ({navigation}) => {
 
 </Pressable>
 
-    </Stack>
+   
     
 
 </VStack>

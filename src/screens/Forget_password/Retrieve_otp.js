@@ -15,7 +15,7 @@ import {
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const Retrieve_otp = () => {
+const Retrieve_otp = ({navigation}) => {
   return (
     <VStack space="2.5" p="4" backgroundColor="#fff" flex={1}>
       <Box mt="5">
@@ -68,7 +68,7 @@ const Retrieve_otp = () => {
             borderRadius="md"
             w="300"
             mt="90"
-            onPress={() => console.log('LoginHandle')}>
+            onPress={() => navigation.navigate('Reset_password')}>
             Verify
           </Button>
         </Box>

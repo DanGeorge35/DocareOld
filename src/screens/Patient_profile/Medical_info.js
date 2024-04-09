@@ -18,99 +18,150 @@ const Medical_info = ({navigation}) => {
     return (
       <VStack space="5"     backgroundColor="#FFFFFF"  flex={1} >
   
-            <Stack direction="row"  mb="0">
+            
+        <Stack px="5" mt="10">
 
-                <Box w="100" h="5" mt="5" ml="5">
-                    <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="20" onPress={()=>navigation.navigate('Profile')} ><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
-                </Box>
+             <Pressable onPress={() => navigation.navigate('Medical_history')} mt="-15"  borderBottomWidth="1" bg="#FFFFFF" pl="1" borderBottomColor="#9DA0A4"  pt="5" pb="0" h="20" borderRadius="md">
 
-                
-            </Stack>
+                    <Stack direction="row" mb="5" space={5}>
 
-          <Text  w="251" fontSize="22" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Medical Information </Text>
-  
-  
-        <Stack px="5" mt="5">
+                        <Box  > 
+                            <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                             <Text   ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            </Box>
+                        </Box>
+                        <Box >
+                            <Text fontFamily="GeneralSans-Bold" mb="0.25" fontWeight="700" fontSize="15" lineHeight="20" color="#2B2B2B"  >Medical History</Text>
+                            <Text fontWeight="400" color="#545D69">Your Personal Medical History</Text>
 
-             <Pressable onPress={() => navigation.navigate('Medical_history')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderRadius="md">
-
-                    <Stack direction="row" space={10}>
-
-                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Medical History</Text>
-
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                        </Box>
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#9DA0A4" /></Text>
 
                     </Stack>
 
             </Pressable>
 
-            <Pressable onPress={() => navigation.navigate('Current_medication')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+            <Pressable onPress={() => navigation.navigate('Current_medication')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
-                    <Stack direction="row" space={10}>
+                    <Stack direction="row" space={5}>
 
-                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Current Medications</Text>
+                        <Box> 
+                            <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                             <Text ><MaterialIcons name="schedule"  size={22} color="#000000" /></Text>
+                            </Box>
+                        </Box>
+                        <Box>
+                            <Text fontFamily="GeneralSans-Bold" fontWeight="800" fontSize="15" lineHeight="20" color="#000000"  >Current Medications</Text>
+                            <Text fontWeight="400" color="#545D69">See your Current Medication</Text>
+                        </Box>
 
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
-
-                    </Stack>
-
-                </Pressable>
-
-                <Pressable onPress={() =>console.log("Allegic")} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
-
-                    <Stack direction="row" space={10}>
-
-                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Allergies</Text>
-
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#9DA0A4" /></Text>
 
                     </Stack>
 
                 </Pressable>
 
-                <Pressable onPress={() => navigation.navigate('Emergency_contact')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+                <Pressable onPress={() =>console.log("Allegic")} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
-                    <Stack direction="row" space={10}>
+                    <Stack direction="row" space={5}>
 
-                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Hospitalisations and Emergency</Text>
+                        <Box> 
+                            <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                             <Text ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            </Box>
+                        </Box>
 
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                        <Box> 
+                            <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Allergies</Text>
+                            <Text fontWeight="400" color="#545D69">Add your allergies</Text>
+                        </Box>
 
-                    </Stack>
-
-                </Pressable>
-
-                <Pressable onPress={() => navigation.navigate('Chronic_conditions_mgt')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
-
-                    <Stack direction="row" space={10}>
-
-                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Chronic Conditions Management</Text>
-
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#9DA0A4" /></Text>
 
                     </Stack>
 
                 </Pressable>
 
-                <Pressable onPress={() => console.log("Tests")} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+                <Pressable onPress={() => navigation.navigate('Emergency_contact')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
-                    <Stack direction="row" space={10}>
+                    <Stack direction="row" space={5}>
 
-                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Diagnostic Test Results</Text>
+                        <Box> 
+                            <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                             <Text ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            </Box>
+                        </Box>
 
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                        <Box>
+
+                            <Text fontFamily="GeneralSans-Bold" fontWeight="700" fontSize="14"  lineHeight="20" color="#000000">Hospitalisations and Emergency</Text>
+                            <Text fontWeight="400" color="#545D69">Add Your Health Insurance</Text>
+                        </Box>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#9DA0A4" /></Text>
 
                     </Stack>
 
                 </Pressable>
 
-                <Pressable onPress={() => navigation.navigate('Pry_care_phy_info')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" mt="2.5" pt="5" pb="0" h="16" borderRadius="md">
+                <Pressable onPress={() => navigation.navigate('Chronic_conditions_mgt')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
-                    <Stack direction="row" space={10}>
+                    <Stack direction="row" space={5}>
 
-                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Primary Care Physician Information</Text>
+                        <Box> 
+                            <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                             <Text ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            </Box>
+                        </Box>
 
-                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#000000" /></Text>
+                        <Box>
+
+                             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="14" lineHeight="20" color="#000000" >Chronic Conditions Management</Text>
+                             <Text fontWeight="400" color="#545D69">Set Up Your Vital</Text>
+
+                        </Box>
+
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#9DA0A4" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                <Pressable onPress={() => console.log("Tests")} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
+
+                    <Stack direction="row" space={5}>
+
+                    <Box> 
+                            <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                             <Text ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            </Box>
+                        </Box>
+                        <Box>
+                             <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="15" lineHeight="20" color="#000000"  >Diagnostic Test Results</Text>
+                             <Text fontWeight="400" color="#545D69">Add and view results</Text>
+                        </Box>
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#9DA0A4" /></Text>
+
+                    </Stack>
+
+                </Pressable>
+
+                <Pressable onPress={() => navigation.navigate('Pry_care_phy_info')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
+
+                    <Stack direction="row" space={5}>
+
+                    <Box> 
+                            <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                             <Text ><MaterialIcons name="person"  size={22} color="#000000" /></Text>
+                            </Box>
+                        </Box>
+
+                    <Box>
+                        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="13.5" lineHeight="20" color="#000000"  >Primary Care Physician Information</Text>
+                        <Text fontWeight="400" color="#545D69">Your Personal Medical History</Text>
+
+                    </Box>
+                        <Text position="absolute" right="5"  ><FontAwesome5 name="angle-right"  size={22} color="#9DA0A4" /></Text>
 
                     </Stack>
 

@@ -15,24 +15,15 @@ import {
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const Reset_password = () => {
+const Reset_password = ({navigation}) => {
   const [show, setShow] = React.useState(false);
 
   return (
-    <VStack space="2.5" px="3" mx="3" backgroundColor="#fff" flex={1}>
-      <Stack direction="row">
-        <Box style={styles.lang_view}>
-          <Text style={styles.lang_text}>
-            <FontAwesome5 name="arrow-left" size={20} color="#000000" />
-          </Text>
-        </Box>
+    <VStack space="2.5" px="3"  backgroundColor="#fff" flex={1}>
 
-        <Box style={styles.lang_view1}>
-          <Text style={styles.DocareText}>Do'Care </Text>
-        </Box>
-      </Stack>
+    
 
-      <Box>
+      <Box mt="5">
         <Text
           style={{
             textAlign: 'left',
@@ -56,10 +47,22 @@ const Reset_password = () => {
             }}
             type={show ? 'text' : 'password'}
             size="md"
+            style={styles.input}
             variant="outline"
             InputRightElement={
-              <Pressable onPress={() => setShow(!show)}>
+              <Pressable 
+              style={{
+                width: 40,
+                height: 40,
+                justifyContent: 'center',
+                alignItems: 'center',
+              }}
+              onPress={() => setShow(!show)}
+              >
                 <Icon
+                 style={{
+                  width: 40,
+                }}
                   as={<FontAwesome5 name={show ? 'eye' : 'eye-slash'} />}
                   size={5}
                   mr="2"
@@ -75,6 +78,7 @@ const Reset_password = () => {
               base: '100%',
               md: '25%',
             }}
+            style={styles.input}
             type={show ? 'text' : 'password'}
             size="md"
             mt="5"
@@ -82,6 +86,9 @@ const Reset_password = () => {
             InputRightElement={
               <Pressable onPress={() => setShow(!show)}>
                 <Icon
+                style={{
+                  width: 40,
+                }}
                   as={<FontAwesome5 name={show ? 'eye' : 'eye-slash'} />}
                   size={5}
                   mr="2"
@@ -93,11 +100,14 @@ const Reset_password = () => {
           />
         </Box>
 
-        <Box alignItems="center">
+        <Box alignItems="center" mt="20" >
           <Button
+           
             bg="#1C70EE"
-            style={styles.get_start_btn}
-            onPress={() => console.log('LoginHandle')}>
+            borderRadius="md"
+            w="300"
+            mt="90"
+            onPress={() => navigation.navigate('Successful_page')}>
             Reset Password
           </Button>
         </Box>
@@ -115,6 +125,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     //width: 375,
     // height: 812,
+  },
+
+  input: {
+    height: 52,
+    padding: 16,
   },
 
   DocareText: {

@@ -154,10 +154,20 @@ export default function app() {
                 options={{headerShown:false}}
                 component={Intro_screen}
                 /> */}
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Onboarding"
             options={{headerShown: false}}
             component={OnboardingScreen}
+          /> */}
+
+        <Stack.Screen
+            name="Profile"
+            options={{
+              ...Header('Profile', '#007bff'),
+              headerTitleAlign: 'center', 
+              //headerTitle: 'Profile', 
+            }}
+            component={Profile}
           />
 
           {/* <Stack.Screen
@@ -168,7 +178,7 @@ export default function app() {
 
           <Stack.Screen
             name="Contact"
-            options={{headerShown: false}}
+            options={Header('Contact', '#007bff')}
             component={Contact}
           />
 
@@ -186,25 +196,29 @@ export default function app() {
 
           <Stack.Screen
             name="Medical_info"
-            options={{headerShown: false}}
+            options={Header('Medical Information', '#007bff')}
             component={Medical_info}
           />
 
-          <Stack.Screen
+          {/* <Stack.Screen
             name="Profile"
-            options={{headerShown: false}}
+            options={{
+              ...Header('Profile', '#007bff'),
+              headerTitleAlign: 'center', 
+              //headerTitle: 'Profile', 
+            }}
             component={Profile}
-          />
+          /> */}
 
           <Stack.Screen
             name="Personal_info"
-            options={{headerShown: false}}
+            options={Header('Personal Information', '#007bff')}
             component={Personal_info}
           />
 
           <Stack.Screen
             name="Security_settings"
-            options={{headerShown: false}}
+            options={Header('Security settings', '#007bff')}
             component={Security_settings}
           />
 
@@ -234,7 +248,7 @@ export default function app() {
 
           <Stack.Screen
             name="Success_page"
-            options={{headerShown: false}}
+            options={{headerShown: true}}
             component={Success_page}
           />
 
@@ -258,67 +272,68 @@ export default function app() {
 
           <Stack.Screen
             name="Successful_page"
-            options={{headerShown: false}}
+            options={Header('', '#007bff')}
             component={Successful_page}
           />
 
           <Stack.Screen
             name="Current_medication"
-            options={{headerShown: false}}
+            options={Header('Current medication', '#007bff')}
             component={Current_medication}
           />
 
           <Stack.Screen
             name="Emergency_contact"
-            options={{headerShown: false}}
+            options={Header('Emergency contact', '#007bff')}
             component={Emergency_contact}
           />
 
           <Stack.Screen
             name="Chronic_conditions_mgt"
-            options={{headerShown: false}}
+            options={Header('Chronic Conditions Mgt.', '#007bff')}
             component={Chronic_conditions_mgt}
           />
 
           <Stack.Screen
             name="Pry_care_phy_info"
-            options={{headerShown: false}}
+            options={Header('Primary Physical Information', '#007bff')}
             component={Pry_care_phy_info}
           />
 
           <Stack.Screen
             name="Prefered_lang"
-            options={{headerShown: false}}
+            options={Header('Prefered Lang.', '#007bff')}
             component={Prefered_lang}
           />
 
           <Stack.Screen
             name="Com_method"
-            options={{headerShown: false}}
+            options={Header('Communication Method', '#007bff')}
+            //options={{headerShown: false}}
             component={Com_method}
           />
 
           <Stack.Screen
             name="Privacy_settings"
-            options={{headerShown: false}}
+            options={Header('Privacy Settings', '#007bff')}
             component={Privacy_settings}
           />
 
           <Stack.Screen
             name="Notification_settings"
-            options={{headerShown: false}}
+            options={Header('Notification Settings', '#007bff')}
             component={Notification_settings}
           />
 
           <Stack.Screen
             name="Terms"
-            options={{headerShown: false}}
+            options={Header('Terms ', '#007bff')}
             component={Terms}
           />
 
           <Stack.Screen
             name="Medical_history"
-            options={{headerShown: false}}
+            options={Header('Medical History', '#007bff')}
             component={Medical_history}
           />
         </Stack.Navigator>

@@ -17,24 +17,81 @@ const Medical_history = ({navigation}) => {
   return (
     <VStack space="5"     backgroundColor="#FFFFFF"  flex={1} >
 
-        <Stack direction="row"  mb="0">
+<FormControl
+      w="100%"
+      maxW="500"
+      alignItems="left"
+      mt="10"
+      px="5"
+      
 
-        <Box w="100" h="8" mt="30" ml="5">
-             <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Medical_info')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
-          </Box>
+      style={{
+       // paddingLeft: 20,
+       // paddingRight: 20,
+       // paddingTop: 10,
+        //paddingBottom: 40,
+        //elevation: 1,
+       // borderWidth: 2,
+       // borderColor: '#eee',
+       // backgroundColor: '#ffffff',
+       // borderBottomLeftRadius: 20,
+       // borderBottomRightRadius: 20,
+      }}>
+      <Box mb="2" mt="2">
+      
 
-          <Text  fontFamily="HelveticaNeueBlack" fontSize="30" fontWeight="bold" mt="5" color="#1C70EE" >Do'Care</Text>
+        <Input
+          type="text"
+          size="lg"
+          variant="outline"
+          placeholder="Name of Medical Condition"
+          w="100%"
+          borderWidth="2"
+        borderColor=""
+        placeholderTextColor="#000000"
+          style={styles.input}
+          //    onChangeText={(val)=>setPhone(val)}
+          onChangeText={() => {
+            console.log('');
+          }}
+        />
 
-            <Box  w="100"  mt="35" position="absolute" right="-25"   onPress={() => console.log("Edit")}>
-                    <Text w="205" fontSize="16" fontWeight="500" color="#1C70EE" lineHeight='20' fontFamily="GeneralSans-Bold"  >Save</Text>
-            </Box>
+      <Stack direction="row" space={5} my="5">
+        <Text fontSize="16" color="#494949"> Date Started </Text>
+        <Box borderBottomColor="#494949" borderBottomWidth="1" mb="5" h="3" width="40"> </Box>
+      </Stack>
 
-        </Stack>
+      <Stack direction="row" space={5} >
+      <Select
+            bg="#F9F9FA"
+            borderRadius="10"
+            mt="30"
+            minWidth="327"
+            accessibilityLabel="Choose Service"
+            placeholder="Choose Your Preffered Language"
+            _selectedItem={{
+              bg: '#F9F9FA',
+              endIcon: <CheckIcon size={5} />,
+            }}>
+            <Select.Item label="English" value="English" />
+            <Select.Item label="Hausa" value="Hausa" />
+            <Select.Item label="Yoruba" value="Yoruba" />
+            <Select.Item label="Igbo" value="Igbo" />
+          </Select>
+      </Stack>
 
-        <Text  w="251" fontSize="18" textAlign="center" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Medical History </Text>
+      </Box>
+      </FormControl>
 
     </VStack>
   )
 }
+
+const styles = StyleSheet.create({
+  input: {
+    height: 52,
+    padding: 16,
+  },
+});
 
 export default Medical_history
