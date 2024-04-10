@@ -32,7 +32,7 @@ const moveNextTab = () => {
 
 const Create_account_contacts = ({onNext}) => {
   return (
-    <FormControl w="100%" maxW="500" alignItems="left" mt="5">
+    <FormControl w="100%" alignItems="left" mt="5">
       <Box mb="2" mt="2">
         <FormControl.Label>Email</FormControl.Label>
 
@@ -41,8 +41,7 @@ const Create_account_contacts = ({onNext}) => {
           size="md"
           variant="outline"
           placeholder="Enter Email Address"
-          minWidth="335"
-          w="90%"
+          w="100%"
           //    onChangeText={(val)=>setPhone(val)}
           onChangeText={() => {
             console.log('');
@@ -58,8 +57,7 @@ const Create_account_contacts = ({onNext}) => {
           size="md"
           variant="outline"
           placeholder="+234"
-          minWidth="335"
-          w="90%"
+          w="100%"
           //    onChangeText={(val)=>setPhone(val)}
           onChangeText={() => {
             console.log('');
@@ -67,7 +65,7 @@ const Create_account_contacts = ({onNext}) => {
         />
       </Box>
 
-      <Box alignItems="center" mt="90%">
+      <Box alignItems="center" mt="30%">
         <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
           Continue
         </Button>

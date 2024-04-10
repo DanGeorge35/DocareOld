@@ -149,26 +149,21 @@ export default function app() {
         {/* <Stack.Navigator initialRouteName={isSignUp ? 'Intro_screen':'Login_screen'}> */}
 
         <Stack.Navigator initialRouteName={routeName}>
-          {/* <Stack.Screen
-                name="Intro_screen"
-                options={{headerShown:false}}
-                component={Intro_screen}
-                /> */}
-          {/* <Stack.Screen
+          <Stack.Screen
             name="Onboarding"
             options={{headerShown: false}}
             component={OnboardingScreen}
-          /> */}
-
-        <Stack.Screen
+          />
+          {/*
+          <Stack.Screen
             name="Profile"
             options={{
               ...Header('Profile', '#007bff'),
-              headerTitleAlign: 'center', 
-              //headerTitle: 'Profile', 
+              headerTitleAlign: 'center',
+              //headerTitle: 'Profile',
             }}
             component={Profile}
-          />
+          /> */}
 
           {/* <Stack.Screen
               name="Doctors_list_view"
@@ -204,8 +199,8 @@ export default function app() {
             name="Profile"
             options={{
               ...Header('Profile', '#007bff'),
-              headerTitleAlign: 'center', 
-              //headerTitle: 'Profile', 
+              headerTitleAlign: 'center',
+              //headerTitle: 'Profile',
             }}
             component={Profile}
           /> */}

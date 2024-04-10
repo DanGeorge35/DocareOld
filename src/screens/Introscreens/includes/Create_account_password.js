@@ -33,13 +33,13 @@ const moveNextTab = () => {
 const Create_account_password = ({onNext}) => {
   const [show, setShow] = React.useState(false);
   return (
-    <FormControl w="100%" maxW="500" alignItems="left" mt="5">
+    <FormControl w="100%" alignItems="left" mt="5">
       <Box mb="2" mt="2">
         <FormControl.Label color="dark.500">Password</FormControl.Label>
 
         <Input
           w={{
-            base: '90%',
+            base: '100%',
             md: '25%',
           }}
           type={show ? 'text' : 'password'}
@@ -64,7 +64,7 @@ const Create_account_password = ({onNext}) => {
 
         <Input
           w={{
-            base: '90%',
+            base: '100%',
             md: '25%',
           }}
           type={show ? 'text' : 'password'}
@@ -84,7 +84,7 @@ const Create_account_password = ({onNext}) => {
         />
       </Box>
 
-      <Box alignItems="center" mt="90%">
+      <Box alignItems="center" mt="30%">
         <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
           Submit
         </Button>
