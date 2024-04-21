@@ -19,19 +19,18 @@ const Profile = ({navigation}) => {
    
 
         <Box backgroundColor="#FFF"  py="5" alignItems="center" justifyContent="center" >
-             <Image source={require( "../../../assets/edit_patient1.png") } alt="Alternate Text" size="lg" borderRadius="full" w="82" h="82" position="relative"  right="0" />
+
+             <Image source={require( "../../../../assets/edit_patient1.png") } alt="Alternate Text" size="lg" borderRadius="full" w="82" h="82" position="relative"  right="0" />
 
             <Text width="148" fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="20" color="#000" mt="3" > Aniebiet-Oluwa</Text>
         </Box>
 
         <Box position="absolute" alignItems="center" top="20" right="36%" >
-            <Image source={require( "../../../assets/edit_patient.png") } alt="Alternate Text" size="xs"   />
+            <Image source={require( "../../../../assets/edit_patient.png") } alt="Alternate Text" size="xs"   />
         
         </Box>
 
    
- 
-
     <Pressable 
      onPress={() => navigation.navigate('Personal_info')} mt="-5" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16"
         // bg={isPressed ? "coolGray.200" : isHovered ? "coolGray.200" : "coolGray.100"}

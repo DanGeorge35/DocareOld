@@ -16,18 +16,12 @@ const Terms = ({navigation}) => {
   return (
     <VStack space="5"     backgroundColor="#FFFFFF" flex={1} >
   
-    <Stack direction="row"  mb="0">
+    
+    {/* <Text  w="251" fontSize="24" fontWeight="bold" color="#000000" ml="5" fontFamily="GeneralSans-Bold"> Privacy Policy and
+Terms of Service </Text> */}
 
-            <Box w="100" h="5" mt="30" ml="5">
-                <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Privacy_settings')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
-                
-            </Box>
-
-    </Stack>
-    <Text  w="251" fontSize="24" fontWeight="bold" color="#000000" ml="5" fontFamily="GeneralSans-Bold"> Privacy Policy and
-Terms of Service </Text>
-
-    <Stack mx="5">
+    <Stack mx="5" mt="5">
+      
         <Text> last update: 14/08/2024</Text>
         <Text> 
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pellentesque congue lorem, vel tincidunt tortor placerat a. Proin ac diam quam. Aenean in sagittis magna, ut feugiat diam. Fusce a scelerisque neque, sed accumsan metus.

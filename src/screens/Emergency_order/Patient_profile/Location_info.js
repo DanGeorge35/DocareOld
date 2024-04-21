@@ -19,23 +19,8 @@ const Location_info = ({navigation}) => {
     return (
       <VStack space="5" backgroundColor="#FFFFFF"  flex={1} >
   
-        <Stack direction="row"  mb="0">
-
-                <Box w="100" h="10" mt="30" ml="5">
-                    <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Profile')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
-                </Box>
-
-                <Box  w="100"  mt="30"  position="absolute" right="2"   onPress={() => console.log("Edit")}>
-                        <Text w="205" fontSize="20" fontWeight="500" color="#1C70EE" lineHeight='20' fontFamily="GeneralSans-Bold"  >Save</Text>
-                </Box>
-
-        </Stack>
-
-
-          <Text w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Location Information </Text>
-  
-  
-          <FormControl w="100%" maxW="500"   alignItems="left" mt="2">
+      
+          <FormControl w="100%" maxW="500"   alignItems="left" mt="5">
   
       <Box  mb="1" mt="1" mx="3">
           <FormControl.Label  color="#000000" >Email Address</FormControl.Label>

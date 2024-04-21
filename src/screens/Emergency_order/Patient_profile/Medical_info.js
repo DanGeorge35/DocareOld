@@ -25,9 +25,10 @@ const Medical_info = ({navigation}) => {
 
                     <Stack direction="row" mb="5" space={5}>
 
-                        <Box  > 
+                        <Box> 
                             <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
-                             <Text   ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                             {/* <Text><FontAwesome5 name="folder"  size={22} color="#000000" /></Text> */}
+                             <Image source={require( "../../../../assets/icon_nav/med_his11.png") } alt="Alternate Text" size="28"   />
                             </Box>
                         </Box>
                         <Box >
@@ -47,7 +48,7 @@ const Medical_info = ({navigation}) => {
 
                         <Box> 
                             <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
-                             <Text ><MaterialIcons name="schedule"  size={22} color="#000000" /></Text>
+                           <Image source={require( "../../../../assets/icon_nav/inv1.png") } alt="Alternate Text" size="28"  />
                             </Box>
                         </Box>
                         <Box>
@@ -67,7 +68,7 @@ const Medical_info = ({navigation}) => {
 
                         <Box> 
                             <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
-                             <Text ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            <Image source={require( "../../../../assets/icon_nav/allg1.png") } alt="Alternate Text" size="28"   />
                             </Box>
                         </Box>
 
@@ -88,7 +89,7 @@ const Medical_info = ({navigation}) => {
 
                         <Box> 
                             <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
-                             <Text ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            <Image source={require( "../../../../assets/icon_nav/hosp11.png") } alt="Alternate Text" size="26"   />
                             </Box>
                         </Box>
 
@@ -110,7 +111,7 @@ const Medical_info = ({navigation}) => {
 
                         <Box> 
                             <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
-                             <Text ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            <Image source={require( "../../../../assets/icon_nav/chron1.png") } alt="Alternate Text" size="26"   />
                             </Box>
                         </Box>
 
@@ -133,7 +134,7 @@ const Medical_info = ({navigation}) => {
 
                     <Box> 
                             <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
-                             <Text ><FontAwesome5 name="folder"  size={22} color="#000000" /></Text>
+                            <Image source={require( "../../../../assets/icon_nav/diag11.png") } alt="Alternate Text" size="26"   />
                             </Box>
                         </Box>
                         <Box>
@@ -152,7 +153,7 @@ const Medical_info = ({navigation}) => {
 
                     <Box> 
                             <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
-                             <Text ><MaterialIcons name="person"  size={22} color="#000000" /></Text>
+                            <Image source={require( "../../../../assets/icon_nav/usercare.png") } alt="Alternate Text" size="28"   />
                             </Box>
                         </Box>
 

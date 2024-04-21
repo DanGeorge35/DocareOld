@@ -16,7 +16,7 @@ const Current_medication = ({navigation}) => {
   return (
     <VStack space="5"     backgroundColor="#FFFFFF"  flex={1} >
 
-<Stack direction="row"  mb="0">
+{/* <Stack direction="row"  mb="0">
 
 <Box w="100" h="8" mt="30" ml="5">
      <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Medical_info')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
@@ -28,17 +28,13 @@ const Current_medication = ({navigation}) => {
             <Text w="205" fontSize="16" fontWeight="500" color="#1C70EE" lineHeight='20' fontFamily="GeneralSans-Bold"  >Save</Text>
     </Box>
 
-</Stack>
+</Stack> */}
 
-    <Box alignItems="center">
-
-    <Text  w="251" fontSize="22" textAlign="center" fontWeight="600" color="#000000"  fontFamily="GeneralSans-Bold"> Current Medications </Text>
-
-    </Box>
+    
 
 
 
-    <FormControl w="100%" maxW="500"   alignItems="center" mt="2">
+    <FormControl w="100%" maxW="500"   alignItems="center" mt="5">
 
 <Box  mb="1" mt="1" mx="3">
   

@@ -116,7 +116,7 @@ const Security_settings = ({navigation}) => {
 
           <Box alignItems="center" mt="4" mb="4" >
             
-                <Image source={require( "../../../assets/logout.png") } alt="Alternate Text" size="md" />
+                <Image source={require( "../../../../assets/logout.png") } alt="Alternate Text" size="md" />
 
                 <Text style={styles.logOutText} color="dark.100">Logout</Text>
 

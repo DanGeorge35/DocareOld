@@ -20,18 +20,10 @@ const Communication_pref = ({navigation}) => {
     return (
       <VStack space="5"     backgroundColor="#FFFFFF" flex={1} >
   
-            <Stack direction="row"  mb="0">
-
-                    <Box w="100" h="5" mt="30" ml="5">
-                        <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Profile')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
-                    </Box>
-
-            </Stack>
-
-          <Text  w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Communication preference </Text>
+           
 
 
-          <Stack px="5" mt="5">
+          <Stack px="5" mt="10">
 
              <Pressable onPress={() => navigation.navigate('Prefered_lang')} mt="-15"  borderWidth="0.5" bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderRadius="md">
 

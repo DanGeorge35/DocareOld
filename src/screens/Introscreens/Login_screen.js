@@ -53,7 +53,7 @@ const Login_screen = ({navigation}) => {
           <EmailView
             onForgotPass={() => navigation.navigate('Forget_pass')}
             onSignUp={() => navigation.navigate('Create_account')}
-            onLogin={() => navigation.navigate('Profile')}
+            onLogin={() => navigation.navigate('Emergency_nav')}
           />
         );
       case 'phone_no':
@@ -61,7 +61,7 @@ const Login_screen = ({navigation}) => {
           <PhoneView
             onForgotPass={() => navigation.navigate('Forget_pass')}
             onSignUp={() => navigation.navigate('Create_account')}
-            onLogin={() => navigation.navigate('Profile')}
+            onLogin={() => navigation.navigate('Emergency_nav')}
           />
         );
       default:

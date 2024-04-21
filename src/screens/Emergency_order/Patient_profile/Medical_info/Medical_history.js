@@ -61,11 +61,11 @@ const Medical_history = ({navigation}) => {
         <Box borderBottomColor="#494949" borderBottomWidth="1" mb="5" h="3" width="40"> </Box>
       </Stack>
 
-      <Stack direction="row" space={5} >
+      <Stack direction="row"  space={5} >
       <Select
             bg="#F9F9FA"
             borderRadius="10"
-            mt="30"
+            mt="5"
             minWidth="327"
             accessibilityLabel="Choose Service"
             placeholder="Choose Your Preffered Language"
