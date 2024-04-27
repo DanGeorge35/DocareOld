@@ -23,7 +23,7 @@ const Security_settings = ({navigation}) => {
     return (
       <VStack space="2.5"  backgroundColor="#F9F9FA" flex={1} >
          
-         <Stack direction="row"  mb="0">
+         {/* <Stack direction="row"  mb="0">
 
             <Box w="100" h="10" mt="30" ml="5">
                 <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Profile')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
@@ -33,38 +33,44 @@ const Security_settings = ({navigation}) => {
 
             </Stack>
 
-<Text  w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Security Settings </Text>
+<Text  w="251" fontSize="18" fontWeight="bold" color="#000000" ml="10" fontFamily="GeneralSans-Bold"> Security Settings </Text> */}
   
-      <Stack>
+      <Stack mt="5"> 
   
      
-      <Pressable onPress={() => navigation.navigate('Forget_pass')} mt="2" bg="#FFFFFF" px="5" py="4" h="16">
-  {/*  fontFamily:'GeneralSans-Bold',
-        fontWeight:'bold',
-        fontSize:15,
-        lineHeight:20,
-        color:'#000000' */}
-              <Stack direction="row" space={10}>
+      <Pressable onPress={() =>console.log("first")} mt="2" bg="#FFFFFF" px="5" py="4" h="16">
   
-              <Text ><FontAwesome5 name="lock" size={20} color="#000000" /></Text>
+              <Stack direction="row" space={5}>
   
-              <Text fontFamily="GeneralSans-Bold"  fontWeight="bold" fontSize="15" lineHeight="20" color="#000000">Filters and privacy</Text>
+              <Box > 
+                  <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                  <Image source={require( "../../../../assets/icon_nav/lock1.png") } alt="Alternate Text" size="26"   />
+                  </Box>
+              </Box>
   
-              <Text  position="absolute" right="2" ><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
+              <Text fontFamily="GeneralSans-Bold"  fontWeight="bold" fontSize="16" lineHeight="30" color="#000000">Filters and privacy</Text>
+  
+              <Text  position="absolute" right="2" lineHeight="30" ><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
   
               </Stack>
   
           </Pressable>
   
-          <Pressable  onPress={() => console.log("hello")} mt="2" bg="#FFFFFF" px="5" py="4" h="16">
+          <Pressable  onPress={() => navigation.navigate("Help_and_support")} mt="2" bg="#FFFFFF" px="5" py="4" h="16">
   
-              <Stack direction="row" space={10}>
+              <Stack direction="row" space={5}>
   
-              <Text ><MaterialIcons name="help" size={20} color="#000000" /></Text>
+              {/* <Text ><MaterialIcons name="help" size={20} color="#000000" /></Text> */}
+
+              <Box > 
+                  <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                  <Image source={require( "../../../../assets/icon_nav/msg1.png") } alt="Alternate Text" size="26"   />
+                  </Box>
+              </Box>
   
               <Text  fontFamily="GeneralSans-Bold"  fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Help</Text>
   
-              <Text  position="absolute" right="2" ><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
+              <Text  position="absolute" right="2" lineHeight="30"  ><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
   
               </Stack>
   
@@ -72,34 +78,71 @@ const Security_settings = ({navigation}) => {
   
           <Pressable  onPress={() => console.log("hello")} mt="2" bg="#FFFFFF" px="5" py="4" h="16">
   
-              <Stack direction="row" space={10}>
+              <Stack direction="row" space={5}>
   
-              <Text ><FontAwesome5 name="file" size={20} color="#000000" /></Text>
+              <Box > 
+                  <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                  <Image source={require( "../../../../assets/icon_nav/legal1.png") } alt="Alternate Text" size="26"   />
+                  </Box>
+              </Box>
   
               <Text  fontFamily="GeneralSans-Bold"  fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Legal</Text>
   
-              <Text  position="absolute" right="2"><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
+              <Text  position="absolute" right="2" lineHeight="30"><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
   
               </Stack>
   
           </Pressable>
 
-          {/*  marginTop:10,
-        backgroundColor:'#FFFFFF',
-        paddingTop:20,
-        paddingBottom:0,
-        paddingLeft:30,
-        height:64, */}
+          <Pressable  onPress={() => console.log("hello")} mt="2" bg="#FFFFFF" px="5" py="4" h="16">
+  
+              <Stack direction="row" space={5}>
+  
+              <Box > 
+                  <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                  <Image source={require( "../../../../assets/icon_nav/delete1.png") } alt="Alternate Text" size="26"   />
+                  </Box>
+              </Box>
+  
+              <Text  fontFamily="GeneralSans-Bold"  fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Delete Account</Text>
+  
+              <Text  position="absolute" right="2" lineHeight="30"><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
+  
+              </Stack>
+  
+          </Pressable>
   
           <Pressable onPress={toggleModal} mt="2" bg="#FFFFFF" px="5" py="4" h="16">
   
-              <Stack direction="row" space={10}>
+              <Stack direction="row" space={5}>
   
-              <Text ><MaterialIcons name="logout" size={20} color="#000000" /></Text>
+              <Box > 
+                  <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                  <Image source={require( "../../../../assets/icon_nav/logout1.png") } alt="Alternate Text" size="26"   />
+                  </Box>
+              </Box>
   
-              <Text  fontFamily="GeneralSans-Bold"  fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Log Out</Text>
+                 <Text  fontFamily="GeneralSans-Bold"  fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Log Out</Text>
   
-              <Text  position="absolute" right="2" ><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
+                 <Text  position="absolute" right="2" lineHeight="30" ><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
+  
+              </Stack>
+  
+          </Pressable>
+
+          <Pressable  onPress={() => console.log("hello")} mt="2" bg="#FFFFFF" px="5" py="4" h="16">
+  
+              <Stack direction="row" space={5}>
+  
+              <Box > 
+                  <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                  <Image source={require( "../../../../assets/icon_nav/logout1.png") } alt="Alternate Text" size="26"   />
+                  </Box>
+              </Box>
+  
+              <Text  fontFamily="GeneralSans-Bold"  fontWeight="bold" fontSize="15" lineHeight="20" color="#000000" >Change Password</Text>
+  
+              <Text  position="absolute" right="2" lineHeight="30"><FontAwesome5 name="angle-right"  size={24} color="#000000" /></Text>
   
               </Stack>
   

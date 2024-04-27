@@ -64,6 +64,12 @@ placeholderTextColor="#000000"
 onChangeText={()=>{console.log("")}}
 />
 
+        <Box alignItems="center" mt="30%">
+                <Button bg="#1C70EE" borderRadius="md" w="100%" p="4" onPress={()=>navigation.navigate("Pry_care_phy_info_list")}>
+                    <Text color="#fff"> <FontAwesome5 name="plus" size={16} />   Add Physician Contact </Text>
+                </Button>
+        </Box>
+
 </Box> 
 </FormControl>
 

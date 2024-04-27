@@ -12,24 +12,23 @@ import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,
    import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
    import DateTimePicker from '@react-native-community/datetimepicker';
 
-
-const Medical_history_blank = ({navigation}) => {
+const Chronic_conditions_mgt_blank = ({navigation}) => {
   return (
     <VStack space="5"  backgroundColor="#FFFFFF"   flex={1} >
         <Stack px="5"  mt="0" >
             <Box  w="100%" mt="50%" justifyContent="center" alignItems="center">
                 <Image source={require( "../../../../../assets/img/blank_f1.png") } alt="Alternate Text" size="xl"   />
-                <Text w="300" textAlign="center"  fontWeight="600" fontSize="16"> You have not added any Medical History </Text>
+                <Text w="300" textAlign="center"  fontWeight="600" fontSize="16">You have not added any information in this section. </Text>
             </Box>
 
             <Box alignItems="center" mt="30%">
-              <Button bg="#1C70EE" borderRadius="md" w="100%" p="4" onPress={()=>navigation.navigate("Medical_history")}>
-                   Add a New Medical History
-              </Button>
-          </Box>
+                <Button bg="#1C70EE" borderRadius="md" w="100%" p="4" onPress={()=>navigation.navigate("Chronic_conditions_mgt")}>
+                Add a Chronic Conditions
+                </Button>
+            </Box>
         </Stack>
     </VStack>
   )
 }
 
-export default Medical_history_blank
+export default Chronic_conditions_mgt_blank

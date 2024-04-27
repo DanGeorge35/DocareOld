@@ -12,8 +12,7 @@ import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,
    import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
    import DateTimePicker from '@react-native-community/datetimepicker';
 
-
-const Medical_history_blank = ({navigation}) => {
+const Current_medication_blank = ({navigation}) => {
   return (
     <VStack space="5"  backgroundColor="#FFFFFF"   flex={1} >
         <Stack px="5"  mt="0" >
@@ -23,7 +22,7 @@ const Medical_history_blank = ({navigation}) => {
             </Box>
 
             <Box alignItems="center" mt="30%">
-              <Button bg="#1C70EE" borderRadius="md" w="100%" p="4" onPress={()=>navigation.navigate("Medical_history")}>
+              <Button bg="#1C70EE" borderRadius="md" w="100%" p="4" onPress={()=>navigation.navigate("Current_medication")}>
                    Add a New Medical History
               </Button>
           </Box>
@@ -32,4 +31,4 @@ const Medical_history_blank = ({navigation}) => {
   )
 }
 
-export default Medical_history_blank
+export default Current_medication_blank

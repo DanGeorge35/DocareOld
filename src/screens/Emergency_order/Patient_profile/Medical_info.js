@@ -21,7 +21,7 @@ const Medical_info = ({navigation}) => {
             
         <Stack px="5" mt="10">
 
-             <Pressable onPress={() => navigation.navigate('Medical_history')} mt="-15"  borderBottomWidth="1" bg="#FFFFFF" pl="1" borderBottomColor="#9DA0A4"  pt="5" pb="0" h="20" borderRadius="md">
+             <Pressable onPress={() => navigation.navigate('Medical_history_blank')} mt="-15"  borderBottomWidth="1" bg="#FFFFFF" pl="1" borderBottomColor="#9DA0A4"  pt="5" pb="0" h="20" borderRadius="md">
 
                     <Stack direction="row" mb="5" space={5}>
 
@@ -42,13 +42,13 @@ const Medical_info = ({navigation}) => {
 
             </Pressable>
 
-            <Pressable onPress={() => navigation.navigate('Current_medication')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
+            <Pressable onPress={() => navigation.navigate('Current_medication_blank')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
                     <Stack direction="row" space={5}>
 
                         <Box> 
                             <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
-                           <Image source={require( "../../../../assets/icon_nav/inv1.png") } alt="Alternate Text" size="28"  />
+                                 <Image source={require( "../../../../assets/icon_nav/inv1.png") } alt="Alternate Text" size="28"  />
                             </Box>
                         </Box>
                         <Box>
@@ -62,7 +62,7 @@ const Medical_info = ({navigation}) => {
 
                 </Pressable>
 
-                <Pressable onPress={() =>console.log("Allegic")} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
+                <Pressable onPress={() =>navigation.navigate('Allergies_blank')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
                     <Stack direction="row" space={5}>
 
@@ -83,7 +83,7 @@ const Medical_info = ({navigation}) => {
 
                 </Pressable>
 
-                <Pressable onPress={() => navigation.navigate('Emergency_contact')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
+                <Pressable onPress={() => navigation.navigate('Emergency_contact_blank')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
                     <Stack direction="row" space={5}>
 
@@ -105,7 +105,7 @@ const Medical_info = ({navigation}) => {
 
                 </Pressable>
 
-                <Pressable onPress={() => navigation.navigate('Chronic_conditions_mgt')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
+                <Pressable onPress={() => navigation.navigate('Chronic_conditions_mgt_blank')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
                     <Stack direction="row" space={5}>
 
@@ -128,7 +128,7 @@ const Medical_info = ({navigation}) => {
 
                 </Pressable>
 
-                <Pressable onPress={() => console.log("Tests")} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
+                <Pressable onPress={() =>navigation.navigate('Diagnostic_test_blank')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
                     <Stack direction="row" space={5}>
 
@@ -147,7 +147,7 @@ const Medical_info = ({navigation}) => {
 
                 </Pressable>
 
-                <Pressable onPress={() => navigation.navigate('Pry_care_phy_info')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
+                <Pressable onPress={() => navigation.navigate('Pry_care_phy_info_blank')} mt="-15"  borderBottomWidth="0.5" bg="#FFFFFF" pl="1" mt="2.5" pt="5" pb="0" h="20" borderRadius="md">
 
                     <Stack direction="row" space={5}>
 

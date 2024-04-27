@@ -28,70 +28,157 @@ const Notification_settings = ({navigation}) => {
         <Stack px="5" mt="10">
 
         
-        <Pressable onPress={() => navigation.navigate('Personal_info')} mt="-15"   bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderBottomWidth="0.5" >
+        <Pressable  mt="-15"   bg="#FFFFFF" pl="1" pt="5" pb="0" h="20" borderBottomWidth="0.5" >
 
-            <Stack direction="row" space={10}>
+            <Stack direction="row" space={1}>
 
-                <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >General Notification</Text>
 
-                <Text ml="20%"> 
-                    <Switch  colorScheme="info" 
-                         value={switchValue}
-                         onValueChange={handleSwitchChange} />
-                </Text>
+            <Box > 
+                <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                <Image source={require( "../../../../../assets/icon_nav/bell1.png") } alt="Alternate Text" size="26"   />
+                </Box>
+            </Box>
+
+            <Box> 
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" color="#000" fontSize="16" lineHeight="20" color="#000000"  >  General Notification </Text>
+
+                <Text fontFamily="GeneralSans-Bold" fontWeight="600" color="#545D69" fontSize="15" lineHeight="20" color="#000000"  >  Toggle Your Push Notification</Text>
+            </Box>
+
+                
+
+            <Text position="absolute" right="-2"> 
+                <Switch  colorScheme="info" 
+                        value={switchValue}
+                        onValueChange={handleSwitchChange} />
+            </Text>
 
             </Stack>
 
     </Pressable>
 
-    <Pressable onPress={() => navigation.navigate('Personal_info')} mt="2"   bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderBottomWidth="0.5" >
+    <Pressable  mt="2"   bg="#FFFFFF" pl="1" pt="5" pb="0" h="20" borderBottomWidth="0.5" >
 
-        <Stack direction="row" space={10}>
+        <Stack direction="row" space={1}>
 
-            <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Sound</Text>
+            <Box > 
+                <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                <Image source={require( "../../../../../assets/icon_nav/bell1.png") } alt="Alternate Text" size="26"   />
+                </Box>
+            </Box>
+
+            <Box> 
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" color="#000" fontSize="16" lineHeight="20" color="#000000"  >  Sound </Text>
+
+                <Text fontFamily="GeneralSans-Bold" fontWeight="600" color="#545D69" fontSize="15" lineHeight="20" color="#000000"  >  Toggle Your Push Sound</Text>
+            </Box>
+
+           
+            <Text position="absolute" right="-2"> <Switch  colorScheme="info"/></Text>
+
+        </Stack>
+
+    </Pressable>
+
+    <Pressable mt="2"   bg="#FFFFFF" pl="1" pt="5" pb="0" h="20" borderBottomWidth="0.5" >
+
+        <Stack direction="row" space={1}>
+
+             <Box > 
+                <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                <Image source={require( "../../../../../assets/icon_nav/sms1.png") } alt="Alternate Text" size="26"   />
+                </Box>
+            </Box>
+
+            <Box> 
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" color="#000" fontSize="16" lineHeight="20" color="#000000"  >  Email Notification </Text>
+
+                <Text fontFamily="GeneralSans-Bold" fontWeight="600" color="#545D69" fontSize="15" lineHeight="20" color="#000000"  >  Toggle Your Push Email </Text>
+            </Box>
 
             
-            <Text ml="49%"> <Switch  colorScheme="info"/></Text>
+
+            <Text position="absolute" right="-2"> <Switch  colorScheme="info"/></Text>
 
         </Stack>
 
     </Pressable>
 
-    <Pressable onPress={() => navigation.navigate('Personal_info')} mt="2"   bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderBottomWidth="0.5" >
+    <Pressable mt="2"   bg="#FFFFFF" pl="1" pt="5" pb="0" h="20" borderBottomWidth="0.5" >
 
-        <Stack direction="row" space={10}>
+        <Stack direction="row" space={1}>
 
-            <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >special offer</Text>
+            <Box > 
+                <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+                <Image source={require( "../../../../../assets/icon_nav/offer1.png") } alt="Alternate Text" size="26"   />
+                </Box>
+            </Box>
 
-            <Text ml="37%"> <Switch  colorScheme="info"/></Text>
+            <Box> 
+                <Text fontFamily="GeneralSans-Bold" fontWeight="bold" color="#000" fontSize="16" lineHeight="20" color="#000000"  >  Special offer </Text>
 
-        </Stack>
+                <Text fontFamily="GeneralSans-Bold" fontWeight="600" color="#545D69" fontSize="15" lineHeight="20" color="#000000"  >  Toggle Your Push Special Offer</Text>
+            </Box>
 
-    </Pressable>
+            
 
-    <Pressable onPress={() => navigation.navigate('Personal_info')} mt="2"   bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderBottomWidth="0.5" >
-
-        <Stack direction="row" space={10}>
-
-            <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Payments</Text>
-
-            <Text ml="42%"> <Switch  colorScheme="info"/></Text>
-
-        </Stack>
-
-    </Pressable>
-
-    <Pressable onPress={() => navigation.navigate('Personal_info')} mt="2"   bg="#FFFFFF" pl="5" pt="5" pb="0" h="16" borderBottomWidth="0.5" >
-
-        <Stack direction="row" space={10}>
-
-            <Text fontFamily="GeneralSans-Bold" fontWeight="600" fontSize="15" lineHeight="20" color="#000000"  >Promo and discount</Text>
-
-            <Text ml="22%"> <Switch  colorScheme="info"/></Text>
+            <Text position="absolute" right="-2"> <Switch  colorScheme="info"/></Text>
 
         </Stack>
 
     </Pressable>
+
+
+<Pressable  mt="2"   bg="#FFFFFF" pl="1" pt="5" pb="0" h="20" borderBottomWidth="0.5" >
+
+    <Stack direction="row" space={1}>
+
+        <Box > 
+            <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+            <Image source={require( "../../../../../assets/icon_nav/payment1.png") } alt="Alternate Text" size="26"   />
+            </Box>
+        </Box>
+
+        <Box> 
+            <Text fontFamily="GeneralSans-Bold" fontWeight="bold" color="#000" fontSize="16" lineHeight="20" color="#000000"  >  Payments</Text>
+
+            <Text fontFamily="GeneralSans-Bold" fontWeight="600" color="#545D69" fontSize="15" lineHeight="20" color="#000000"  >  Toggle Your Push Payments</Text>
+        </Box>
+
+        
+
+        <Text position="absolute" right="-2"> <Switch  colorScheme="info"/></Text>
+
+    </Stack>
+
+</Pressable>
+
+
+<Pressable  mt="2"   bg="#FFFFFF" pl="1" pt="5" pb="0" h="20" borderBottomWidth="0.5" >
+
+<Stack direction="row" space={1}>
+
+    <Box > 
+        <Box backgroundColor="#F5F5FF" borderRadius="full" w="10" h="10" alignItems="center" justifyContent="center" > 
+        <Image source={require( "../../../../../assets/icon_nav/offer1.png") } alt="Alternate Text" size="26"   />
+        </Box>
+    </Box>
+
+    <Box> 
+        <Text fontFamily="GeneralSans-Bold" fontWeight="bold" color="#000" fontSize="16" lineHeight="20" color="#000000"  >  Promo and Discount </Text>
+
+        <Text fontFamily="GeneralSans-Bold" fontWeight="600" color="#545D69" fontSize="15" lineHeight="20" color="#000000"  >  Toggle Your Push Promo</Text>
+    </Box>
+
+    
+
+    <Text position="absolute" right="-2"> <Switch  colorScheme="info"/></Text>
+
+</Stack>
+
+</Pressable>
+
+
 
         </Stack>
 

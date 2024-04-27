@@ -18,9 +18,6 @@ const Emergency_contact = ({navigation}) => {
 
         
 
-            
-
-
 <FormControl w="100%" maxW="500"   alignItems="center" mt="5">
 
     <Box  mb="1" mt="1" mx="3">
@@ -51,6 +48,12 @@ const Emergency_contact = ({navigation}) => {
     //    onChangeText={(val)=>setPhone(val)}
     onChangeText={()=>{console.log("")}}
     />
+
+            <Box alignItems="center" mt="30%">
+                <Button bg="#1C70EE" borderRadius="md" w="100%" p="4" onPress={()=>navigation.navigate("Emergency_contact_list")}>
+                    <Text color="#fff"> <FontAwesome5 name="plus" size={16} />   Save  </Text>
+                </Button>
+            </Box>
 
 </Box> 
     </FormControl>

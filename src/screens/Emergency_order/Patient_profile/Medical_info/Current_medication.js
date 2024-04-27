@@ -14,77 +14,61 @@ import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,
 
 const Current_medication = ({navigation}) => {
   return (
-    <VStack space="5"     backgroundColor="#FFFFFF"  flex={1} >
-
-{/* <Stack direction="row"  mb="0">
-
-<Box w="100" h="8" mt="30" ml="5">
-     <Text w="205" fontSize="md" fontWeight="bold" color="#000" lineHeight="27" onPress={()=>navigation.navigate('Medical_info')}><FontAwesome5 name="arrow-left" size={20} color="#000000" /></Text>
-  </Box>
-
-  <Text  fontFamily="HelveticaNeueBlack" fontSize="30" fontWeight="bold" mt="5" color="#1C70EE" >Do'Care</Text>
-
-    <Box  w="100"  mt="35" position="absolute" right="-25"   onPress={() => console.log("Edit")}>
-            <Text w="205" fontSize="16" fontWeight="500" color="#1C70EE" lineHeight='20' fontFamily="GeneralSans-Bold"  >Save</Text>
-    </Box>
-
-</Stack> */}
-
-    
+  <VStack space="5"     backgroundColor="#FFFFFF"  flex={1} >
 
 
 
     <FormControl w="100%" maxW="500"   alignItems="center" mt="5">
 
-<Box  mb="1" mt="1" mx="3">
-  
-
-      <Input type="text"  
+    <Box  mb="1" mt="1" mx="3">
       
-       size="xl" my="2" variant="outline" placeholder="Medication Name e.g.  Metformin" minWidth="100%" 
-       placeholderTextColor="#000000"
-       onChangeText={()=>{console.log("")}}
-       />
+
+          <Input type="text"  
+          
+          size="xl" my="2" variant="outline" placeholder="Medication Name e.g.  Metformin" minWidth="100%" 
+          placeholderTextColor="#000000"
+          onChangeText={()=>{console.log("")}}
+          />
 
 
-    <Input type="text"  
+            <Input type="text"  
 
-    size="xl" my="2"  variant="outline" placeholder="Dosage e.g. 500 mg" minWidth="100%" 
-    placeholderTextColor="#000000"
-    //    onChangeText={(val)=>setPhone(val)}
-    onChangeText={()=>{console.log("")}}
-    />
-
-    
-
-    <Input type="text"  
-
-    size="xl" my="2" borderRadius="md"  variant="outline" placeholder="Frequency e.g. Twice daily" minWidth="100%" 
-    placeholderTextColor="#000000"
-    //    onChangeText={(val)=>setPhone(val)}
-    onChangeText={()=>{console.log("")}}
-    />
-
-    <Box>
-
-    <Select bg="#F9F9FA"  my="2" minWidth="327" accessibilityLabel="Choose Service" placeholder="Type"
-            isFocused
-            color="#000000"
+            size="xl" my="2"  variant="outline" placeholder="Dosage e.g. 500 mg" minWidth="100%" 
             placeholderTextColor="#000000"
-            //   onValueChange={itemValue => setService(itemValue)}  
+            //    onChangeText={(val)=>setPhone(val)}
+            onChangeText={()=>{console.log("")}}
+            />
 
-            _selectedItem={{
-                            bg: "#F9F9FA",
-                            endIcon: <CheckIcon size={5} />
-                        }} 
-                        
-                        >
+        
 
-                  <Select.Item label="Prescription" value="Prescription" />
-                  <Select.Item label="Over-the-counter" value="Over-the-counter" />
-                  <Select.Item label="Supplement" value="Supplement" />
-                 
-                </Select>
+              <Input type="text"  
+
+              size="xl" my="2" borderRadius="md"  variant="outline" placeholder="Frequency e.g. Twice daily" minWidth="100%" 
+              placeholderTextColor="#000000"
+              //    onChangeText={(val)=>setPhone(val)}
+              onChangeText={()=>{console.log("")}}
+              />
+
+        <Box>
+
+          <Select bg="#F9F9FA"  my="2" minWidth="327" accessibilityLabel="Choose Service" placeholder="Type"
+                  isFocused
+                  color="#000000"
+                  placeholderTextColor="#000000"
+                  //   onValueChange={itemValue => setService(itemValue)}  
+
+                  _selectedItem={{
+                                  bg: "#F9F9FA",
+                                  endIcon: <CheckIcon size={5} />
+                              }} 
+                              
+                              >
+
+                        <Select.Item label="Prescription" value="Prescription" />
+                        <Select.Item label="Over-the-counter" value="Over-the-counter" />
+                        <Select.Item label="Supplement" value="Supplement" />
+                      
+                      </Select>
         </Box>
 
 
@@ -92,18 +76,18 @@ const Current_medication = ({navigation}) => {
 
         <Box alignItems="center" mt="20">
         
-                <Button  variant="outline" borderRadius="md" w="300" h="12"  onPress={() => console.log("hello")}>
+                <Button  variant="outline" borderRadius="md" w="300" h="12"  onPress={() =>navigation.navigate('Current_medication_list')}>
                     <Text> Add Current Medications     <FontAwesome5 name="plus" size={10} color="#000000" /></Text></Button>
         </Box>
        
 
     </Box>
-</FormControl>
+    </FormControl>
 
   
 
 
-    </VStack>
+  </VStack>
   )
 }
 

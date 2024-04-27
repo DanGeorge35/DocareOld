@@ -17,10 +17,7 @@ const Chronic_conditions_mgt = ({navigation}) => {
     <VStack space="5" backgroundColor="#FFFFFF"  flex={1} >
 
         
-
-
-
-            <FormControl w="100%" maxW="500"   alignItems="center" mt="5">
+    <FormControl w="100%" maxW="500"   alignItems="center" mt="5">
 
     <Box  mb="1" mt="1" mx="3">
   
@@ -52,16 +49,26 @@ const Chronic_conditions_mgt = ({navigation}) => {
     />
 
 
-<Input type="text"  
+  <Input type="text"  
 
-size="md" my="2" borderRadius="md"  variant="outline" placeholder="Reduced sodium intake, regular exercise" minWidth="100%" 
-placeholderTextColor="#000000"
-//    onChangeText={(val)=>setPhone(val)}
-onChangeText={()=>{console.log("")}}
-/>
+        size="md" my="2" borderRadius="md"  variant="outline" placeholder="Reduced sodium intake, regular exercise" minWidth="100%" 
+        placeholderTextColor="#000000"
+        //    onChangeText={(val)=>setPhone(val)}
+        onChangeText={()=>{console.log("")}}
+    />
+
+
+        <Box alignItems="center" mt="30%">
+                        <Button bg="#1C70EE" borderRadius="md" w="100%" p="4" onPress={()=>navigation.navigate("Chronic_conditions_mgt_list")}>
+                        Add a Chronic Conditions
+                        </Button>
+        </Box>
+
 
 </Box> 
     </FormControl>
+
+    
    
     </VStack>
   )

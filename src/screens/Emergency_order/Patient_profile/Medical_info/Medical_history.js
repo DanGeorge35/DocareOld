@@ -1,7 +1,7 @@
 import {useEffect, useState} from 'react';
 import { View, useWindowDimensions, StyleSheet,Dimensions, Platform } from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
-import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,
+import { NativeBaseProvider,HStack,Spacer,FormControl,Input,TextArea,Checkbox,
     Box, Badge,CheckIcon,Center,Flex,WarningOutlineIcon,DatePicker,Text,
     VStack,Select,Stack,Image,Icon,useToast,FlatList,Button,Pressable,
     
@@ -58,28 +58,120 @@ const Medical_history = ({navigation}) => {
 
       <Stack direction="row" space={5} my="5">
         <Text fontSize="16" color="#494949"> Date Started </Text>
-        <Box borderBottomColor="#494949" borderBottomWidth="1" mb="5" h="3" width="40"> </Box>
+        <Box borderBottomColor="#DADADA" borderBottomWidth="1" mb="5" h="3" width="40"> </Box>
       </Stack>
 
-      <Stack direction="row"  space={5} >
-      <Select
-            bg="#F9F9FA"
-            borderRadius="10"
-            mt="5"
-            minWidth="327"
-            accessibilityLabel="Choose Service"
-            placeholder="Choose Your Preffered Language"
-            _selectedItem={{
-              bg: '#F9F9FA',
-              endIcon: <CheckIcon size={5} />,
-            }}>
-            <Select.Item label="English" value="English" />
-            <Select.Item label="Hausa" value="Hausa" />
-            <Select.Item label="Yoruba" value="Yoruba" />
-            <Select.Item label="Igbo" value="Igbo" />
-          </Select>
+      <Stack direction="row"  space={2} >
+
+          <Select
+                bg="#F9F9FA"
+                borderRadius="3"
+                mt="1"
+                bg="#fff"
+                minWidth="48%"
+                accessibilityLabel="Choose Service"
+                placeholder="Month"
+                _selectedItem={{
+                  bg: '#F9F9FA',
+                  endIcon: <CheckIcon size={5} />,
+                }}>
+                  <Select.Item label="January" value="January" />
+                  <Select.Item label="Febuary" value="Febuary" />
+                  <Select.Item label="March" value="March" />
+                  <Select.Item label="April" value="April" />
+                  
+              </Select>
+
+              <Select
+                bg="#F9F9FA"
+                borderRadius="3"
+                mt="1"
+                bg="#fff"
+                minWidth="48%"
+                accessibilityLabel="Choose Service"
+                placeholder="Year"
+                _selectedItem={{
+                  bg: '#F9F9FA',
+                  endIcon: <CheckIcon size={5} />,
+                }}>
+                  <Select.Item label="1998" value="1998" />
+                  <Select.Item label="1999" value="1999" />
+                  <Select.Item label="2000" value="2000" />
+                  <Select.Item label="2001" value="2001" />
+                  <Select.Item label="2002" value="2002" />
+                  <Select.Item label="2003" value="2003" />
+                  <Select.Item label="2004" value="2004" />
+                  
+              </Select>
+        
+        
       </Stack>
 
+      
+      <Stack direction="row" space={5} my="5">
+        <Text fontSize="16" color="#494949"> Date Ended </Text>
+        <Box borderBottomColor="#DADADA" borderBottomWidth="1" mb="5" h="3" width="40"> </Box>
+      </Stack>
+
+      <Stack direction="row"  space={2} >
+
+          <Select
+                bg="#F9F9FA"
+                borderRadius="3"
+                mt="1"
+                bg="#fff"
+                minWidth="48%"
+                accessibilityLabel="Choose Service"
+                placeholder="Month"
+                _selectedItem={{
+                  bg: '#F9F9FA',
+                  endIcon: <CheckIcon size={5} />,
+                }}>
+                  <Select.Item label="January" value="January" />
+                  <Select.Item label="Febuary" value="Febuary" />
+                  <Select.Item label="March" value="March" />
+                  <Select.Item label="April" value="April" />
+                  
+              </Select>
+
+              <Select
+                bg="#F9F9FA"
+                borderRadius="3"
+                mt="1"
+                bg="#fff"
+                minWidth="48%"
+                accessibilityLabel="Choose Service"
+                placeholder="Year"
+                _selectedItem={{
+                  bg: '#F9F9FA',
+                  endIcon: <CheckIcon size={5} />,
+                }}>
+                  <Select.Item label="1998" value="1998" />
+                  <Select.Item label="1999" value="1999" />
+                  <Select.Item label="2000" value="2000" />
+                  <Select.Item label="2001" value="2001" />
+                  <Select.Item label="2002" value="2002" />
+                  <Select.Item label="2003" value="2003" />
+                  <Select.Item label="2004" value="2004" />
+                  
+              </Select>
+        
+        
+      </Stack>
+
+      <Box mt="10%">
+        <Checkbox colorScheme="info" size="md">
+           Present
+        </Checkbox>
+      </Box>
+
+      <Box alignItems="center" mt="30%">
+              <Button bg="#1C70EE" borderRadius="md" w="100%" p="4" onPress={()=>navigation.navigate("Medical_history_list")}>
+                   Save
+              </Button>
+          </Box>
+      
+      
       </Box>
       </FormControl>
 
