@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import {View, StyleSheet} from 'react-native';
 import React from 'react';
 import LinearGradient from 'react-native-linear-gradient';
@@ -25,29 +26,32 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const Account_type = ({navigation}) => {
   return (
-    <VStack space="2.5" bg="#ffffff" flex={1}>
-      <Box mt="75" w="100%" h="12">
+    <VStack bg="#ffffff" flex={1}>
+      <Box mt="100" mb="50" w="100%" h="12">
         <Text
           fontSize="xl"
-          color="#999"
+          color="#1C70EE"
           fontWeight="bold"
           lineHeight="25"
           fontFamily="Inter-Black"
           style={{textAlign: 'center'}}
           onPress={() => navigation.navigate('Lang_select')}>
-          WHO ARE YOU?
+          REGISTER AS
         </Text>
       </Box>
 
-      <Flex w="100%" justifyContent="center" alignItems="center" h="50%">
-        <Pressable>
+      <Flex w="100%" justifyContent="center" alignItems="center" h="50%" p="10">
+        <Pressable
+          style={{width: '100%'}}
+          pt="3"
+          onPress={() => navigation.navigate('Login_screen')}>
           {({isHovered, isFocused, isPressed}) => {
             return (
               <Stack
                 direction="row"
-                mb="1"
-                mt="1"
-                space={5}
+                mb="5"
+                mt="10"
+                space={8}
                 bg={
                   isPressed
                     ? 'coolGray.200'
@@ -63,52 +67,50 @@ const Account_type = ({navigation}) => {
                   ],
                 }}
                 p="5"
-                rounded="8"
-                shadow={3}
-                borderWidth="1"
-                borderColor="coolGray.300">
+                rounded="8">
                 <Box>
                   <Image
-                    w="56"
-                    h="56"
-                    source={require('../../../assets/doctor.png')}
+                    w="100"
+                    h="100"
+                    source={require('../../../assets/hospital1.png')}
                     alt="Alternate Text"
-                    size="sm"
+                    size="xl"
                   />
                 </Box>
 
-                <Box>
+                <Box w="full">
                   <Text
                     fontFamily="GeneralSans-Bold"
                     color="#344054"
                     fontSize="lg"
                     lineHeight="20"
                     fontWeight="bold">
-                    Doctor
+                    PATIENT
                   </Text>
                   <Text
                     fontFamily="GeneralSans-Bold"
                     color="#344054"
                     fontSize="xs"
-                    w="195"
+                    w="60%"
                     lineHeight="20"
                     fontWeight="normal">
-                    Offer expertise and services to patients.
+                    Access personalised healthcare services from the comfort of
+                    your home. Connect with our medical professionals through
+                    video call, audio call and chat message.
                   </Text>
                 </Box>
               </Stack>
             );
           }}
         </Pressable>
-
-        <Pressable mt="2">
+        <Pressable style={{width: '100%'}}>
           {({isHovered, isFocused, isPressed}) => {
             return (
               <Stack
                 direction="row"
                 mb="1"
-                mt="1"
-                space={5}
+                mt="5"
+                space={8}
                 bg={
                   isPressed
                     ? 'coolGray.200'
@@ -124,37 +126,37 @@ const Account_type = ({navigation}) => {
                   ],
                 }}
                 p="5"
-                rounded="8"
-                shadow={3}
-                borderWidth="1"
-                borderColor="coolGray.300">
+                rounded="8">
                 <Box>
                   <Image
-                    w="56"
-                    h="56"
-                    source={require('../../../assets/hospital1.png')}
+                    w="100"
+                    h="100"
+                    source={require('../../../assets/doctor.png')}
                     alt="Alternate Text"
-                    size="sm"
+                    size="xl"
                   />
                 </Box>
 
-                <Box>
+                <Box w="full">
                   <Text
                     fontFamily="GeneralSans-Bold"
                     color="#344054"
                     fontSize="lg"
                     lineHeight="20"
                     fontWeight="bold">
-                    Patient
+                    DOCTOR
                   </Text>
                   <Text
                     fontFamily="GeneralSans-Bold"
                     color="#344054"
                     fontSize="xs"
-                    w="200"
+                    w="60%"
+                    style={{}}
                     lineHeight="20"
                     fontWeight="normal">
-                    Access personalised healthcare services.
+                    Respond to medical emergencies, and conduct virtual
+                    appointments providing medical advice, diagnosing health
+                    conditions, and prescribing treatments.
                   </Text>
                 </Box>
               </Stack>
@@ -162,17 +164,6 @@ const Account_type = ({navigation}) => {
           }}
         </Pressable>
       </Flex>
-
-      <Box alignItems="center" mt="30%">
-        <Button
-          bg="#1C70EE"
-          borderRadius="md"
-          w="300"
-          h="12"
-          onPress={() => navigation.navigate('Create_account')}>
-          Continue
-        </Button>
-      </Box>
     </VStack>
   );
 };
