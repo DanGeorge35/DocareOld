@@ -1,8 +1,9 @@
 /* eslint-disable react-native/no-inline-styles */
-import * as React from 'react';
+import React, {useState} from 'react';
 import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {VStack, Text, useToast, FlatList, Button, Pressable} from 'native-base';
+import {VStack, Text, useToast, FlatList, Button, Pressable,Box} from 'native-base';
+import axios from 'axios';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
@@ -40,7 +41,8 @@ const moveNextTab = () => {
 
 const Create_account = ({navigation}) => {
   const layout = useWindowDimensions();
-
+  const toast = useToast();
+  const [isLoading, setisLoading] = useState(false);
   const [index, setIndex] = React.useState(0);
   const [routes] = React.useState([
     {key: 'name', title: ''},
@@ -48,23 +50,126 @@ const Create_account = ({navigation}) => {
     {key: 'password', title: ''},
   ]);
 
+  const [formData, setFormData] = useState({
+    name: {
+      fname: '',
+      lname: '',
+    },
+    contact: {
+      email: '',
+      phone_no: '',
+    },
+    password: {
+      password: '',
+      cpassword: '',
+    },
+  });
+
+  const handleInputChange = (screenKey, inputKey, value) => {
+    setFormData(prevData => ({
+      ...prevData,
+      [screenKey]: {
+        ...prevData[screenKey],
+        [inputKey]: value,
+      },
+    }));
+  };
+
+  const handleSendData = () => {
+    // Aggregate data
+    const aggregatedData = {...formData};
+
+    //console.log(aggregatedData);
+
+   
+
+    const objData = {
+      FirstName: aggregatedData.name.fname,
+      LastName: aggregatedData.name.lname,
+      Email: aggregatedData.contact.email,
+     // Phone_no: aggregatedData.contact.phone_no,
+     Password: aggregatedData.password.password,
+    }
+
+    //console.log(objData)
+    // {"Phone_no": "07063730332", "email": "showtechitconcept@gmail.com", "fname": "Shomorin ", "lname": "Muizz", "password": "aaaa"}
+  //
+ 
+  
+    axios({
+      method: 'post',
+      url: 'https://docare.posaccountant.com/main/api/v1/patients',
+      data: objData,
+    })
+    .then(response => {
+      console.log('Response:', response.data);
+
+      //if(response.success==true){
+        rspMsg1("Successful")
+        navigation.navigate('Login_screen')
+     // }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+
+
+  
+  };
+
+  const rspMsg1 = (msg) => {
+    toast.show({
+      render: () => {
+        return (
+          <Box bg="emerald.500" px="2" py="1" rounded="sm" mb={5}>
+           <Text fontSize="14" fontWeight="700">  {msg} </Text>
+          </Box>
+        );
+      },
+    });
+  };
+
   const renderScene = ({route}) => {
     // const [index, setIndex] = useState(0);
     switch (route.key) {
       case 'name':
-        return <Create_account_name onNext={() => setIndex(1)} />;
+        return (
+          <Create_account_name
+            onNext={() => setIndex(1)}
+            formData={formData.name}
+            onInputChange={(inputKey, value) =>
+              handleInputChange('name', inputKey, value)
+            }
+          />
+        );
       case 'contact':
-        return <Create_account_contacts onNext={() => setIndex(2)} />;
+        return (
+          <Create_account_contacts
+            onNext={() => setIndex(2)}
+            formData={formData.contact}
+            onInputChange={(inputKey, value) =>
+              handleInputChange('contact', inputKey, value)
+            }
+          />
+        );
       case 'password':
         return (
           <Create_account_password
-            onNext={() => navigation.navigate('Success_page')}
+            onNext={handleSendData}
+           // isLoading
+            //onNext={() => console.log("Hello")}
+            formData={formData.password}
+            onInputChange={(inputKey, value) =>
+              handleInputChange('password', inputKey, value)
+            }
           />
         );
       default:
         return null;
     }
   };
+
+  //{"contact": {"email": "Ff", "phone_no": "Ccc"}, "name": {"fname": "Fff", "lname": "Xc"}, "password": {"cpassword": "Fcf", "password": "Ddf"}}
 
   return (
     <VStack space="2" px="3" backgroundColor="#fff" flex={1}>

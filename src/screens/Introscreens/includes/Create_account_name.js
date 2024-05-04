@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, {useState} from 'react';
 import {View, useWindowDimensions, StyleSheet, Text} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {
@@ -30,56 +30,111 @@ const moveNextTab = () => {
   console.log('helloo');
 };
 
-const Create_account_name = ({onNext}) => {
+const Create_account_name = ({onNext, formData, onInputChange}) => {
+  const [isValid, setIsValid] = useState(true);
+ 
+  const [errFname1, errSetFname1] = useState('');
+  const [errLname, errSetLname] = useState('');
+
+  const validateInput = () => {
+
+    let x = 0
+    if (formData.fname == '') {
+      x=1;
+      console.log('enter fname');
+      errSetFname1('First name is Required');
+    } else {
+      errSetFname1('');
+    }
+
+    if (formData.lname == '') {
+      x=1
+      errSetLname('Last name is Required');
+    } else {
+      errSetLname('');
+    }
+
+    if(x==0){
+      onNext()
+    }
+
+  };
+
   return (
-    <FormControl
-      w="100%"
-      maxW="500"
-      justifyContent="center"
-      alignItems="left"
-      mt="5">
-      <Box mb="2" mt="2">
-        <FormControl.Label>First Name</FormControl.Label>
+    <VStack space="2.5" backgroundColor="#fff" flex={1}>
+      <FormControl w="100%" maxW="500" isInvalid alignItems="center">
+        <Box mb="2" mt="2">
+          <FormControl.Label>First Name</FormControl.Label>
 
-        <Input
-          type="text"
-          size="md"
-          variant="outline"
-          placeholder="Enter First Name"
-          minWidth="335"
-          w="90%"
-          //    onChangeText={(val)=>setPhone(val)}
-          onChangeText={() => {
-            console.log('');
-          }}
-        />
+          <Input
+            type="text"
+            size="md"
+            variant="outline"
+            placeholder="Enter First Name"
+            minWidth="335"
+            w="90%"
+            //borderColor="blue"
+            value={formData.fname}
+            onChangeText={value => onInputChange('fname', value)}
 
-        <FormControl.Label color="#000000" mt="6">
-          Last Name
-        </FormControl.Label>
+            // onChangeText={(val)=>setPhone(val)}
+            // onChangeText={() => {
+            //   console.log('ccc');
+            // }}
+          />
 
-        <Input
-          type="text"
-          size="md"
-          variant="outline"
-          placeholder="Enter Last Name"
-          minWidth="335"
-          w="90%"
-          //    onChangeText={(val)=>setPhone(val)}
-          onChangeText={() => {
-            console.log('');
-          }}
-        />
-      </Box>
+          <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+            {errFname1}
+          </FormControl.ErrorMessage>
 
-      {/* position="absolute" top="250%" */}
+          {/* <FormControl.ErrorMessage _text={{
+          fontSize: 'xs'
+        }}>
+            {errFname1}
+          </FormControl.ErrorMessage> */}
 
-      <Box alignItems="center" mt="90%">
-        <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
-          Continue
-        </Button>
-      </Box>
-    </FormControl>
+         
+
+          <Box>
+            <FormControl.Label color="#000000" mt="6">
+              Last Name
+            </FormControl.Label>
+
+            <Input
+              type="text"
+              size="md"
+              variant="outline"
+              placeholder="Enter Last Name"
+              minWidth="335"
+              w="90%"
+              value={formData.lname}
+              onChangeText={value => onInputChange('lname', value)}
+              //    onChangeText={(val)=>setPhone(val)}
+              // onChangeText={() => {
+              //   console.log('');
+              // }}
+            />
+
+            <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+              {errLname}
+            </FormControl.ErrorMessage>
+          </Box>
+        </Box>
+
+        {/* position="absolute" top="250%" */}
+
+        <Box alignItems="center" mt="90%">
+          <Button
+            bg="#1C70EE"
+            borderRadius="md"
+            w="300"
+            h="12"
+            onPress={validateInput}>
+            Continue
+          </Button>
+        </Box>
+      </FormControl>
+    </VStack>
   );
 };
 
