@@ -79,6 +79,7 @@ const Login_screen = ({navigation}) => {
                     onForgotPass={() => navigation.navigate('Forget_pass')}
                     onSignUp={() => navigation.navigate('Personal_info_doc')}
                     onLogin={() => navigation.navigate('Profile')}
+                  
                  />
             )
            case 'phone_no':
@@ -87,6 +88,7 @@ const Login_screen = ({navigation}) => {
             onForgotPass={() => navigation.navigate('Forget_pass')}
             onSignUp={() => navigation.navigate('Personal_info_doc')}
             onLogin={() => navigation.navigate('Profile')}
+           
          />
             )
           default:

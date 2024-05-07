@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import * as React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   useWindowDimensions,
@@ -8,66 +8,112 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
+
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {Image, Text, useToast} from 'native-base';
+import {
+  NativeBaseProvider,
+  HStack,
+  Spacer,
+  FormControl,
+  Input,
+  Box,
+  Text,
+  Badge,
+  CheckIcon,
+  Center,
+  Flex,
+  WarningOutlineIcon,
+  VStack,
+  Select,
+  Stack,
+  Image,
+  Icon,
+  useToast,
+  FlatList,
+  Button,
+  Pressable,
+} from 'native-base';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import EmailView from './includes/Email_view';
-import PhoneView from './includes/Phone_view';
-
-const renderTabBar = props => (
-  <TabBar
-    {...props}
-    indicatorStyle={{backgroundColor: '#2ae4ff'}}
-    style={styles.tab_view}
-    indicatorContainerStyle={{
-      fontSize: 34,
-      color: '#fff',
-      backgroundColor: '#1356b863',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
-    }}
-    activeColor="#fff"
-    inactiveColor="#fff"
-    tabStyle={{paddingVertical: 1, paddingHorizontal: 20, color: '#000'}}
-    renderLabel={({route, focused, color}) => (
-      <Text style={{color, margin: 3}}>{route.title}</Text>
-    )}
-  />
-);
+//import EmailView from './includes/Email_view';
+//import PhoneView from './includes/Phone_view';
 
 const Login_screen = ({navigation}) => {
   const layout = useWindowDimensions();
 
-  const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    {key: 'email', title: 'Email'},
-    {key: 'phone_no', title: 'Phone Number'},
-  ]);
+  const [show, setShow] = React.useState(false);
+  const [isLoading, setisLoading] = useState(false);
 
-  const renderScene = ({route}) => {
-    switch (route.key) {
-      case 'email':
-        return (
-          <EmailView
-            onForgotPass={() => navigation.navigate('Forget_pass')}
-            onSignUp={() => navigation.navigate('Create_account')}
-            onLogin={() => navigation.navigate('Profile')}
-          />
-        );
-      case 'phone_no':
-        return (
-          <PhoneView
-            onForgotPass={() => navigation.navigate('Forget_pass')}
-            onSignUp={() => navigation.navigate('Create_account')}
-            onLogin={() => navigation.navigate('Profile')}
-          />
-        );
-      default:
-        return null;
+  const [Email, setEmail] = useState('');
+  const [Pass, setPass] = useState('');
+
+  const [errEmail, seterrEmail] = useState('');
+  const [errPass, seterrPass] = useState('');
+  const toast = useToast();
+
+  const handleLogin = () => {
+    setisLoading(true);
+
+    const objLoginData = {
+      email: Email,
+      password: Pass,
+    };
+
+    //console.log(objLoginData);
+
+    axios({
+      method: 'post',
+      url: 'https://docare.posaccountant.com/main/api/v1/patients/login',
+      data: objLoginData,
+    })
+      .then(response => {
+        // console.log('Response:', response.data);
+        //console.log('Response:', response.data.data);
+       // console.log('Response:', response.token);
+
+        if (response.data.success == true) {
+          rspMsg1('Successful');
+          UserSession(response.data)
+          navigation.navigate('Emergency_nav');
+        } else {
+          rspMsg1(response.data.message);
+        }
+
+        setisLoading(false);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      
+      });
+
+    //console.log('Login');
+  };
+
+  const UserSession = async (userData) => {
+    try {
+      await AsyncStorage.setItem('UserData', JSON.stringify(userData));
+    } catch (e) {
+      console.log(e);
     }
   };
+
+  const rspMsg1 = msg => {
+    toast.show({
+      render: () => {
+        return (
+          <Box bg="emerald.500" px="2" py="1" rounded="sm" mb={5}>
+            <Text fontSize="14" fontWeight="700">
+              {msg}
+            </Text>
+          </Box>
+        );
+      },
+    });
+  };
+
 
   return (
     <KeyboardAvoidingView
@@ -102,15 +148,118 @@ const Login_screen = ({navigation}) => {
             Login to your Account
           </Text>
 
-          <TabView
-            navigationState={{index, routes}}
-            renderTabBar={renderTabBar}
-            renderScene={renderScene}
-            onIndexChange={setIndex}
-            activeTintColor="red"
-            // swipeEnabled={false}
-            initialLayout={{width: '100%'}}
-          />
+          <FormControl
+            w="100%"
+            alignItems="left"
+            mt="5"
+            style={{
+              paddingLeft: 20,
+              paddingRight: 20,
+              paddingTop: 10,
+              paddingBottom: 40,
+              elevation: 1,
+              borderWidth: 2,
+              borderColor: '#eee',
+              backgroundColor: '#ffffff',
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+            }}>
+            <Box mb="2" mt="2">
+              <FormControl.Label style={{color: 'white'}}>
+                Email Address
+              </FormControl.Label>
+
+              <Input
+                type="text"
+                size="md"
+                variant="outline"
+                placeholder="Enter Email Address"
+                minWidth="280"
+                style={styles.input}
+                w="90%"
+                onChangeText={val => setEmail(val)}
+                // onChangeText={() => {
+                //   console.log('');
+                // }}
+              />
+
+              <FormControl.Label mt="5">Password</FormControl.Label>
+              <Input
+                type={show ? 'text' : 'password'}
+                size="lg"
+                variant="outline"
+                style={styles.input}
+                onChangeText={val => setPass(val)}
+                InputRightElement={
+                  <Pressable
+                    onPress={() => setShow(!show)}
+                    style={{
+                      width: 40,
+                      height: 40,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Icon
+                      style={{
+                        width: 40,
+                      }}
+                      as={<FontAwesome5 name={show ? 'eye' : 'eye-slash'} />}
+                      size={5}
+                      color="muted.400"
+                    />
+                  </Pressable>
+                }
+                placeholder="Password"
+              />
+
+              {/* <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+                  {errPhone}
+                  </FormControl.ErrorMessage> */}
+            </Box>
+
+            <Pressable
+              pb="4"
+              pt="3"
+              mb="4"
+              mt="0"
+              onPress={() => navigation.navigate('Forget_pass')}>
+              <Text
+                style={{textAlign: 'right', color: '#000', fontWeight: 'bold'}}>
+                Forgot Password?
+              </Text>
+            </Pressable>
+
+            {isLoading ? (
+              <Button
+                isLoading
+                spinnerPlacement="end"
+                isLoadingText="Loading.."
+                mt="6"
+                bg="#00004d">
+                Button
+              </Button>
+            ) : (
+              <Box alignItems="center">
+                <Button
+                  bg="#1C70EE"
+                  borderRadius="md"
+                  w="100%"
+                  p="4"
+                  onPress={handleLogin}>
+                  Login
+                </Button>
+              </Box>
+            )}
+
+            <Pressable
+              mt="8"
+              onPress={() => navigation.navigate('Create_account')}>
+              <Text style={{textAlign: 'center', color: '#000'}}>
+                Don’t have an Account?
+                <Text style={{fontWeight: 'bold'}}> Create now</Text>
+              </Text>
+            </Pressable>
+          </FormControl>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -118,6 +267,10 @@ const Login_screen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+  input: {
+    height: 52,
+    padding: 16,
+  },
   container: {
     paddingTop: 220,
     flexGrow: 1,

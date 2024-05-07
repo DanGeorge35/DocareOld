@@ -3,6 +3,8 @@ import 'react-native-pager-view';
 import 'react-native-gesture-handler';
 import 'react-native-reanimated';
 
+//import * as Reanimated from 'react-native-reanimated';
+
 import React, {useState, useEffect} from 'react';
 
 import {StatusBar} from 'react-native';
@@ -24,28 +26,21 @@ import Retrieve_otp from './screens/Forget_password/Retrieve_otp';
 import Reset_password from './screens/Forget_password/Reset_password';
 import Successful_page from './screens/Forget_password/Successful_page';
 
-import Profile from './screens/Patient_profile/Profile';
-import Personal_info from './screens/Patient_profile/Personal_info';
-import Contact from './screens/Patient_profile/Contact';
-import Medical_info from './screens/Patient_profile/Medical_info';
-import Location_info from './screens/Patient_profile/Location_info';
-import Communication_pref from './screens/Patient_profile/Communication_pref';
-import Security_settings from './screens/Patient_profile/Security_settings';
+// import Profile from './screens/Patient_profile/Profile';
+// import Personal_info from './screens/Patient_profile/Personal_info';
+ import Contact from './screens/Emergency_order/Patient_profile/Contact';
+// import Medical_info from './screens/Patient_profile/Medical_info';
+// import Location_info from './screens/Patient_profile/Location_info';
+// import Communication_pref from './screens/Patient_profile/Communication_pref';
+// import Security_settings from './screens/Patient_profile/Security_settings';
 
 //========================================================================
 
-import Medical_history from './screens/Patient_profile/Medical_info/Medical_history';
-import Current_medication from './screens/Patient_profile/Medical_info/Current_medication';
-import Emergency_contact from './screens/Patient_profile/Medical_info/Emergency_contact';
-import Chronic_conditions_mgt from './screens/Patient_profile/Medical_info/Chronic_conditions_mgt';
-import Pry_care_phy_info from './screens/Patient_profile/Medical_info/Pry_care_phy_info';
-import Prefered_lang from './screens/Patient_profile/Communication_pref/Prefered_lang';
-import Com_method from './screens/Patient_profile/Communication_pref/Com_method';
-import Privacy_settings from './screens/Patient_profile/Communication_pref/Privacy_settings';
-import Notification_settings from './screens/Patient_profile/Communication_pref/Notification_settings';
-import Terms from './screens/Patient_profile/Communication_pref/Terms';
+
 
 import Doctors_list_view from './screens/appointment_scheduling/Doctors_list_view';
+//import Emergency_order_map from './screens/Emergency_order/Emergency_order_map';
+import Emergency_nav from './screens/Emergency_order/Emergency_nav';
 
 import {NativeBaseProvider, Text, Box} from 'native-base';
 
@@ -142,6 +137,8 @@ export default function app() {
     routeName = 'Lang_select';
   }
 
+  
+
   return (
     <NativeBaseProvider>
       <StatusBar barStyle="light-content" backgroundColor="#007bff" />
@@ -149,11 +146,21 @@ export default function app() {
         {/* <Stack.Navigator initialRouteName={isSignUp ? 'Intro_screen':'Login_screen'}> */}
 
         <Stack.Navigator initialRouteName={routeName}>
+<<<<<<< HEAD
+=======
+          {/* <Stack.Screen
+                name="Intro_screen"
+                options={{headerShown:false}}
+                component={Intro_screen}
+                /> */}
+
+>>>>>>> origin/main
           <Stack.Screen
             name="Onboarding"
             options={{headerShown: false}}
             component={OnboardingScreen}
           />
+<<<<<<< HEAD
           {/*
           <Stack.Screen
             name="Profile"
@@ -164,13 +171,32 @@ export default function app() {
             }}
             component={Profile}
           /> */}
+=======
+>>>>>>> origin/main
 
+
+
+         <Stack.Screen
+              name="Emergency_nav"
+              options={{headerShown: false}}
+              component={Emergency_nav}
+            />
+
+        <Stack.Screen
+            name="Contact"
+            options={Header('Contact', '#007bff')}
+            component={Contact}
+          />
+            
+       
+       
           {/* <Stack.Screen
               name="Doctors_list_view"
               options={{headerShown: false}}
               component={Doctors_list_view}
             /> */}
 
+<<<<<<< HEAD
           <Stack.Screen
             name="Contact"
             options={Header('Contact', '#007bff')}
@@ -216,6 +242,8 @@ export default function app() {
             options={Header('Security settings', '#007bff')}
             component={Security_settings}
           />
+=======
+>>>>>>> origin/main
 
           <Stack.Screen
             name="Lang_select"
@@ -271,66 +299,9 @@ export default function app() {
             component={Successful_page}
           />
 
-          <Stack.Screen
-            name="Current_medication"
-            options={Header('Current medication', '#007bff')}
-            component={Current_medication}
-          />
+          
 
-          <Stack.Screen
-            name="Emergency_contact"
-            options={Header('Emergency contact', '#007bff')}
-            component={Emergency_contact}
-          />
-
-          <Stack.Screen
-            name="Chronic_conditions_mgt"
-            options={Header('Chronic Conditions Mgt.', '#007bff')}
-            component={Chronic_conditions_mgt}
-          />
-
-          <Stack.Screen
-            name="Pry_care_phy_info"
-            options={Header('Primary Physical Information', '#007bff')}
-            component={Pry_care_phy_info}
-          />
-
-          <Stack.Screen
-            name="Prefered_lang"
-            options={Header('Prefered Lang.', '#007bff')}
-            component={Prefered_lang}
-          />
-
-          <Stack.Screen
-            name="Com_method"
-            options={Header('Communication Method', '#007bff')}
-            //options={{headerShown: false}}
-            component={Com_method}
-          />
-
-          <Stack.Screen
-            name="Privacy_settings"
-            options={Header('Privacy Settings', '#007bff')}
-            component={Privacy_settings}
-          />
-
-          <Stack.Screen
-            name="Notification_settings"
-            options={Header('Notification Settings', '#007bff')}
-            component={Notification_settings}
-          />
-
-          <Stack.Screen
-            name="Terms"
-            options={Header('Terms ', '#007bff')}
-            component={Terms}
-          />
-
-          <Stack.Screen
-            name="Medical_history"
-            options={Header('Medical History', '#007bff')}
-            component={Medical_history}
-          />
+          
         </Stack.Navigator>
 
         {/* <Splash_screen/> */}
