@@ -123,9 +123,8 @@ const Email_view = ({onForgotPass, onSignUp, onLogin}) => {
 
 const styles = StyleSheet.create({
   input: {
-    height: 55,
+    height: 52,
     padding: 16,
-    width: '100%',
   },
 });
 

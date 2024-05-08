@@ -27,6 +27,7 @@ const Splash_screen = () => {
         <Text style={styles.DocareText}>DOCARE</Text>
 
         <ActivityIndicator size="large" color="#fff" style={styles.indicator} />
+        
       </View>
       <LinearGradient
         colors={['#1C70EE', '#FFFFFF']}
