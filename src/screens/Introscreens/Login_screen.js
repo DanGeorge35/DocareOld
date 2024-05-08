@@ -355,13 +355,6 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     alignSelf: 'center',
   },
-  get_start_btn: {
-    width: '90%',
-    height: 52,
-    marginTop: 0,
-    borderRadius: 12,
-    padding: 16,
-  },
 });
 
 export default Login_screen;

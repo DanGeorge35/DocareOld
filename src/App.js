@@ -146,17 +146,33 @@ export default function app() {
         {/* <Stack.Navigator initialRouteName={isSignUp ? 'Intro_screen':'Login_screen'}> */}
 
         <Stack.Navigator initialRouteName={routeName}>
+<<<<<<< HEAD
+=======
           {/* <Stack.Screen
                 name="Intro_screen"
                 options={{headerShown:false}}
                 component={Intro_screen}
                 /> */}
 
+>>>>>>> origin/main
           <Stack.Screen
             name="Onboarding"
             options={{headerShown: false}}
             component={OnboardingScreen}
           />
+<<<<<<< HEAD
+          {/*
+          <Stack.Screen
+            name="Profile"
+            options={{
+              ...Header('Profile', '#007bff'),
+              headerTitleAlign: 'center',
+              //headerTitle: 'Profile',
+            }}
+            component={Profile}
+          /> */}
+=======
+>>>>>>> origin/main
 
 
 
@@ -180,6 +196,54 @@ export default function app() {
               component={Doctors_list_view}
             /> */}
 
+<<<<<<< HEAD
+          <Stack.Screen
+            name="Contact"
+            options={Header('Contact', '#007bff')}
+            component={Contact}
+          />
+
+          <Stack.Screen
+            name="Communication_pref"
+            options={{headerShown: false}}
+            component={Communication_pref}
+          />
+
+          <Stack.Screen
+            name="Location_info"
+            options={{headerShown: false}}
+            component={Location_info}
+          />
+
+          <Stack.Screen
+            name="Medical_info"
+            options={Header('Medical Information', '#007bff')}
+            component={Medical_info}
+          />
+
+          {/* <Stack.Screen
+            name="Profile"
+            options={{
+              ...Header('Profile', '#007bff'),
+              headerTitleAlign: 'center',
+              //headerTitle: 'Profile',
+            }}
+            component={Profile}
+          /> */}
+
+          <Stack.Screen
+            name="Personal_info"
+            options={Header('Personal Information', '#007bff')}
+            component={Personal_info}
+          />
+
+          <Stack.Screen
+            name="Security_settings"
+            options={Header('Security settings', '#007bff')}
+            component={Security_settings}
+          />
+=======
+>>>>>>> origin/main
 
           <Stack.Screen
             name="Lang_select"
