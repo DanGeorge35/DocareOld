@@ -32,15 +32,14 @@ const moveNextTab = () => {
 
 const Create_account_name = ({onNext, formData, onInputChange}) => {
   const [isValid, setIsValid] = useState(true);
- 
+
   const [errFname1, errSetFname1] = useState('');
   const [errLname, errSetLname] = useState('');
 
   const validateInput = () => {
-
-    let x = 0
+    let x = 0;
     if (formData.fname == '') {
-      x=1;
+      x = 1;
       console.log('enter fname');
       errSetFname1('First name is Required');
     } else {
@@ -48,16 +47,15 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
     }
 
     if (formData.lname == '') {
-      x=1
+      x = 1;
       errSetLname('Last name is Required');
     } else {
       errSetLname('');
     }
 
-    if(x==0){
-      onNext()
+    if (x == 0) {
+      onNext();
     }
-
   };
 
   return (
@@ -93,8 +91,6 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
             {errFname1}
           </FormControl.ErrorMessage> */}
 
-         
-
           <Box>
             <FormControl.Label color="#000000" mt="6">
               Last Name
@@ -115,7 +111,8 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
               // }}
             />
 
-            <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+            <FormControl.ErrorMessage
+              leftIcon={<WarningOutlineIcon size="xs" />}>
               {errLname}
             </FormControl.ErrorMessage>
           </Box>

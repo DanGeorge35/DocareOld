@@ -1,8 +1,27 @@
 /* eslint-disable react-native/no-inline-styles */
+import * as React from 'react';
+import {
+  View,
+  useWindowDimensions,
+  StyleSheet,
+  KeyboardAvoidingView,
+  ScrollView,
+  Platform,
+} from 'react-native';
+import {TabView, TabBar} from 'react-native-tab-view';
+import {Image, Text, useToast} from 'native-base';
 import React, {useState} from 'react';
 import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {VStack, Text, useToast, FlatList, Button, Pressable,Box} from 'native-base';
+import {
+  VStack,
+  Text,
+  useToast,
+  FlatList,
+  Button,
+  Pressable,
+  Box,
+} from 'native-base';
 import axios from 'axios';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -24,10 +43,10 @@ const renderTabBar = props => (
       fontSize: 34,
       color: 'blue',
       backgroundColor: '#F4F7FA',
+      display: 'none',
     }}
     activeColor="#1C70EE"
     inactiveColor="#000000"
-    //getLabelText={({ route }) => route.title}
     tabStyle={{paddingVertical: 10, paddingHorizontal: 20, color: '#000'}}
     renderLabel={({route, focused, color}) => (
       <Text style={{color, margin: 8}}>{route.title}</Text>
@@ -44,10 +63,11 @@ const Create_account = ({navigation}) => {
   const toast = useToast();
   const [isLoading, setisLoading] = useState(false);
   const [index, setIndex] = React.useState(0);
+
   const [routes] = React.useState([
-    {key: 'name', title: ''},
-    {key: 'contact', title: ''},
-    {key: 'password', title: ''},
+    {key: 'name', title: 'NAME'},
+    {key: 'contact', title: 'CONTACT'},
+    {key: 'password', title: 'AUTH'},
   ]);
 
   const [formData, setFormData] = useState({
@@ -81,48 +101,45 @@ const Create_account = ({navigation}) => {
 
     //console.log(aggregatedData);
 
-   
-
     const objData = {
       FirstName: aggregatedData.name.fname,
       LastName: aggregatedData.name.lname,
       Email: aggregatedData.contact.email,
-     // Phone_no: aggregatedData.contact.phone_no,
-     Password: aggregatedData.password.password,
-    }
+      // Phone_no: aggregatedData.contact.phone_no,
+      Password: aggregatedData.password.password,
+    };
 
     //console.log(objData)
     // {"Phone_no": "07063730332", "email": "showtechitconcept@gmail.com", "fname": "Shomorin ", "lname": "Muizz", "password": "aaaa"}
-  //
- 
-  
+    //
+
     axios({
       method: 'post',
       url: 'https://docare.posaccountant.com/main/api/v1/patients',
       data: objData,
     })
-    .then(response => {
-      console.log('Response:', response.data);
+      .then(response => {
+        console.log('Response:', response.data);
 
-      //if(response.success==true){
-        rspMsg1("Successful")
-        navigation.navigate('Login_screen')
-     // }
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-
-
-  
+        //if(response.success==true){
+        rspMsg1('Successful');
+        navigation.navigate('Login_screen');
+        // }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   };
 
-  const rspMsg1 = (msg) => {
+  const rspMsg1 = msg => {
     toast.show({
       render: () => {
         return (
           <Box bg="emerald.500" px="2" py="1" rounded="sm" mb={5}>
-           <Text fontSize="14" fontWeight="700">  {msg} </Text>
+            <Text fontSize="14" fontWeight="700">
+              {' '}
+              {msg}{' '}
+            </Text>
           </Box>
         );
       },
@@ -156,7 +173,7 @@ const Create_account = ({navigation}) => {
         return (
           <Create_account_password
             onNext={handleSendData}
-           // isLoading
+            // isLoading
             //onNext={() => console.log("Hello")}
             formData={formData.password}
             onInputChange={(inputKey, value) =>
@@ -172,38 +189,69 @@ const Create_account = ({navigation}) => {
   //{"contact": {"email": "Ff", "phone_no": "Ccc"}, "name": {"fname": "Fff", "lname": "Xc"}, "password": {"cpassword": "Fcf", "password": "Ddf"}}
 
   return (
-    <VStack space="2" px="3" backgroundColor="#fff" flex={1}>
-      <TabView
-        navigationState={{index, routes}}
-        renderTabBar={renderTabBar}
-        renderScene={renderScene}
-        onIndexChange={setIndex}
-        activeTintColor="red"
-        swipeEnabled={false}
-        initialLayout={{width: 335}}
-      />
-    </VStack>
+    <KeyboardAvoidingView
+      style={{flex: 1}}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled">
+        <View style={styles.inputContainer}>
+          <TabView
+            navigationState={{index, routes}}
+            renderTabBar={renderTabBar}
+            renderScene={renderScene}
+            onIndexChange={setIndex}
+            activeTintColor="red"
+            swipeEnabled={false}
+            initialLayout={{width: '100%'}}
+          />
+        </View>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    color: '#fff',
+    paddingTop: 120,
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    //width: 375,
-    // height: 812,
+    minHeight: '100%',
+    backgroundColor: '#fff',
+  },
+  inputContainer: {
+    width: '90%',
+    marginBottom: 20,
+    minHeight: '100%',
+  },
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    padding: 10,
+  },
+
+  DocareText: {
+    fontSize: 40,
+    // fontWeight:'bold',
+    color: '#1C70EE',
+    lineHeight: 48.84,
+    fontFamily: 'HelveticaNeueBold',
+    //width:156,
+    //height:49,
+    marginTop: 60,
+    // marginLeft:110
   },
 
   tab_view: {
-    //width:335,
-    height: 0,
-    //backgroundColor:'#F4F7FA',
-    marginTop: 40,
-    // marginLeft:20,
-    color: 'red',
+    display: 'none',
+    width: '100%',
+    height: 50,
+    backgroundColor: '#1C70EE',
+    marginTop: 20,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
 
   form_view: {
@@ -218,6 +266,13 @@ const styles = StyleSheet.create({
     marginTop: 30,
     marginLeft: 14,
     color: '#000000',
+  },
+
+  logo: {
+    height: 80,
+    width: 80,
+    marginBottom: 50,
+    alignSelf: 'center',
   },
 
   lang_text: {

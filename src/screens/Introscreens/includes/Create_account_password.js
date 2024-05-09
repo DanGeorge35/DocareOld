@@ -39,7 +39,7 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
   const validateInput = () => {
     let x = 0;
     if (
-      formData.password !== formData.cpassword 
+      formData.password !== formData.cpassword
     ) {
       x = 1;
       errSetCPass('Password not match');
@@ -73,7 +73,7 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
 
         <Input
           w={{
-            base: '90%',
+            base: '100%',
             md: '25%',
           }}
           type={show ? 'text' : 'password'}
@@ -104,7 +104,7 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
 
         <Input
           w={{
-            base: '90%',
+            base: '100%',
             md: '25%',
           }}
           type={show ? 'text' : 'password'}
@@ -130,9 +130,13 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
         </FormControl.ErrorMessage>
       </Box>
 
+      <Box alignItems="center" mt="30%">
+        <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
+          Submit
+        </Button>
       <Box alignItems="center" mt="90%">
 
-              
+
 
               <Button
                   bg="#1C70EE"
@@ -142,7 +146,7 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
                   onPress={validateInput}>
                   Submit
                 </Button>
-       
+
       </Box>
     </FormControl>
   );
