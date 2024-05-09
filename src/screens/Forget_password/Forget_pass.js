@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import * as React from 'react';
+import React, {useState} from 'react';
 import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {
@@ -27,59 +27,72 @@ import {
 } from 'native-base';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-
+import axios from 'axios';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import EmailView from './Includes/Email_view';
 import PhoneView from './Includes/Phone_view';
 
-const renderTabBar = props => (
-  <TabBar
-    {...props}
-    indicatorStyle={{backgroundColor: '#2ae4ff'}}
-    style={styles.tab_view}
-    indicatorContainerStyle={{
-      fontSize: 34,
-      color: '#fff',
-      backgroundColor: '#1356b863',
-      borderTopLeftRadius: 10,
-      borderTopRightRadius: 10,
-    }}
-    activeColor="#fff"
-    inactiveColor="#fff"
-    tabStyle={{paddingVertical: 1, paddingHorizontal: 20, color: '#000'}}
-    renderLabel={({route, focused, color}) => (
-      <Text style={{color, margin: 3}}>{route.title}</Text>
-    )}
-  />
-);
+
 
 const Forget_pass = ({navigation}) => {
   const layout = useWindowDimensions();
-
+  const [isLoading, setisLoading] = useState(false);
   const [index, setIndex] = React.useState(0);
-  const [routes] = React.useState([
-    {key: 'email', title: 'Email'},
-    {key: 'phone_no', title: 'Phone Number'},
-  ]);
+  const [Email, setEmail] = useState('');
+  const [errEmail, seterrEmail] = useState('');
+  const toast = useToast();
 
-  const renderScene = ({route}) => {
-    switch (route.key) {
-      case 'email':
+  const onGetCode =()=>{
+    setisLoading(true);
+
+    const ObjData = {
+      email: Email,
+     // password: Pass,
+    };
+    
+   
+    axios({
+      method: 'post',
+      url: 'https://docare.posaccountant.com/main/api/v1/auth/resetpassword',
+      data: ObjData,
+    })
+      .then(response => {
+         console.log('Response:', response.data);
+        //console.log('Response:', response.data.data);
+       // console.log('Response:', response.token);
+
+        if (response.data.success == true) {
+          rspMsg1(response.data.message);
+           //console.log("success");
+         // UserSession(response.data)
+          navigation.navigate('Reset_password');
+        } else {
+          rspMsg1(response.data.message);
+        }
+
+        setisLoading(false);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        setisLoading(false);
+      });
+
+    console.log("hello")
+  }
+
+
+  const rspMsg1 = (msg) => {
+    toast.show({
+      render: () => {
         return (
-          <EmailView
-            onGetTop={() => navigation.navigate('Retrieve_otp')}
-            onSignUp={() => navigation.navigate('Create_account')}
-          />
+          <Box bg="#5996f3" px="2" py="1"  mx="10"  rounded="sm" mb={5}>
+            <Text fontSize="12" w="100%" color="#ffffff" textAlign="center" fontWeight="700">
+              {msg}
+            </Text>
+          </Box>
         );
-      case 'phone_no':
-        return (
-          <PhoneView
-            onGetTop={() => navigation.navigate('Retrieve_otp')}
-            onSignUp={() => navigation.navigate('Create_account')}
-          />
-        );
-      default:
-        return null;
-    }
+      },
+    });
   };
 
   return (
@@ -94,14 +107,62 @@ const Forget_pass = ({navigation}) => {
         </Text>
       </Box>
 
-      <TabView
-        navigationState={{index, routes}}
-        renderTabBar={renderTabBar}
-        renderScene={renderScene}
-        onIndexChange={setIndex}
-        activeTintColor="red"
-        initialLayout={{width: 335}}
-      />
+      <FormControl w="100%" maxW="500" alignItems="left" mt="5">
+      <Box mb="2" mt="3">
+        <Input
+          type="text"
+          size="md"
+          variant="outline"
+          placeholder="Enter Email Address"
+          minWidth="300"
+          w="100%"
+          style={styles.input}
+         
+          onChangeText={val => setEmail(val)}
+          
+        />
+      </Box>
+
+      <Pressable mt="8">
+        <Text style={{textAlign: 'center', color: '#000'}}>
+          You will receive an email of your verification code
+        </Text>
+      </Pressable>
+
+      {isLoading ? (
+              <Button
+                isLoading
+                spinnerPlacement="end"
+                isLoadingText="Loading.."
+                mt="90"
+                borderRadius="md" 
+                bg="#1C70EE">
+                Button
+              </Button>
+            ) : (
+              <Box alignItems="center">
+                <Button
+                  bg="#1C70EE"
+                  mt="90"
+                  borderRadius="md"
+                  w="300"
+                  onPress={onGetCode}>
+                  Get Code
+                </Button>
+              </Box>
+            )}
+
+      
+
+      <Pressable mt="8" onPress={()=> navigation.navigate("Create_account")}>
+        <Text style={{textAlign: 'center', color: '#000'}}>
+          Don’t have an Account?{' '}
+          <Text style={{fontWeight: 'bold'}}> Create now</Text>
+        </Text>
+      </Pressable>
+    </FormControl>
+
+     
     </VStack>
   );
 };
@@ -117,38 +178,46 @@ const styles = StyleSheet.create({
     // height: 812,
   },
 
-  DocareText: {
-    fontSize: 40,
-    color: '#1C70EE',
-    lineHeight: 48.84,
-    fontFamily: 'HelveticaNeueBold',
-    marginTop: 0,
-  },
-
-  tab_view: {
-    width: '100%',
-    height: 50,
-    backgroundColor: '#007bff',
-    marginTop: 20,
-    borderTopLeftRadius: 10,
-    borderTopRightRadius: 10,
-  },
-  form_view: {
-    width: 335,
-    height: 291,
-    marginTop: 45,
-  },
-
-  get_start_btn: {
-    width: 327,
+  input: {
     height: 52,
-    marginTop: 0,
-    //color:"red",
-    // backgroundColor:"1C70EE",
-
-    borderRadius: 12,
     padding: 16,
   },
+
+  // DocareText: {
+  //   fontSize: 40,
+  //   color: '#1C70EE',
+  //   lineHeight: 48.84,
+  //   fontFamily: 'HelveticaNeueBold',
+  //   marginTop: 0,
+  // },
+
+  // tab_view: {
+  //   width: '100%',
+  //   height: 50,
+  //   backgroundColor: '#007bff',
+  //   marginTop: 20,
+  //   borderTopLeftRadius: 10,
+  //   borderTopRightRadius: 10,
+  // },
+
+  // form_view: {
+  //   width: 335,
+  //   height: 291,
+  //   marginTop: 45,
+  // },
+
+  // get_start_btn: {
+  //   width: 327,
+  //   height: 52,
+  //   marginTop: 0,
+  //   //color:"red",
+  //   // backgroundColor:"1C70EE",
+
+  //   borderRadius: 12,
+  //   padding: 16,
+  // },
+
+
 });
 
 export default Forget_pass;

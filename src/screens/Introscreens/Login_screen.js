@@ -57,36 +57,51 @@ const Login_screen = ({navigation}) => {
   const handleLogin = () => {
     setisLoading(true);
 
-    const objLoginData = {
-      email: Email,
-      password: Pass,
-    };
+   
+    // const objLoginData = JSON.stringify({
+    //   email: Email,
+    //   password: Pass,
+    // });
+
+    const objLoginData = JSON.stringify({
+      email: "show1@gmail.com",
+      password: "111",
+    });
 
     //console.log(objLoginData);
 
-    axios({
+    const config = {
       method: 'post',
-      url: 'https://docare.posaccountant.com/main/api/v1/patients/login',
+      url: 'https://docare.posaccountant.com/main/api/v1/auth/login',
+      headers: { 
+        'Content-Type': 'application/json'
+      },
       data: objLoginData,
-    })
+    };
+
+    //console.log(config)
+   
+    axios(config)
       .then(response => {
-        // console.log('Response:', response.data);
+         //console.log('Response:', response.data);
         //console.log('Response:', response.data.data);
        // console.log('Response:', response.token);
 
         if (response.data.success == true) {
           rspMsg1('Successful');
-          UserSession(response.data)
+         console.log(response.data)
+          UserSession(response.data);
           navigation.navigate('Emergency_nav');
         } else {
-          rspMsg1(response.data.message);
+          rspMsg1(response.message);
         }
 
         setisLoading(false);
       })
       .catch(error => {
+       // console.log("error")
         console.error('Error:', error);
-      
+        setisLoading(false);
       });
 
     //console.log('Login');
@@ -96,7 +111,7 @@ const Login_screen = ({navigation}) => {
     try {
       await AsyncStorage.setItem('UserData', JSON.stringify(userData));
     } catch (e) {
-      console.log(e);
+      //console.log(e);
     }
   };
 

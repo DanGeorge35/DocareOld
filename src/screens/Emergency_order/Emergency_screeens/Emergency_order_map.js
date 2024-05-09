@@ -63,9 +63,9 @@ const Emergency_order_map = ({navigation}) => {
           if (jsonValue !== null) {
             const usr = JSON.parse(jsonValue);
             //setUserObj({"user":usr.data.user});
-           setUserObj(usr.data.user);
+            setUserObj(usr.data.Account);
 
-            console.log(usr.data.user);
+            //console.log(usr.data.Account);
           }
         },
       );
@@ -109,7 +109,7 @@ const Emergency_order_map = ({navigation}) => {
   };
 
   useEffect(() => {
-    console.log('called');
+    //console.log('called');
     getUserData();
     if (isFocused) {
       openPanel();
@@ -273,7 +273,7 @@ const Emergency_order_map = ({navigation}) => {
           {/* for Multiple Marker */}
 
           {/*  
-      {
+       {
         markerList.map((marker)=>{
           return(
             <Marker
@@ -388,9 +388,7 @@ const Emergency_order_map = ({navigation}) => {
                         {' '}
                         Send Emergency{' '}
                       </Text>
-                      
                     </Box>
-                    
                   </Stack>
                 </Box>
 

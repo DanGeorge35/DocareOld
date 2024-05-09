@@ -8,8 +8,6 @@ import Screen1 from './Emergency_screeens/Screen1';
 //=======================Profile=====================
 
 import Profile_nav from './Patient_profile/Profile_nav';
-
-
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
