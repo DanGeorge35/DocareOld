@@ -85,15 +85,14 @@ const Personal_info = ({navigation}) => {
         jsonValue => {
           if (jsonValue !== null) {
             const usr = JSON.parse(jsonValue);
-           
+
             //setUserObj(usr);
 
             console.log(usr);
-            setFname(usr.data.FirstName)
-            setLname(usr.data.LastName)
-            setToken(usr.token)
-            setPid(usr.data.id)
-          
+            setFname(usr.data.FirstName);
+            setLname(usr.data.LastName);
+            setToken(usr.token);
+            setPid(usr.data.id);
 
             //return false;
           }
@@ -110,67 +109,63 @@ const Personal_info = ({navigation}) => {
     //setDateOfBirth(userObj.dob)
   }, []);
 
-  const handleUpdate= ()=>{
-
+  const handleUpdate = () => {
     setisLoading(true);
 
     // const objData = JSON.stringify({
     //   FirstName: "Muizzz1",
     //   LastName: "Enyyyyy",
     // });
-     const objData = {
+    const objData = {
       FirstName: Fname,
       LastName: Lname,
-     }
+    };
 
     //const token = userObj.token
-    const token = Token
+    const token = Token;
     //const token = "sssss"
 
     const config = {
       method: 'patch',
       maxBodyLength: Infinity,
       //url: 'https://docare.posaccountant.com/main/api/v1/patients/'+userObj.data.Account.id,
-      url: 'https://docare.posaccountant.com/main/api/v1/patients/'+Pid,
+      url: 'https://docare.posaccountant.com/main/api/v1/patients/' + Pid,
       //url: 'https://docare.posaccountant.com/main/api/v1/patients/8',
-      headers: { 
-        
+      headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+        Authorization: `Bearer ${token}`,
       },
       data: objData,
     };
 
     console.log(config);
-   //  console.log(objData);
+    //  console.log(objData);
 
     //return false;
 
     axios(config)
-    .then(response => {
-       console.log('Response:', response.data);
-      //console.log('Response:', response.data.data);
-     // console.log('Response:', response.token);
+      .then(response => {
+        console.log('Response:', response.data);
+        //console.log('Response:', response.data.data);
+        // console.log('Response:', response.token);
 
-      if (response.data.success == true) {
-        //rspMsg1(response.data.message);
-       //console.log(response.data);
-       
-      } else {
-        rspMsg1(response.message);
-      }
+        if (response.data.success == true) {
+          //rspMsg1(response.data.message);
+          //console.log(response.data);
+        } else {
+          rspMsg1(response.message);
+        }
 
-      setisLoading(false);
-    })
-    .catch(error => {
-      //console.log("error")
-      console.error('Error:', error);
-      setisLoading(false);
-    });
+        setisLoading(false);
+      })
+      .catch(error => {
+        //console.log("error")
+        console.error('Error:', error);
+        setisLoading(false);
+      });
+  };
 
-  }
-
-  const rspMsg1 = (msg) => {
+  const rspMsg1 = msg => {
     toast.show({
       render: () => {
         return (
@@ -184,64 +179,55 @@ const Personal_info = ({navigation}) => {
     });
   };
 
-
   const {width} = Dimensions.get('window');
 
   return (
     <VStack space="5" backgroundColor="#FFFFFF" flex={1}>
-      
-
-      {isLoading?(
-              <Box
-              w="100"
-              mt="30"
-              position="absolute"
-              right="1"
-              >
-              <Text
-                w="205"
-                fontSize="18"
-                fontWeight="700"
-                color="#d0e1fb"
-                lineHeight="30"
-                fontFamily="GeneralSans-Bold">
-                {' '}
-                <FontAwesome5
-                  name="save"
-                  color="#1C70EE"
-                  size={20}
-                  color="#000000"
-                />{' '}
-                Save
-                {userObj}
-              </Text>
-            </Box>
-      ):(
-              <Pressable
-              w="100"
-              mt="30"
-              position="absolute"
-              right="1"
-              onPress={handleUpdate}>
-              <Text
-                w="205"
-                fontSize="18"
-                fontWeight="700"
-                color="#1C70EE"
-                lineHeight="30"
-                fontFamily="GeneralSans-Bold">
-                {' '}
-                <FontAwesome5
-                  name="save"
-                  color="#1C70EE"
-                  size={20}
-                  color="#000000"
-                />{' '}
-                Save
-              </Text>
-            </Pressable>
+      {isLoading ? (
+        <Box w="100" mt="30" position="absolute" right="1">
+          <Text
+            w="205"
+            fontSize="18"
+            fontWeight="700"
+            color="#d0e1fb"
+            lineHeight="30"
+            fontFamily="GeneralSans-Bold">
+            {' '}
+            <FontAwesome5
+              name="save"
+              color="#1C70EE"
+              size={20}
+              color="#000000"
+            />{' '}
+            Save
+            {userObj}
+          </Text>
+        </Box>
+      ) : (
+        <Pressable
+          w="100"
+          mt="30"
+          position="absolute"
+          right="1"
+          onPress={handleUpdate}>
+          <Text
+            w="205"
+            fontSize="18"
+            fontWeight="700"
+            color="#1C70EE"
+            lineHeight="30"
+            fontFamily="GeneralSans-Bold">
+            {' '}
+            <FontAwesome5
+              name="save"
+              color="#1C70EE"
+              size={20}
+              color="#000000"
+            />{' '}
+            Save
+          </Text>
+        </Pressable>
       )}
-
 
       <FormControl w="100%" maxW="500" alignItems="left" mt="10">
         <Box mb="1" mt="1" mx="3">
@@ -271,7 +257,6 @@ const Personal_info = ({navigation}) => {
             placeholder="Enter Last Name"
             minWidth="100%"
             onChangeText={val => setLname(val)}
-            
           />
         </Box>
 
@@ -353,7 +338,7 @@ const Personal_info = ({navigation}) => {
             placeholder="Text Area Placeholder"
             mx="1"
             minWidth="50%"
-          //  value={userObj.data.Account.FirstName}
+            //  value={userObj.data.Account.FirstName}
             //    onChangeText={(val)=>setPhone(val)}
             onChangeText={() => {
               console.log('');

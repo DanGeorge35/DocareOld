@@ -28,15 +28,13 @@ import Successful_page from './screens/Forget_password/Successful_page';
 
 // import Profile from './screens/Patient_profile/Profile';
 // import Personal_info from './screens/Patient_profile/Personal_info';
- import Contact from './screens/Emergency_order/Patient_profile/Contact';
+import Contact from './screens/Emergency_order/Patient_profile/Contact';
 // import Medical_info from './screens/Patient_profile/Medical_info';
 // import Location_info from './screens/Patient_profile/Location_info';
 // import Communication_pref from './screens/Patient_profile/Communication_pref';
 // import Security_settings from './screens/Patient_profile/Security_settings';
 
 //========================================================================
-
-
 
 import Doctors_list_view from './screens/appointment_scheduling/Doctors_list_view';
 //import Emergency_order_map from './screens/Emergency_order/Emergency_order_map';
@@ -120,15 +118,14 @@ export default function app() {
 
   console.log(hasPickedLanguage);
 
-  Account_type;
   if (hasPickedLanguage === null) {
     routeName = 'Lang_select';
     // This is the 'tricky' part: The query to AsyncStorage is not finished, but we have to present something to the user. Null will just render nothing, so you can also put a placeholder of some sort, but effectively the interval between the first mount and AsyncStorage retrieving your data won't be noticeable to the user. But if you want to display anything then you can use a LOADER here
-  } else if (hasPickedLanguage == true) {
+  } else if (hasPickedLanguage === true) {
     if (isFirstLaunch === null) {
       routeName = 'Onboarding';
       // return null; // This is the 'tricky' part: The query to AsyncStorage is not finished, but we have to present something to the user. Null will just render nothing, so you can also put a placeholder of some sort, but effectively the interval between the first mount and AsyncStorage retrieving your data won't be noticeable to the user. But if you want to display anything then you can use a LOADER here
-    } else if (isFirstLaunch == true) {
+    } else if (isFirstLaunch === true) {
       routeName = 'Onboarding';
     } else {
       routeName = 'Login_screen';
@@ -137,8 +134,6 @@ export default function app() {
     routeName = 'Lang_select';
   }
 
-  
-
   return (
     <NativeBaseProvider>
       <StatusBar barStyle="light-content" backgroundColor="#007bff" />
@@ -146,104 +141,35 @@ export default function app() {
         {/* <Stack.Navigator initialRouteName={isSignUp ? 'Intro_screen':'Login_screen'}> */}
 
         <Stack.Navigator initialRouteName={routeName}>
-<<<<<<< HEAD
-=======
           {/* <Stack.Screen
                 name="Intro_screen"
                 options={{headerShown:false}}
                 component={Intro_screen}
                 /> */}
 
->>>>>>> origin/main
           <Stack.Screen
             name="Onboarding"
             options={{headerShown: false}}
             component={OnboardingScreen}
           />
-<<<<<<< HEAD
-          {/*
-          <Stack.Screen
-            name="Profile"
-            options={{
-              ...Header('Profile', '#007bff'),
-              headerTitleAlign: 'center',
-              //headerTitle: 'Profile',
-            }}
-            component={Profile}
+
+          {/* <Stack.Screen
+            name="Emergency_nav"
+            options={{headerShown: false}}
+            component={Emergency_nav}
           /> */}
-=======
->>>>>>> origin/main
 
-
-
-         <Stack.Screen
-              name="Emergency_nav"
-              options={{headerShown: false}}
-              component={Emergency_nav}
-            />
-
-        <Stack.Screen
+          <Stack.Screen
             name="Contact"
             options={Header('Contact', '#007bff')}
             component={Contact}
           />
-            
-       
-       
+
           {/* <Stack.Screen
               name="Doctors_list_view"
               options={{headerShown: false}}
               component={Doctors_list_view}
             /> */}
-
-<<<<<<< HEAD
-          <Stack.Screen
-            name="Contact"
-            options={Header('Contact', '#007bff')}
-            component={Contact}
-          />
-
-          <Stack.Screen
-            name="Communication_pref"
-            options={{headerShown: false}}
-            component={Communication_pref}
-          />
-
-          <Stack.Screen
-            name="Location_info"
-            options={{headerShown: false}}
-            component={Location_info}
-          />
-
-          <Stack.Screen
-            name="Medical_info"
-            options={Header('Medical Information', '#007bff')}
-            component={Medical_info}
-          />
-
-          {/* <Stack.Screen
-            name="Profile"
-            options={{
-              ...Header('Profile', '#007bff'),
-              headerTitleAlign: 'center',
-              //headerTitle: 'Profile',
-            }}
-            component={Profile}
-          /> */}
-
-          <Stack.Screen
-            name="Personal_info"
-            options={Header('Personal Information', '#007bff')}
-            component={Personal_info}
-          />
-
-          <Stack.Screen
-            name="Security_settings"
-            options={Header('Security settings', '#007bff')}
-            component={Security_settings}
-          />
-=======
->>>>>>> origin/main
 
           <Stack.Screen
             name="Lang_select"
@@ -298,10 +224,6 @@ export default function app() {
             options={Header('', '#007bff')}
             component={Successful_page}
           />
-
-          
-
-          
         </Stack.Navigator>
 
         {/* <Splash_screen/> */}

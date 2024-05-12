@@ -90,7 +90,6 @@ const Emergency_order_map = ({navigation}) => {
     openLarge: false,
     showCloseButton: true,
     noBackgroundOpacity: true,
-    showCloseButton: false,
     allowTouchOutside: true,
     //onlySmall: true,
 
@@ -182,7 +181,7 @@ const Emergency_order_map = ({navigation}) => {
 
 //   returnKeyType={'default'}
   fetchDetails={true}
-  
+
 
   onPress={(data, details = null) => {
     // 'details' is provided when fetchDetails = true
@@ -208,16 +207,16 @@ const Emergency_order_map = ({navigation}) => {
   // }}
 
   // textInputProps={{
-    
+
   //   style: {
   //     backenddatashow:'#ffffff',
   //     color: '#000000',
-      
+
   //   }
   // }}
 
   listItemText={{
-    color: 'black', 
+    color: 'black',
   }}
 
   onFail = {err=>console.log(err)}
@@ -226,15 +225,15 @@ const Emergency_order_map = ({navigation}) => {
   //   container: styles.autocompleteContainer,
 
   //   textInputContainer: {
-    
+
   //     color:'#000000'
   //   },
   // }}
 
-  
 
-  listViewDisplayed='auto' 
-  enablePoweredByContainer={false} 
+
+  listViewDisplayed='auto'
+  enablePoweredByContainer={false}
 
   renderRow={(rowData) => (
     <View style={styles.listItemContainer}>
@@ -243,7 +242,7 @@ const Emergency_order_map = ({navigation}) => {
   )}
 
   styles={ styles1 }
-/> 
+/>
 
 </View>*/}
 
@@ -272,8 +271,8 @@ const Emergency_order_map = ({navigation}) => {
 
           {/* for Multiple Marker */}
 
-          {/*  
-       {
+          {/*
+      {
         markerList.map((marker)=>{
           return(
             <Marker
@@ -290,7 +289,7 @@ const Emergency_order_map = ({navigation}) => {
                 description={marker.description}
                 onDragEnd={(e) => console.log({ x: e.nativeEvent.coordinate })}
 
-          /> 
+          />
           )
         })
       } */}
@@ -429,9 +428,9 @@ const Emergency_order_map = ({navigation}) => {
                       placeholder='Search..'
                       minLength={4}
 
-                   
+
                       fetchDetails={true}
-                      
+
 
                       onPress={(data, details = null) => {
                         // 'details' is provided when fetchDetails = true
