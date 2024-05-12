@@ -9,19 +9,7 @@ import {
   Platform,
 } from 'react-native';
 import {TabView, TabBar} from 'react-native-tab-view';
-import {Image, Text, useToast} from 'native-base';
-import React, {useState} from 'react';
-import {View, useWindowDimensions, StyleSheet} from 'react-native';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
-import {
-  VStack,
-  Text,
-  useToast,
-  FlatList,
-  Button,
-  Pressable,
-  Box,
-} from 'native-base';
+import {Image, Text, FlatList, Button, Pressable, Box} from 'native-base';
 import axios from 'axios';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -60,8 +48,8 @@ const moveNextTab = () => {
 
 const Create_account = ({navigation}) => {
   const layout = useWindowDimensions();
-  const toast = useToast();
-  const [isLoading, setisLoading] = useState(false);
+  const toast = React.useToast();
+  const [isLoading, setisLoading] = React.useState(false);
   const [index, setIndex] = React.useState(0);
 
   const [routes] = React.useState([
@@ -70,7 +58,7 @@ const Create_account = ({navigation}) => {
     {key: 'password', title: 'AUTH'},
   ]);
 
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = React.useState({
     name: {
       fname: '',
       lname: '',
