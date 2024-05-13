@@ -16,14 +16,15 @@ const Done = ({...props}) => (
 );
 
 const OnboardingScreen = ({navigation}) => {
+  console.log(navigation);
   return (
     <View style={styles.container}>
       <Text style={styles.DocareText}>Doctor's care</Text>
 
       <Onboarding
         DoneButtonComponent={Done}
-        onSkip={() => navigation.replace('Login_screen')}
-        onDone={() => navigation.navigate('Login_screen')}
+        onSkip={() => navigation.replace('Account_type')}
+        onDone={() => navigation.navigate('Account_type')}
         pages={[
           {
             backgroundColor: '#1C70EE',

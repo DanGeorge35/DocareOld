@@ -1,85 +1,64 @@
 import React, {useState} from 'react';
-import {View, useWindowDimensions, StyleSheet, Text} from 'react-native';
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+import {View, StyleSheet} from 'react-native';
 import {
-  NativeBaseProvider,
-  HStack,
-  Spacer,
   FormControl,
   Input,
   Box,
-  Badge,
-  CheckIcon,
-  Center,
-  Flex,
-  WarningOutlineIcon,
-  VStack,
-  Select,
-  Stack,
-  Image,
   Icon,
-  useToast,
-  FlatList,
-  Button,
   Pressable,
+  WarningOutlineIcon,
+  Button,
 } from 'native-base';
-
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const moveNextTab = () => {
-  console.log('helloo');
-};
-
-const Create_account_password = ({onNext, formData, onInputChange}) => {
-  const [show, setShow] = React.useState(false);
-  // const [isLoading, setisLoading] = useState(false);
-  const [errPass, errSetPass] = useState('');
-  const [errCPass, errSetCPass] = useState('');
+const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
+  const [show, setShow] = useState(false);
+  const [errPass, setErrPass] = useState('');
+  const [errCPass, setErrCPass] = useState('');
 
   const validateInput = () => {
     let x = 0;
-    if (
-      formData.password !== formData.cpassword
-    ) {
+    if (formData.password !== formData.cpassword) {
       x = 1;
-      errSetCPass('Password not match');
+      setErrCPass('Passwords do not match');
     } else {
-      errSetCPass('');
+      setErrCPass('');
     }
 
-    if (formData.password == '') {
+    if (formData.password === '') {
       x = 1;
-      errSetPass('Password is Required');
+      setErrPass('Password is required');
     } else {
-      errSetPass('');
+      setErrPass('');
     }
 
-    if (formData.cpassword == '') {
+    if (formData.cpassword === '') {
       x = 1;
-      errSetCPass('Confirm Password is Required');
+      setErrCPass('Confirm Password is required');
     } else {
-      errSetCPass('');
+      setErrCPass('');
     }
 
-    if (x == 0) {
+    if (x === 0) {
       onNext();
     }
   };
 
   return (
 
+
     <FormControl w="100%" maxW="500" alignItems="left" mt="5" isInvalid>
 
 
       <Box mb="2" mt="2">
 
-        <FormControl.Label color="dark.500">Password</FormControl.Label>
 
+    <FormControl w="100%" maxW="500" alignItems="left" mt={5} isInvalid>
+      <Box mb={2} mt={2}>
+
+        <FormControl.Label color="dark.500">Password</FormControl.Label>
         <Input
-          w={{
-            base: '100%',
-            md: '25%',
-          }}
+          w="100%"
           type={show ? 'text' : 'password'}
           size="md"
           variant="outline"
@@ -88,7 +67,7 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
               <Icon
                 as={<FontAwesome5 name={show ? 'eye' : 'eye-slash'} />}
                 size={5}
-                mr="5"
+                mr={5}
                 color="dark.400"
               />
             </Pressable>
@@ -101,16 +80,11 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
           {errPass}
         </FormControl.ErrorMessage>
 
-
-        <FormControl.Label color="dark.500" mt="6">
+        <FormControl.Label color="dark.500" mt={6}>
           Confirm Password
         </FormControl.Label>
-
         <Input
-          w={{
-            base: '100%',
-            md: '25%',
-          }}
+          w="100%"
           type={show ? 'text' : 'password'}
           size="md"
           variant="outline"
@@ -119,7 +93,7 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
               <Icon
                 as={<FontAwesome5 name={show ? 'eye' : 'eye-slash'} />}
                 size={5}
-                mr="5"
+                mr={5}
                 color="dark.400"
               />
             </Pressable>
@@ -128,7 +102,6 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
           value={formData.cpassword}
           onChangeText={value => onInputChange('cpassword', value)}
         />
-
         <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
           {errCPass}
         </FormControl.ErrorMessage>
@@ -151,8 +124,19 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
           </Box>
         </Box>
 
+
+      <Button
+        bg="#1C70EE"
+        borderRadius="md"
+        w="100%"
+        h={12}
+        onPress={validateInput}
+        mt={4}>
+        Submit
+      </Button>
+
     </FormControl>
   );
 };
 
-export default Create_account_password;
+export default CreateAccountPassword;
