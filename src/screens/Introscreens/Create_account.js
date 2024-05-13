@@ -1,15 +1,25 @@
 /* eslint-disable react-native/no-inline-styles */
-import * as React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   useWindowDimensions,
-  StyleSheet,
+  StyleSheet,Image,
   KeyboardAvoidingView,
   ScrollView,
   Platform,
 } from 'react-native';
-import {TabView, TabBar} from 'react-native-tab-view';
-import {Image, Text, FlatList, Button, Pressable, Box} from 'native-base';
+
+
+import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+import {
+  VStack,
+  Text,
+  useToast,
+  FlatList,
+  Button,
+  Pressable,
+  Box,
+} from 'native-base';
 import axios from 'axios';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -48,7 +58,7 @@ const moveNextTab = () => {
 
 const Create_account = ({navigation}) => {
   const layout = useWindowDimensions();
-  const toast = React.useToast();
+  const toast = useToast();
   const [isLoading, setisLoading] = React.useState(false);
   const [index, setIndex] = React.useState(0);
 

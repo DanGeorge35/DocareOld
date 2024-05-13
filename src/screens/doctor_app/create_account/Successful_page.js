@@ -19,7 +19,7 @@ const Successful_page = ({navigation}) => {
     <VStack   px="1"  backgroundColor="#fff" flex={1} >
         
 
-        <Box alignItems="center" mt="170">
+        <Box alignItems="center" mt="100">
 
             <Image source={require( "../../../../assets/success.png") } alt="Alternate Text" size="xl" />
 

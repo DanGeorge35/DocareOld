@@ -19,7 +19,7 @@ const Success_page_kyc = () => {
     <VStack   px="1"  backgroundColor="#fff" flex={1} >
         
 
-        <Box alignItems="center" mt="170">
+        <Box alignItems="center" mt="100">
 
             <Image source={require( "../../../../assets/success.png") } alt="Alternate Text" size="xl" />
 
@@ -33,8 +33,8 @@ We will get back to you in 24 hours.
             </Box>
 
 
-            <Box alignItems="center"  bottom="-50">
-                        <Button bg="#1C70EE"  borderRadius="md" w="300"  onPress={() => navigation.navigate('National_ID_verify')}>Done</Button>
+                <Box alignItems="center"  bottom="-50">
+                        <Button bg="#1C70EE"  borderRadius="md" w="300"  onPress={() => console.log("Start up")}>Done</Button>
                 </Box>
 
         </Box>

@@ -19,21 +19,9 @@ const Upload_pix_doc = ({navigation}) => {
     <VStack   px="1"  backgroundColor="#fff" flex={1} >
 
  
-            <Box mt="10" ml="3" mb="0"  w="300" h="7">
+        
 
-            <Text fontSize="lg" color="#000000" fontWeight="bold" lineHeight="25"  fontFamily="Inter-Black"  onPress={() => navigation.navigate('Account_type')}><FontAwesome5 name="arrow-left" size={20}  color="#000000" />   Create account </Text>
-
-        </Box>
-
-
-        <Stack  space={2} px="4" mt="2" direction="row" > 
-                <View   borderColor="#1C70EE"  borderWidth="1" w="24"/> 
-                <View   borderColor="#1C70EE"  borderWidth="1" w="24"/> 
-                {/* <View  borderColor="#b8d2fa"  borderWidth="1" w="24"/>  */}
-                <View   borderColor="#F5F5FF"  borderWidth="1" w="24"/> 
-        </Stack>
-
-        <Text fontWeight="bold" px="3" mt="5" fontFamily="GeneralSans-Bold" fontSize="16"  > Upload your picture</Text>
+        <Text fontWeight="bold" px="3" mt="5" fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="18" textAlign="center"  > Upload your picture</Text>
 
 
         <Box alignItems="center" justifyContent="center"  mt="10" >
@@ -44,7 +32,7 @@ const Upload_pix_doc = ({navigation}) => {
 
         <Box alignItems="center" position="relative" bottom="-200">
                     <Button bg="#1C70EE"  borderRadius="md" w="300"  onPress={() => navigation.navigate('Create_password')}>Create Account</Button>
-            </Box>
+        </Box>
 
 
 

@@ -45,8 +45,11 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
   };
 
   return (
+
+
     <FormControl w="100%" maxW="500" alignItems="left" mt={5} isInvalid>
       <Box mb={2} mt={2}>
+
         <FormControl.Label color="dark.500">Password</FormControl.Label>
         <Input
           w="100%"
@@ -98,6 +101,24 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
         </FormControl.ErrorMessage>
       </Box>
 
+      <Box alignItems="center" mt="30%">
+        <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
+          Submit
+        </Button>
+
+          <Box alignItems="center" mt="90%">
+                  <Button
+                      bg="#1C70EE"
+                      borderRadius="md"
+                      w="300"
+                      h="12"
+                      onPress={validateInput}>
+                      Submit
+                    </Button>
+          </Box>
+      </Box>
+
+
       <Button
         bg="#1C70EE"
         borderRadius="md"
@@ -107,6 +128,7 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
         mt={4}>
         Submit
       </Button>
+
     </FormControl>
   );
 };

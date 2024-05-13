@@ -141,23 +141,11 @@ export default function app() {
         {/* <Stack.Navigator initialRouteName={isSignUp ? 'Intro_screen':'Login_screen'}> */}
 
         <Stack.Navigator initialRouteName={routeName}>
-          {/* <Stack.Screen
-                name="Intro_screen"
-                options={{headerShown:false}}
-                component={Intro_screen}
-                /> */}
-
           <Stack.Screen
             name="Onboarding"
             options={{headerShown: false}}
             component={OnboardingScreen}
           />
-
-          {/* <Stack.Screen
-            name="Emergency_nav"
-            options={{headerShown: false}}
-            component={Emergency_nav}
-          /> */}
 
           <Stack.Screen
             name="Contact"
@@ -170,6 +158,8 @@ export default function app() {
               options={{headerShown: false}}
               component={Doctors_list_view}
             /> */}
+
+
 
           <Stack.Screen
             name="Lang_select"
@@ -226,20 +216,7 @@ export default function app() {
           />
         </Stack.Navigator>
 
-        {/* <Splash_screen/> */}
-        {/* <Intro_screen/> */}
-        {/* <Lang_select/> */}
-        {/* <Account_type/> */}
-        {/* <Login_screen/> */}
-        {/* <Create_account/> */}
-
-        {/* <Success_page/> */}
-        {/* <Tabss/> */}
-        {/* <Forget_pass/> */}
-        {/* <Retrieve_otp/> */}
-        {/* <Reset_password/> */}
-
-        {/* <Successful_page/> */}
+        
       </NavigationContainer>
     </NativeBaseProvider>
   );
