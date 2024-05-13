@@ -51,7 +51,7 @@ const Personal_info_kyc = ({navigation}) => {
   return (
     <VStack   px="1"  backgroundColor="#fff" flex={1} >
 
-            <Box mt="10" ml="3" mb="0"  w="300" h="7">
+            {/* <Box mt="10" ml="3" mb="0"  w="300" h="7">
                     <Text fontSize="lg" color="#000000" fontWeight="bold" lineHeight="25"  fontFamily="Inter-Black"  onPress={() => navigation.navigate('Successful_page')}><FontAwesome5 name="arrow-left" size={20}  color="#000000" />   KYC Verification </Text>
             </Box>
 
@@ -59,7 +59,7 @@ const Personal_info_kyc = ({navigation}) => {
                     <View   borderColor="#1C70EE"  borderWidth="1" w="24"/> 
                     <View  borderColor="#1C70EE"  borderWidth="1" w="24"/> 
                     <View   borderColor="#F5F5FF"  borderWidth="1" w="24"/> 
-            </Stack>
+            </Stack> */}
 
             <Box px="3">
 

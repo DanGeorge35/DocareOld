@@ -47,12 +47,6 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
   return (
 
 
-    <FormControl w="100%" maxW="500" alignItems="left" mt="5" isInvalid>
-
-
-      <Box mb="2" mt="2">
-
-
     <FormControl w="100%" maxW="500" alignItems="left" mt={5} isInvalid>
       <Box mb={2} mt={2}>
 
@@ -122,7 +116,7 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
                       Submit
                     </Button>
           </Box>
-        </Box>
+      </Box>
 
 
       <Button

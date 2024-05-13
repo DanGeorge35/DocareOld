@@ -22,7 +22,7 @@ const Create_password = ({navigation}) => {
     <VStack   px="1"  backgroundColor="#fff" flex={1} >
 
  
-            <Box mt="10" ml="3" mb="0"  w="300" h="7">
+            {/* <Box mt="10" ml="3" mb="0"  w="300" h="7">
 
                  <Text fontSize="lg" color="#000000" fontWeight="bold" lineHeight="25"  fontFamily="Inter-Black"  onPress={() => navigation.navigate('Account_type')}><FontAwesome5 name="arrow-left" size={20}  color="#000000" />   Create account </Text>
 
@@ -33,9 +33,8 @@ const Create_password = ({navigation}) => {
                 <View   borderColor="#1C70EE"  borderWidth="1" w="24"/> 
                 <View   borderColor="#1C70EE"  borderWidth="1" w="24"/> 
                 <View   borderColor="#1C70EE"  borderWidth="1" w="24"/> 
-                {/* <View  borderColor="#b8d2fa"  borderWidth="1" w="24"/>  */}
-                {/* <View   borderColor="#F5F5FF"  borderWidth="1" w="24"/>  */}
-        </Stack>
+                
+        </Stack> */}
 
         <Text fontWeight="bold" px="3" mt="5" fontFamily="GeneralSans-Bold" fontSize="16"  > Create Password </Text>
 

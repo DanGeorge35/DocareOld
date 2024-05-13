@@ -3,15 +3,13 @@ import React, {useState} from 'react';
 import {
   View,
   useWindowDimensions,
-  StyleSheet,
+  StyleSheet,Image,
   KeyboardAvoidingView,
   ScrollView,
   Platform,
 } from 'react-native';
-import {TabView, TabBar} from 'react-native-tab-view';
-import {Image, Text, useToast} from 'native-base';
-import React, {useState} from 'react';
-import {View, useWindowDimensions, StyleSheet} from 'react-native';
+
+
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {
   VStack,
@@ -60,7 +58,7 @@ const moveNextTab = () => {
 
 const Create_account = ({navigation}) => {
   const layout = useWindowDimensions();
-  const toast = React.useToast();
+  const toast = useToast();
   const [isLoading, setisLoading] = React.useState(false);
   const [index, setIndex] = React.useState(0);
 
