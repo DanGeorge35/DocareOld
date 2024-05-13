@@ -67,8 +67,12 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
   };
 
   return (
+
     <FormControl w="100%" maxW="500" alignItems="left" mt="5" isInvalid>
+
+
       <Box mb="2" mt="2">
+
         <FormControl.Label color="dark.500">Password</FormControl.Label>
 
         <Input
@@ -93,7 +97,7 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
           value={formData.password}
           onChangeText={value => onInputChange('password', value)}
         />
-      <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
           {errPass}
         </FormControl.ErrorMessage>
 
@@ -134,20 +138,19 @@ const Create_account_password = ({onNext, formData, onInputChange}) => {
         <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
           Submit
         </Button>
-      <Box alignItems="center" mt="90%">
 
+          <Box alignItems="center" mt="90%">
+                  <Button
+                      bg="#1C70EE"
+                      borderRadius="md"
+                      w="300"
+                      h="12"
+                      onPress={validateInput}>
+                      Submit
+                    </Button>
+          </Box>
+        </Box>
 
-
-              <Button
-                  bg="#1C70EE"
-                  borderRadius="md"
-                  w="300"
-                  h="12"
-                  onPress={validateInput}>
-                  Submit
-                </Button>
-
-      </Box>
     </FormControl>
   );
 };

@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import * as React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   useWindowDimensions,
@@ -8,15 +8,14 @@ import {
   ScrollView,
   Platform,
 } from 'react-native';
-import {TabView, TabBar} from 'react-native-tab-view';
-import {Image, Text, useToast} from 'native-base';
-import React, {useState} from 'react';
-import {View, useWindowDimensions, StyleSheet} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
+
+
 import {
   VStack,
   Text,
   useToast,
+  Image,
   FlatList,
   Button,
   Pressable,
