@@ -20,11 +20,17 @@ import Personal_info_doc from './screens/doctor_app/create_account/Personal_info
 import Upload_pix_doc from './screens/doctor_app/create_account/Upload_pix_doc';
 import Create_password from './screens/doctor_app/create_account/Create_password';
 import Successful_page from './screens/doctor_app/create_account/Successful_page';
+import Verify_account from './screens/doctor_app/create_account/Verify_account';
 
 import National_ID_verify from './screens/doctor_app/kyc/National_ID_verify';
 import Personal_info_kyc from './screens/doctor_app/kyc/Personal_info_kyc';
 import Work_experience from './screens/doctor_app/kyc/Work_experience';
 import Success_page_kyc from './screens/doctor_app/kyc/Success_page_kyc';
+
+
+
+
+
 
 const Stack = createStackNavigator();
 
@@ -128,13 +134,14 @@ export default function AppDoc() {
           <Stack.Screen
             name="Lang_select"
             component={Lang_select}
+            //options={{headerShown: false}}
             options={Header('Language Selection', '#007bff')}
           />
           <Stack.Screen
             name="Login_screen"
             component={Login_screen}
-            //options={{headerShown: false}}
-            options={Header('Login ', '#007bff')}
+            options={{headerShown: false}}
+           // options={Header('Login ', '#007bff')}
           />
 
           <Stack.Screen
@@ -174,6 +181,13 @@ export default function AppDoc() {
             component={Work_experience}
             options={Header('KYC Verification', '#007bff')}
           />
+
+          <Stack.Screen
+            name="Verify_account"
+            component={Verify_account}
+            options={Header('Verification Code', '#007bff')}
+          />
+
           <Stack.Screen
             name="Success_page_kyc"
             component={Success_page_kyc}

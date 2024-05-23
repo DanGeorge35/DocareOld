@@ -97,7 +97,7 @@ const Create_account = ({navigation}) => {
     // Aggregate data
     const aggregatedData = {...formData};
 
-    //console.log(aggregatedData);
+    console.log(aggregatedData);
 
     const objData = {
       FirstName: aggregatedData.name.fname,
@@ -111,11 +111,16 @@ const Create_account = ({navigation}) => {
     // {"Phone_no": "07063730332", "email": "showtechitconcept@gmail.com", "fname": "Shomorin ", "lname": "Muizz", "password": "aaaa"}
     //
 
-    axios({
+    const config = {
       method: 'post',
-      url: 'https://docare.posaccountant.com/main/api/v1/patients',
+      url: 'https://docare.posaccountant.com/main/api/v1/patients/',
+      headers: {
+        'Content-Type': 'application/json',
+      },
       data: objData,
-    })
+    };
+
+    axios(config)
       .then(response => {
         console.log('Response:', response.data);
 
@@ -190,6 +195,7 @@ const Create_account = ({navigation}) => {
     <KeyboardAvoidingView
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+
       <ScrollView
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="handled">

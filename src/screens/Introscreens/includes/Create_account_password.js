@@ -102,11 +102,12 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
       </Box>
 
       <Box alignItems="center" mt="30%">
+        
         <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
           Submit
         </Button>
 
-          <Box alignItems="center" mt="90%">
+          {/* <Box alignItems="center" mt="90%">
                   <Button
                       bg="#1C70EE"
                       borderRadius="md"
@@ -115,19 +116,12 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
                       onPress={validateInput}>
                       Submit
                     </Button>
-          </Box>
+          </Box> */}
+
       </Box>
 
 
-      <Button
-        bg="#1C70EE"
-        borderRadius="md"
-        w="100%"
-        h={12}
-        onPress={validateInput}
-        mt={4}>
-        Submit
-      </Button>
+     
 
     </FormControl>
   );

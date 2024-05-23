@@ -75,8 +75,8 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
           size="md"
           variant="outline"
           placeholder="Enter Email Address"
-          minWidth="335"
-          w="90%"
+          minWidth="305"
+          w="100%"
           value={formData.email}
           onChangeText={value => onInputChange('email', value)}
 
@@ -99,15 +99,12 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
           keyboardType="number-pad"
           variant="outline"
           placeholder="+234"
-          minWidth="335"
-          w="90%"
+          minWidth="305"
+          w="100%"
           value={formData.phone_no}
           onChangeText={value => onInputChange('phone_no', value)}
 
-          //    onChangeText={(val)=>setPhone(val)}
-          // onChangeText={() => {
-          //   console.log('');
-          // }}
+         
         />
 
         <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>

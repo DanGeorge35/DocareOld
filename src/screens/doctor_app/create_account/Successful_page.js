@@ -27,14 +27,17 @@ const Successful_page = ({navigation}) => {
 
             <Box w="300" h="66" mt="1">
                 <Text  fontSize="sm" color="#494949" textAlign="center"> You have successfully created your doctor 
-                    account on Do’Care. Now, kindly complete 
-                        your KYC to start attending patients. 
+                    account on Do’Care. Now, kindly Visit your mail, to Retrieve your token. 
                 </Text>
             </Box>
 
 
-            <Box alignItems="center"  bottom="-250">
+                {/* <Box alignItems="center"  bottom="-250">
                         <Button bg="#1C70EE"  borderRadius="md" w="300"  onPress={() => navigation.navigate('National_ID_verify')}>Proceed to KYC</Button>
+                </Box> */}
+
+                <Box alignItems="center"  bottom="-250">
+                        <Button bg="#1C70EE"  borderRadius="md" w="300"  onPress={() => navigation.navigate('National_ID_verify')}>Verify Account</Button>
                 </Box>
 
         </Box>
