@@ -132,7 +132,10 @@ export default function app() {
     }
   } else {
     routeName = 'Lang_select';
+    
   }
+
+  routeName = 'Login_screen';  // Will remove this just to shortcut the sign up
 
   return (
     <NativeBaseProvider>
@@ -214,6 +217,15 @@ export default function app() {
             options={Header('', '#007bff')}
             component={Successful_page}
           />
+
+         
+          <Stack.Screen
+            name="Emergency_nav"
+            options={{headerShown: false}}
+            component={Emergency_nav}
+          />
+
+
         </Stack.Navigator>
 
         

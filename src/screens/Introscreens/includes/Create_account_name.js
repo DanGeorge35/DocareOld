@@ -60,7 +60,8 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
 
   return (
     <VStack space="2.5" backgroundColor="#fff" flex={1}>
-      <FormControl w="100%" maxW="500" isInvalid alignItems="center">
+      <FormControl w="100%" maxW="500" isInvalid >
+        
         <Box mb="2" mt="2">
           <FormControl.Label>First Name</FormControl.Label>
 
@@ -69,27 +70,18 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
             size="md"
             variant="outline"
             placeholder="Enter First Name"
-            minWidth="335"
-            w="90%"
+            minWidth="305"
+            w="100%"
             //borderColor="blue"
             value={formData.fname}
             onChangeText={value => onInputChange('fname', value)}
 
-            // onChangeText={(val)=>setPhone(val)}
-            // onChangeText={() => {
-            //   console.log('ccc');
-            // }}
           />
 
           <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
             {errFname1}
           </FormControl.ErrorMessage>
-
-          {/* <FormControl.ErrorMessage _text={{
-          fontSize: 'xs'
-        }}>
-            {errFname1}
-          </FormControl.ErrorMessage> */}
+        </Box>
 
           <Box>
             <FormControl.Label color="#000000" mt="6">
@@ -101,22 +93,19 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
               size="md"
               variant="outline"
               placeholder="Enter Last Name"
-              minWidth="335"
-              w="90%"
+              minWidth="305"
+              w="100%"
               value={formData.lname}
               onChangeText={value => onInputChange('lname', value)}
-              //    onChangeText={(val)=>setPhone(val)}
-              // onChangeText={() => {
-              //   console.log('');
-              // }}
+              
             />
 
             <FormControl.ErrorMessage
               leftIcon={<WarningOutlineIcon size="xs" />}>
               {errLname}
             </FormControl.ErrorMessage>
-          </Box>
         </Box>
+      
 
         {/* position="absolute" top="250%" */}
 
@@ -130,6 +119,7 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
             Continue
           </Button>
         </Box>
+
       </FormControl>
     </VStack>
   );

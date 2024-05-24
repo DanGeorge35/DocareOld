@@ -35,6 +35,42 @@ const Personal_info_doc = ({navigation}) => {
   const [date, setDate] = useState(new Date());
   const [showPicker, setShowPicker] = useState(false);
   const [dateOfBirth, setDateOfBirth] = useState();
+  const [isLoading, setisLoading] = useState(false);
+
+  //=======================================================
+
+  const [fName, setFname] = useState('');
+  const [lName, setLname] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [address, setAddress] = useState('');
+  const [special, setSpecial] = useState('');
+  const [tenure, setTenure] = useState('');
+  const [dob, setDob] = useState('');
+  const [pass, setPass] = useState('');
+
+  //=======================================================
+
+  const handleCreate = () => {
+    //console.log('hello');
+
+    const ObjDoc = {
+          FirstName: fName,
+          LastName: lName,
+          Email: email,
+          Dob: dateOfBirth,
+          Address:  address,
+          PracticingTenure: tenure,
+          Specialization: special,
+      }
+
+   
+      console.log(ObjDoc)
+    navigation.navigate('Create_password', { data: ObjDoc })
+  //  navigation.navigate('Create_password')
+    
+
+  };
 
   const toggleDatePicker = () => {
     setShowPicker(!showPicker);
@@ -56,6 +92,7 @@ const Personal_info_doc = ({navigation}) => {
         toggleDatePicker();
         //setDateOfBirth(currentDate.toDateString());
         setDateOfBirth(formatDate(currentDate));
+        //setDob(currentDate)
         // console.log(currentDate)
       }
     } else {
@@ -65,7 +102,6 @@ const Personal_info_doc = ({navigation}) => {
 
   return (
     <VStack px="1" backgroundColor="#fff" flex={1}>
-
       {/* <Box mt="10" ml="3" mb="0" w="300" h="7">
         <Text
           fontSize="lg"
@@ -105,9 +141,7 @@ const Personal_info_doc = ({navigation}) => {
             placeholder="Enter First Name"
             minWidth="300"
             w="100%"
-            onChangeText={() => {
-              console.log('');
-            }}
+            onChangeText={(val) => setFname(val)}
           />
 
           <Input
@@ -119,9 +153,7 @@ const Personal_info_doc = ({navigation}) => {
             placeholder="Enter Last Name"
             minWidth="300"
             w="100%"
-            onChangeText={() => {
-              console.log('');
-            }}
+            onChangeText={(val) => setLname(val)}
           />
 
           <Input
@@ -133,12 +165,10 @@ const Personal_info_doc = ({navigation}) => {
             placeholder="Enter Email Address"
             minWidth="300"
             w="100%"
-            onChangeText={() => {
-              console.log('');
-            }}
+            onChangeText={(val) => setEmail(val)}
           />
 
-          <Input
+          {/* <Input
             type="text"
             placeholderTextColor="#000000"
             size="md"
@@ -147,10 +177,8 @@ const Personal_info_doc = ({navigation}) => {
             placeholder=" Enter Phone Number"
             minWidth="300"
             w="100%"
-            onChangeText={() => {
-              console.log('');
-            }}
-          />
+            onChangeText={(val) => setPhone(val)}
+          /> */}
 
           <Input
             type="text"
@@ -161,9 +189,7 @@ const Personal_info_doc = ({navigation}) => {
             placeholder=" Enter Residential Address"
             minWidth="300"
             w="100%"
-            onChangeText={() => {
-              console.log('');
-            }}
+            onChangeText={(val) => setAddress(val)}
           />
 
           <Input
@@ -175,9 +201,7 @@ const Personal_info_doc = ({navigation}) => {
             placeholder=" Enter Specialisation"
             minWidth="300"
             w="100%"
-            onChangeText={() => {
-              console.log('');
-            }}
+            onChangeText={(val) => setSpecial(val)}
           />
 
           <Input
@@ -189,9 +213,7 @@ const Personal_info_doc = ({navigation}) => {
             placeholder="Practising Tenure"
             minWidth="300"
             w="100%"
-            onChangeText={() => {
-              console.log('');
-            }}
+            onChangeText={(val) => setTenure(val)}
           />
 
           {showPicker && (
@@ -234,15 +256,29 @@ const Personal_info_doc = ({navigation}) => {
             </Pressable>
           )}
 
-          <Box alignItems="center" mt="10">
+         
+
+          {isLoading ? (
             <Button
-              bg="#1C70EE"
-              borderRadius="md"
-              w="300"
-              onPress={() => navigation.navigate('Upload_pix_doc')}>
-              Create Account
+              isLoading
+              spinnerPlacement="end"
+              isLoadingText="Loading.."
+              mt="6"
+              bg="#00004d">
+              Button
             </Button>
-          </Box>
+          ) : (
+            <Box alignItems="center" mt="10">
+              <Button
+                bg="#1C70EE"
+                borderRadius="md"
+                w="300"
+                onPress={handleCreate}>
+                Create Account
+              </Button>
+            </Box>
+          )}
+
         </Box>
       </FormControl>
     </VStack>
