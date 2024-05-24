@@ -1,3 +1,4 @@
+/* eslint-disable react/react-in-jsx-scope */
 import {useEffect, useState} from 'react';
 import {
   View,
@@ -57,13 +58,7 @@ const Contact = ({navigation}) => {
           lineHeight="30"
           fontFamily="GeneralSans-Bold">
           {' '}
-          <FontAwesome5
-            name="save"
-            color="#1C70EE"
-            size={20}
-            color="#000000"
-          />{' '}
-          Save
+          <FontAwesome5 name="save" size={20} color="#000000" /> Save
         </Text>
       </Box>
 

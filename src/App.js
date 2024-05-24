@@ -57,7 +57,7 @@ export default function app() {
 
   useEffect(() => {
     // AsyncStorage.removeItem('alreadyLaunched');
-
+    // AsyncStorage.removeItem('userLanguage');
     AsyncStorage.getItem('userLanguage').then(value => {
       if (value == null) {
         // No need to wait for `setItem` to finish, although you might want to handle errors
@@ -132,10 +132,9 @@ export default function app() {
     }
   } else {
     routeName = 'Lang_select';
-    
   }
 
-  routeName = 'Login_screen';  // Will remove this just to shortcut the sign up
+  // routeName = 'Login_screen'; // Will remove this just to shortcut the sign up
 
   return (
     <NativeBaseProvider>
@@ -161,8 +160,6 @@ export default function app() {
               options={{headerShown: false}}
               component={Doctors_list_view}
             /> */}
-
-
 
           <Stack.Screen
             name="Lang_select"
@@ -218,17 +215,12 @@ export default function app() {
             component={Successful_page}
           />
 
-         
           <Stack.Screen
             name="Emergency_nav"
             options={{headerShown: false}}
             component={Emergency_nav}
           />
-
-
         </Stack.Navigator>
-
-        
       </NavigationContainer>
     </NativeBaseProvider>
   );

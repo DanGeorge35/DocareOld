@@ -71,33 +71,31 @@ const Login_screen = ({navigation}) => {
 
     const config = {
       method: 'post',
-      url: 'https://docare.posaccountant.com/main/api/v1/auth/login',
+      url: 'https://docare.posaccountant.com/api/v1/auth/login',
       headers: {
         'Content-Type': 'application/json',
       },
       data: objLoginData,
+      validateStatus: function (status) {
+        return status >= 200 && status < 500; // Accepts all status codes from 200 to 499
+      },
     };
-
-    //console.log(config)
 
     axios(config)
       .then(response => {
-        //console.log('Response:', response.data);
-        //console.log('Response:', response.data.data);
-        // console.log('Response:', response.token);
-
-        if (response.data.success == true) {
+        // Handle successful response (200-499)
+        if (response.data.success === true) {
           rspMsg1('Successful');
           UserSession(response.data);
-          navigation.navigate('Emergency_nav');
+          // navigation.navigate('Emergency_nav');
         } else {
-          rspMsg1(response.message);
+          rspMsg1(response.data.message);
         }
-
         setisLoading(false);
       })
       .catch(error => {
-        // console.log("error")
+        // Handle error (status code 500 and above)
+        setisLoading(false);
         console.error('Error:', error);
       });
 
@@ -187,7 +185,7 @@ const Login_screen = ({navigation}) => {
                 placeholder="Enter Email Address"
                 minWidth="280"
                 style={styles.input}
-                w="90%"
+                w="100%"
                 onChangeText={val => setEmail(val)}
                 // onChangeText={() => {
                 //   console.log('');

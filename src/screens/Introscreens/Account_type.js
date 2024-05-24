@@ -71,7 +71,7 @@ const Account_type = ({navigation}) => {
                   <Image
                     w="56"
                     h="56"
-                    source={require('../../../assets/doctor.png')}
+                    source={require('../../../assets/doc.jpg')}
                     alt="Alternate Text"
                     size="sm"
                   />
@@ -93,7 +93,7 @@ const Account_type = ({navigation}) => {
                     w="195"
                     lineHeight="20"
                     fontWeight="normal">
-                    Offer expertise and services to patients.
+                    Offer expertise and services to patients
                   </Text>
                 </Box>
               </Stack>
@@ -132,7 +132,7 @@ const Account_type = ({navigation}) => {
                   <Image
                     w="56"
                     h="56"
-                    source={require('../../../assets/hospital1.png')}
+                    source={require('../../../assets/pat.jpg')}
                     alt="Alternate Text"
                     size="sm"
                   />

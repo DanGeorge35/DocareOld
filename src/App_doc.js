@@ -27,11 +27,6 @@ import Personal_info_kyc from './screens/doctor_app/kyc/Personal_info_kyc';
 import Work_experience from './screens/doctor_app/kyc/Work_experience';
 import Success_page_kyc from './screens/doctor_app/kyc/Success_page_kyc';
 
-
-
-
-
-
 const Stack = createStackNavigator();
 
 export default function AppDoc() {
@@ -141,7 +136,7 @@ export default function AppDoc() {
             name="Login_screen"
             component={Login_screen}
             options={{headerShown: false}}
-           // options={Header('Login ', '#007bff')}
+            // options={Header('Login ', '#007bff')}
           />
 
           <Stack.Screen
