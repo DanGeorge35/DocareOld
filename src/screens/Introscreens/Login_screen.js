@@ -8,6 +8,7 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
+import {SvgUri} from 'react-native-svg';
 
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {
@@ -37,11 +38,14 @@ import {
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useConfig} from '../../context/config.context';
 
 //import EmailView from './includes/Email_view';
 //import PhoneView from './includes/Phone_view';
 
 const Login_screen = ({navigation}) => {
+  // eslint-disable-next-line no-undef
+  const {BASE_URL} = useConfig();
   const layout = useWindowDimensions();
 
   const [show, setShow] = React.useState(false);
@@ -57,21 +61,21 @@ const Login_screen = ({navigation}) => {
   const handleLogin = () => {
     setisLoading(true);
 
-    // const objLoginData = JSON.stringify({
-    //   email: Email,
-    //   password: Pass,
-    // });
-
     const objLoginData = JSON.stringify({
-      email: 'show1@gmail.com',
-      password: '111',
+      email: Email,
+      password: Pass,
     });
 
-    //console.log(objLoginData);
+    // const objLoginData = JSON.stringify({
+    //   email: 'show1@gmail.com',
+    //   password: '111',
+    // });
+
+    console.log(objLoginData);
 
     const config = {
       method: 'post',
-      url: 'https://docare.posaccountant.com/api/v1/auth/login',
+      url: `${BASE_URL}/auth/login`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -85,11 +89,11 @@ const Login_screen = ({navigation}) => {
       .then(response => {
         // Handle successful response (200-499)
         if (response.data.success === true) {
-          rspMsg1('Successful');
+          successMsg(response.data.message);
           UserSession(response.data);
           // navigation.navigate('Emergency_nav');
         } else {
-          rspMsg1(response.data.message);
+          errorMsg(response.data.message);
         }
         setisLoading(false);
       })
@@ -110,11 +114,39 @@ const Login_screen = ({navigation}) => {
     }
   };
 
-  const rspMsg1 = msg => {
+  const successMsg = msg => {
     toast.show({
       render: () => {
         return (
           <Box bg="emerald.500" px="2" py="1" rounded="sm" mb={5}>
+            <Text fontSize="14" fontWeight="700">
+              {msg}
+            </Text>
+          </Box>
+        );
+      },
+    });
+  };
+
+  const errorMsg = msg => {
+    toast.show({
+      render: () => {
+        return (
+          <Box bg="red.500" px="2" py="1" rounded="sm" mb={5}>
+            <Text fontSize="14" fontWeight="700">
+              {msg}
+            </Text>
+          </Box>
+        );
+      },
+    });
+  };
+
+  const warningMsg = msg => {
+    toast.show({
+      render: () => {
+        return (
+          <Box bg="yellow.500" px="2" py="1" rounded="sm" mb={5}>
             <Text fontSize="14" fontWeight="700">
               {msg}
             </Text>
@@ -138,7 +170,6 @@ const Login_screen = ({navigation}) => {
             resizeMode="contain" // Set resizeMode to control how the image should be resized
             alt="logo"
           />
-
           <Text
             style={{
               textAlign: 'center',
@@ -152,11 +183,9 @@ const Login_screen = ({navigation}) => {
           <Text
             lineHeight="25"
             fontFamily="Inter-Black"
-            onPress={() => navigation.navigate('Account_type')}
             style={{textAlign: 'center', color: '#1C70EE', marginTop: 50}}>
             Login to your Account
           </Text>
-
           <FormControl
             w="100%"
             alignItems="left"
@@ -186,10 +215,9 @@ const Login_screen = ({navigation}) => {
                 minWidth="280"
                 style={styles.input}
                 w="100%"
-                onChangeText={val => setEmail(val)}
-                // onChangeText={() => {
-                //   console.log('');
-                // }}
+                autoCapitalize="none" // Prevents auto capitalization
+                onChangeText={val => setEmail(val)} // Store original case in state
+                autoCompleteType="email"
               />
 
               <FormControl.Label mt="5">Password</FormControl.Label>
@@ -198,7 +226,9 @@ const Login_screen = ({navigation}) => {
                 size="lg"
                 variant="outline"
                 style={styles.input}
+                autoCapitalize="none" // Prevents auto capitalization
                 onChangeText={val => setPass(val)}
+                autoCompleteType="password" // Enable autocomplete for passwords
                 InputRightElement={
                   <Pressable
                     onPress={() => setShow(!show)}
@@ -269,6 +299,14 @@ const Login_screen = ({navigation}) => {
               </Text>
             </Pressable>
           </FormControl>
+          <View style={styles.bottomImageContainer}>
+            <Image
+              source={require('../../../assets/doctorsteam2.png')} // Specify the image source
+              style={{height: 400}} // Apply styles to the image
+              resizeMode="contain" // Set resizeMode to control how the image should be resized
+              alt="logo"
+            />
+          </View>
         </View>
       </ScrollView>
     </KeyboardAvoidingView>
@@ -276,21 +314,39 @@ const Login_screen = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
-  input: {
-    height: 52,
-    padding: 16,
-  },
   container: {
-    paddingTop: 220,
+    paddingTop: 120,
     flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
     minHeight: '100%',
+    backgroundColor: '#fff',
   },
+
   inputContainer: {
     width: '90%',
     marginBottom: 20,
     minHeight: '100%',
+  },
+
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '100%',
+    paddingBottom: 100, // Adjusted padding to accommodate the fixed image
+  },
+
+  bottomImageContainer: {
+    position: 'absolute', // Position the image absolutely
+    bottom: -180, // Adjust this value as needed for the bottom offset
+    left: 0,
+    right: 0,
+    alignItems: 'center', // Center the image horizontally
+  },
+  input: {
+    height: 52,
+    padding: 16,
   },
 
   DocareText: {

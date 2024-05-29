@@ -3,12 +3,12 @@ import React, {useState} from 'react';
 import {
   View,
   useWindowDimensions,
-  StyleSheet,Image,
+  StyleSheet,
+  Image,
   KeyboardAvoidingView,
   ScrollView,
   Platform,
 } from 'react-native';
-
 
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {
@@ -56,7 +56,10 @@ const moveNextTab = () => {
   console.log('helloo');
 };
 
+import {useConfig} from '../../context/config.context';
+
 const Create_account = ({navigation}) => {
+  const {BASE_URL} = useConfig();
   const layout = useWindowDimensions();
   const toast = useToast();
   const [isLoading, setisLoading] = React.useState(false);
@@ -113,7 +116,7 @@ const Create_account = ({navigation}) => {
 
     const config = {
       method: 'post',
-      url: 'https://docare.posaccountant.com/main/api/v1/patients/',
+      url: `${BASE_URL}/patients/`,
       headers: {
         'Content-Type': 'application/json',
       },
@@ -195,7 +198,6 @@ const Create_account = ({navigation}) => {
     <KeyboardAvoidingView
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-
       <ScrollView
         contentContainerStyle={styles.container}
         keyboardShouldPersistTaps="handled">
@@ -205,7 +207,6 @@ const Create_account = ({navigation}) => {
             renderTabBar={renderTabBar}
             renderScene={renderScene}
             onIndexChange={setIndex}
-            activeTintColor="red"
             swipeEnabled={false}
             initialLayout={{width: '100%'}}
           />
@@ -230,10 +231,10 @@ const styles = StyleSheet.create({
     minHeight: '100%',
   },
   input: {
-    height: 40,
+    height: 52,
+    padding: 16,
     borderColor: 'gray',
     borderWidth: 1,
-    padding: 10,
   },
 
   DocareText: {

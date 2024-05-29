@@ -35,7 +35,16 @@ const Account_type = ({navigation}) => {
           fontFamily="Inter-Black"
           style={{textAlign: 'center'}}
           onPress={() => navigation.navigate('Lang_select')}>
-          WHO ARE YOU?
+          ACCOUNT TYPE
+        </Text>
+        <Text
+          fontFamily="GeneralSans-Bold"
+          color="#999"
+          fontSize="lg"
+          lineHeight="20"
+          mt="4"
+          style={{textAlign: 'center'}}>
+          Kindly select your account type to start registration
         </Text>
       </Box>
 
@@ -163,15 +172,15 @@ const Account_type = ({navigation}) => {
         </Pressable>
       </Flex>
 
-      <Box alignItems="center" mt="30%">
-        <Button
-          bg="#1C70EE"
-          borderRadius="md"
-          w="300"
-          h="12"
-          onPress={() => navigation.navigate('Create_account')}>
-          Continue
-        </Button>
+      <Box alignItems="center" mt="10%">
+        <Text
+          fontFamily="GeneralSans-Bold"
+          color="#7b7b7b"
+          fontSize="lg"
+          lineHeight="20"
+          onPress={() => navigation.navigate('Login_screen')}>
+          Already have an account? Click to Login
+        </Text>
       </Box>
     </VStack>
   );

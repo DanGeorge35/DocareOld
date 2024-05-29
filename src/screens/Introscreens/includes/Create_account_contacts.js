@@ -31,7 +31,8 @@ const moveNextTab = () => {
 };
 
 const Create_account_contacts = ({onNext, formData, onInputChange}) => {
-  const [errEmail, errSetEmail] = useState('');
+  const [errEm
+    ail, errSetEmail] = useState('');
   const [errPhone, errSetPhone] = useState('');
 
   const validateEmail = email => {
@@ -103,8 +104,6 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
           w="100%"
           value={formData.phone_no}
           onChangeText={value => onInputChange('phone_no', value)}
-
-         
         />
 
         <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>

@@ -60,14 +60,13 @@ const Upload_pix_doc = ({navigation}) => {
   };
 
   const handleTakePhoto = () => {
-   
     const options = {
       mediaType: 'photo',
       quality: 1,
     };
 
     launchCamera(options, response => {
-      console.log(response)
+      console.log(response);
       if (response.didCancel) {
         console.log('User cancelled camera');
       } else if (response.error) {
@@ -85,24 +84,31 @@ const Upload_pix_doc = ({navigation}) => {
       return;
     }
 
-
     try {
-      const response = await axios.post('https://docare.posaccountant.com/main/api/v1/doctors/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
+      const response = await axios.post(
+        'https://docare.posaccountant.com/api/v1/doctors/upload',
+        formData,
+        {
+          headers: {
+            'Content-Type': 'multipart/form-data',
+          },
         },
-      });
+      );
 
       if (response.status === 200) {
-        Alert.alert('Upload successful', `Image uploaded successfully: ${response.data.message}`);
+        Alert.alert(
+          'Upload successful',
+          `Image uploaded successfully: ${response.data.message}`,
+        );
       } else {
-        Alert.alert('Upload failed', `Image upload failed: ${response.data.error}`);
+        Alert.alert(
+          'Upload failed',
+          `Image upload failed: ${response.data.error}`,
+        );
       }
     } catch (error) {
       Alert.alert('Upload error', `An error occurred: ${error.message}`);
     }
-
-
   };
 
   const getDoctorData = async () => {
@@ -146,25 +152,25 @@ const Upload_pix_doc = ({navigation}) => {
 
         {isChoose ? (
           <>
-          <Image
-            borderRadius="full"
-            w="35.38"
-            h="35.38"
-            source={require( "../../../../assets/img/profile_doc.png")}
-            alt="Profile Picture"
-            size="2xl"
-          />
+            <Image
+              borderRadius="full"
+              w="35.38"
+              h="35.38"
+              source={require('../../../../assets/img/profile_doc.png')}
+              alt="Profile Picture"
+              size="2xl"
+            />
           </>
         ) : (
           <>
-          <Image
-            source={{uri: imageUri}}
-            borderRadius="full"
-            w="35.38"
-            h="35.38"
-            alt="Profile Picture"
-            size="2xl"
-          />
+            <Image
+              source={{uri: imageUri}}
+              borderRadius="full"
+              w="35.38"
+              h="35.38"
+              alt="Profile Picture"
+              size="2xl"
+            />
           </>
         )}
 
@@ -178,7 +184,7 @@ const Upload_pix_doc = ({navigation}) => {
               alt="Alternate Text"
               size="2xl"
             />
-           
+
           </>
         )} */}
 
@@ -203,11 +209,7 @@ const Upload_pix_doc = ({navigation}) => {
       </Box>
 
       <Box alignItems="center" position="relative" bottom="-200">
-        <Button
-          bg="#1C70EE"
-          borderRadius="md"
-          w="300"
-          onPress={uploadImage}>
+        <Button bg="#1C70EE" borderRadius="md" w="300" onPress={uploadImage}>
           Create Account
         </Button>
       </Box>

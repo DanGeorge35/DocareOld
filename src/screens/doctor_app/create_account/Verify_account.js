@@ -36,11 +36,10 @@ const Verify_account = ({navigation}) => {
   const [show, setShow] = useState(false);
   const [otpCode, setOtpCode] = useState('');
 
-  const btnVerify =()=>{
-
+  const btnVerify = () => {
     // {"data": {"Address": "No 6, kongggg", "Email": "D3an@gmail.com", "FirstName": "Sss", "LastName": "Dddf", "PracticingTenure": "Deji", "Specialization": "Funni", "UserID": "DOC2024516125149", "account": {"Email": "D3an@gmail.com", "FirstName": "Sss", "LastName": "Dddf", "PasswordHash": "$2a$10$KQVrC6ZThCFX3zRxqJ/0COGPEYfE1CnVrojgF78nDFNQ/Qi0y3.aS", "RefreshToken": "$2a$10$KQVrC6ZThCFX3zRxqJ/0COGPEYfE1CnVrojgF78nDFNQ/Qi0y3.aS", "Role": "doctor", "Status": "Pending", "Token": "DOC2024516125149", "UserID": "DOC2024516125149", "UserType": "doctor", "Verified": "0", "createdAt": "2024-05-16T12:05:14.527Z", "id": 18, "updatedAt": "2024-05-16T12:05:14.527Z"}, "createdAt": "2024-05-16T12:05:14.534Z", "id": 6, "updatedAt": "2024-05-16T12:05:14.534Z"}, "success": true}
     navigation.navigate('Login_screen');
-  }
+  };
 
   return (
     <VStack space="2.5" p="4" backgroundColor="#fff" flex={1}>
@@ -97,8 +96,6 @@ const Verify_account = ({navigation}) => {
       </FormControl>
     </VStack>
   );
-
-
 };
 
 export default Verify_account;
