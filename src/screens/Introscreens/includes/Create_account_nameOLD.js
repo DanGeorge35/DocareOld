@@ -1,5 +1,4 @@
-/* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, useWindowDimensions, StyleSheet, Image, Text} from 'react-native';
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {
@@ -11,6 +10,8 @@ import {
   Button,
 } from 'native-base';
 
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+
 import {quotes} from '../../../constant';
 
 const Create_account_name = ({onNext, formData, onInputChange}) => {
@@ -18,6 +19,18 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
   const [errLname, errSetLname] = useState('');
   const [isInvalid, setIsInvalid] = useState(false);
   const [currentQuote, setCurrentQuote] = useState(quotes[0]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentQuote(prevQuote => {
+        const currentIndex = quotes.indexOf(prevQuote);
+        const nextIndex = (currentIndex + 1) % quotes.length;
+        return quotes[nextIndex];
+      });
+    }, 8000);
+
+    return () => clearInterval(interval); // Clear the interval on component unmount
+  }, []);
 
   const validateInput = () => {
     let x = 0;
@@ -43,11 +56,7 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
   };
 
   return (
-    <VStack
-      space="1.5"
-      backgroundColor="#fff"
-      style={styles.container}
-      flex={1}>
+    <VStack space="2.5" backgroundColor="#fff" flex={1}>
       <View style={styles.inputContainer}>
         <Image
           source={require('../../../../assets/DOc3.png')} // Specify the image source
@@ -68,7 +77,7 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
       </View>
 
       <FormControl w="100%" maxW="500" isInvalid={isInvalid}>
-        <Box mb="2" mt="5">
+        <Box mb="2" mt="2">
           <FormControl.Label>First Name</FormControl.Label>
 
           <Input
@@ -116,29 +125,80 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
           <Button
             bg="#1C70EE"
             borderRadius="md"
-            w="100%"
-            p="4"
+            w="300"
+            h="12"
             onPress={validateInput}>
             Continue
           </Button>
         </Box>
       </FormControl>
+      <View style={styles.doctorsSaysContainer}>
+        <Text style={styles.doctorsSays}>{currentQuote}</Text>
+        <View style={styles.arrowDown}></View>
+      </View>
+      <View style={styles.bottomImageContainer}>
+        <Image
+          source={require('../../../../assets/doctorsteam2.png')} // Specify the image source
+          style={{height: 400}} // Apply styles to the image
+          resizeMode="contain" // Set resizeMode to control how the image should be resized
+          alt="logo"
+        />
+      </View>
     </VStack>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 0,
+    paddingTop: 120,
     flexGrow: 1,
-
     alignItems: 'center',
-    minHeight: '90%',
+    minHeight: '100%',
     backgroundColor: '#fff',
   },
+  doctorsSaysContainer: {
+    alignItems: 'center',
+  },
+  doctorsSays: {
+    fontSize: 17,
+    color: '#00bcd4',
+    fontWeight: 'bold',
+    textAlign: 'center',
+    textAlignVertical: 'center',
+    width: '70%',
+    borderWidth: 4,
+    borderRadius: 10,
+    borderColor: '#52cfdf',
+    backgroundColor: '#d3e3fd',
+    minHeight: 90,
+    padding: 10,
+    justifyContent: 'center',
+    display: 'flex',
+    bottom: -80,
+  },
+  arrowDown: {
+    bottom: -80,
+    width: 0,
+    height: 0,
+    borderLeftWidth: 10,
+    borderRightWidth: 10,
+    borderBottomWidth: 15,
+    borderStyle: 'solid',
+    backgroundColor: 'transparent',
+    borderLeftColor: 'transparent',
+    borderRightColor: 'transparent',
+    borderBottomColor: '#d3e3fd',
+    // Adjust this value to position the arrow correctly
+  },
+  bottomImageContainer: {
+    // Position the image absolutely
+    bottom: -80, // Adjust this value as needed for the bottom offset
 
+    alignItems: 'center', // Center the image horizontally
+  },
   inputContainer: {
     width: '100%',
+    marginBottom: 10,
   },
   input: {
     height: 52,

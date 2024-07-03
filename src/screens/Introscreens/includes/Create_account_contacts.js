@@ -31,8 +31,7 @@ const moveNextTab = () => {
 };
 
 const Create_account_contacts = ({onNext, formData, onInputChange}) => {
-  const [errEm
-    ail, errSetEmail] = useState('');
+  const [errEmail, errSetEmail] = useState('');
   const [errPhone, errSetPhone] = useState('');
 
   const validateEmail = email => {
@@ -67,6 +66,24 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
 
   return (
     <FormControl w="100%" alignItems="left" mt="5">
+      <View style={styles.inputContainer}>
+        <Image
+          source={require('../../../../assets/DOc3.png')} // Specify the image source
+          style={styles.logo} // Apply styles to the image
+          resizeMode="contain" // Set resizeMode to control how the image should be resized
+          alt="logo"
+        />
+        <Text
+          // eslint-disable-next-line react-native/no-inline-styles
+          style={{
+            textAlign: 'center',
+            color: '#499eff',
+            fontWeight: '700',
+            fontSize: 22,
+          }}>
+          DOCARE
+        </Text>
+      </View>
       <Box mb="2" mt="2">
         <FormControl.Label>Email</FormControl.Label>
 
@@ -74,6 +91,7 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
           type="text"
           //keyboardType="email"
           size="md"
+          style={styles.input}
           variant="outline"
           placeholder="Enter Email Address"
           minWidth="305"
@@ -97,6 +115,7 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
         <Input
           type="text"
           size="md"
+          style={styles.input}
           keyboardType="number-pad"
           variant="outline"
           placeholder="+234"
@@ -116,8 +135,90 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
           Continue
         </Button>
       </Box>
+      <View style={styles.bottomImageContainer}>
+        <Image
+          source={require('..././../../../assets/doctorsteam2.png')} // Specify the image source
+          style={{height: 400}} // Apply styles to the image
+          resizeMode="contain" // Set resizeMode to control how the image should be resized
+          alt="logo"
+        />
+      </View>
     </FormControl>
   );
 };
+
+const styles = StyleSheet.create({
+  inputContainer: {
+    width: '100%',
+    marginBottom: 10,
+  },
+  input: {
+    height: 52,
+    padding: 16,
+    borderWidth: 1,
+    borderColor: '#ddd',
+  },
+  logo: {
+    height: 80,
+    width: 80,
+    marginBottom: 20,
+    alignSelf: 'center',
+  },
+  bottomImageContainer: {
+    position: 'absolute', // Position the image absolutely
+    bottom: -580, // Adjust this value as needed for the bottom offset
+    left: 0,
+    right: 0,
+    alignItems: 'center', // Center the image horizontally
+  },
+  DocareText: {
+    fontSize: 40,
+    color: '#1C70EE',
+    lineHeight: 48.84,
+    fontFamily: 'HelveticaNeueBold',
+    marginTop: 20,
+  },
+
+  tab_view: {
+    display: 'none',
+    width: '100%',
+    height: 50,
+    backgroundColor: '#1C70EE',
+    marginTop: 20,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+
+  form_view: {
+    width: 335,
+    height: 291,
+    marginTop: 45,
+  },
+
+  lang_view: {
+    width: 331,
+    height: 27,
+    marginTop: 30,
+    marginLeft: 14,
+    color: '#000000',
+  },
+
+  lang_text: {
+    width: 245,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000000',
+    lineHeight: 27,
+    fontFamily: 'General Sans',
+  },
+
+  get_start_btn: {
+    width: 327,
+    height: 52,
+    marginTop: 0,
+    borderRadius: 12,
+    padding: 16,
+  },
+});
 
 export default Create_account_contacts;

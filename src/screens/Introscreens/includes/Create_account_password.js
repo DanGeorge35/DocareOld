@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {View, StyleSheet} from 'react-native';
+import {View, StyleSheet, Image, Text} from 'react-native';
 import {
   FormControl,
   Input,
@@ -15,6 +15,7 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
   const [show, setShow] = useState(false);
   const [errPass, setErrPass] = useState('');
   const [errCPass, setErrCPass] = useState('');
+  const [isInvalid, setIsInvalid] = useState(false);
 
   const validateInput = () => {
     let x = 0;
@@ -42,16 +43,28 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
     if (x === 0) {
       onNext();
     }
+    setIsInvalid(x === 1);
   };
 
   return (
-    <FormControl w="100%" alignItems="left" mt={5} isInvalid>
+    <FormControl w="100%" alignItems="left" mt={5} isInvalid={isInvalid}>
+      <View style={styles.inputContainer}>
+        <Image
+          source={require('../../../../assets/DOc3.png')}
+          style={styles.logo}
+          resizeMode="contain"
+          alt="logo"
+        />
+        <Text style={styles.headerText}>DOCARE</Text>
+      </View>
+
       <Box mb={2} mt={2}>
         <FormControl.Label color="dark.500">Password</FormControl.Label>
         <Input
           w="100%"
           type={show ? 'text' : 'password'}
           size="md"
+          style={styles.input}
           variant="outline"
           InputRightElement={
             <Pressable onPress={() => setShow(!show)}>
@@ -79,6 +92,7 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
           type={show ? 'text' : 'password'}
           size="md"
           variant="outline"
+          style={styles.input}
           InputRightElement={
             <Pressable onPress={() => setShow(!show)}>
               <Icon
@@ -99,23 +113,99 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
       </Box>
 
       <Box alignItems="center" mt="30%">
-        <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
+        <Button
+          bg="#1C70EE"
+          borderRadius="md"
+          w="300"
+          h="12"
+          onPress={validateInput}>
           Submit
         </Button>
-
-        {/* <Box alignItems="center" mt="90%">
-                  <Button
-                      bg="#1C70EE"
-                      borderRadius="md"
-                      w="300"
-                      h="12"
-                      onPress={validateInput}>
-                      Submit
-                    </Button>
-          </Box> */}
       </Box>
+      <View style={styles.bottomImageContainer}>
+        <Image
+          source={require('../../../../assets/doctorsteam2.png')} // Specify the image source
+          style={{height: 400}} // Apply styles to the image
+          resizeMode="contain" // Set resizeMode to control how the image should be resized
+          alt="docs"
+        />
+      </View>
     </FormControl>
   );
 };
+
+const styles = StyleSheet.create({
+  inputContainer: {
+    width: '100%',
+    marginBottom: 10,
+  },
+  input: {
+    height: 52,
+    padding: 16,
+    borderColor: '#ddd',
+  },
+  bottomImageContainer: {
+    position: 'absolute', // Position the image absolutely
+    bottom: -180, // Adjust this value as needed for the bottom offset
+    left: 0,
+    right: 0,
+    alignItems: 'center', // Center the image horizontally
+  },
+  logo: {
+    height: 80,
+    width: 80,
+    marginBottom: 20,
+    alignSelf: 'center',
+  },
+  headerText: {
+    textAlign: 'center',
+    color: '#499eff',
+    fontWeight: '700',
+    fontSize: 22,
+  },
+  DocareText: {
+    fontSize: 40,
+    color: '#1C70EE',
+    lineHeight: 48.84,
+    fontFamily: 'HelveticaNeueBold',
+    marginTop: 20,
+  },
+  tab_view: {
+    display: 'none',
+    width: '100%',
+    height: 50,
+    backgroundColor: '#1C70EE',
+    marginTop: 20,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+  },
+  form_view: {
+    width: 335,
+    height: 291,
+    marginTop: 45,
+  },
+  lang_view: {
+    width: 331,
+    height: 27,
+    marginTop: 30,
+    marginLeft: 14,
+    color: '#000000',
+  },
+  lang_text: {
+    width: 245,
+    fontSize: 20,
+    fontWeight: 'bold',
+    color: '#000000',
+    lineHeight: 27,
+    fontFamily: 'General Sans',
+  },
+  get_start_btn: {
+    width: 327,
+    height: 52,
+    marginTop: 0,
+    borderRadius: 12,
+    padding: 16,
+  },
+});
 
 export default CreateAccountPassword;

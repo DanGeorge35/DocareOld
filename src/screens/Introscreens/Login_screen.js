@@ -8,33 +8,18 @@ import {
   StyleSheet,
   Platform,
 } from 'react-native';
-import {SvgUri} from 'react-native-svg';
-
-import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {
-  NativeBaseProvider,
-  HStack,
-  Spacer,
   FormControl,
   Input,
   Box,
   Text,
-  Badge,
-  CheckIcon,
-  Center,
-  Flex,
-  WarningOutlineIcon,
-  VStack,
-  Select,
-  Stack,
   Image,
   Icon,
   useToast,
-  FlatList,
   Button,
   Pressable,
 } from 'native-base';
-
+import {successMsg, errorMsg} from '../../constant';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -89,11 +74,11 @@ const Login_screen = ({navigation}) => {
       .then(response => {
         // Handle successful response (200-499)
         if (response.data.success === true) {
-          successMsg(response.data.message);
+          successMsg(toast, response.data.message);
           UserSession(response.data);
           // navigation.navigate('Emergency_nav');
         } else {
-          errorMsg(response.data.message);
+          errorMsg(toast, response.data.message);
         }
         setisLoading(false);
       })
@@ -112,48 +97,6 @@ const Login_screen = ({navigation}) => {
     } catch (e) {
       //console.log(e);
     }
-  };
-
-  const successMsg = msg => {
-    toast.show({
-      render: () => {
-        return (
-          <Box bg="emerald.500" px="2" py="1" rounded="sm" mb={5}>
-            <Text fontSize="14" fontWeight="700">
-              {msg}
-            </Text>
-          </Box>
-        );
-      },
-    });
-  };
-
-  const errorMsg = msg => {
-    toast.show({
-      render: () => {
-        return (
-          <Box bg="red.500" px="2" py="1" rounded="sm" mb={5}>
-            <Text fontSize="14" fontWeight="700">
-              {msg}
-            </Text>
-          </Box>
-        );
-      },
-    });
-  };
-
-  const warningMsg = msg => {
-    toast.show({
-      render: () => {
-        return (
-          <Box bg="yellow.500" px="2" py="1" rounded="sm" mb={5}>
-            <Text fontSize="14" fontWeight="700">
-              {msg}
-            </Text>
-          </Box>
-        );
-      },
-    });
   };
 
   return (

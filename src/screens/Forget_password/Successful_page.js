@@ -7,9 +7,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const Successful_page = ({navigation}) => {
   return (
-    <VStack space="2.5" px="3"  backgroundColor="#fff" flex={1}>
+    <VStack space="2.5" px="3" backgroundColor="#fff" flex={1}>
       <Stack>
-
         {/* <Box style={styles.lang_view}>
           <Text style={styles.lang_text}>
             <FontAwesome5 name="arrow-left" size={20} color="#000000" />
@@ -46,7 +45,6 @@ const Successful_page = ({navigation}) => {
             borderRadius="md"
             w="300"
             mt="90"
-            
             onPress={() => navigation.navigate('Login_screen')}>
             Back to Login
           </Button>

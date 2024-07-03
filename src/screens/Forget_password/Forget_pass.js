@@ -25,14 +25,13 @@ import {
   Button,
   Pressable,
 } from 'native-base';
+import {successMsg, errorMsg} from '../../constant';
 
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import EmailView from './Includes/Email_view';
 import PhoneView from './Includes/Phone_view';
-
-
 
 const Forget_pass = ({navigation}) => {
   const layout = useWindowDimensions();
@@ -42,33 +41,35 @@ const Forget_pass = ({navigation}) => {
   const [errEmail, seterrEmail] = useState('');
   const toast = useToast();
 
-  const onGetCode =()=>{
+  const onGetCode = () => {
     setisLoading(true);
 
     const ObjData = {
       email: Email,
-     // password: Pass,
+      // password: Pass,
     };
-    
-   
+
     axios({
       method: 'post',
-      url: 'https://docare.posaccountant.com/main/api/v1/auth/resetpassword',
+      url: 'https://docare.posaccountant.com/api/v1/auth/resetpassword',
       data: ObjData,
+      validateStatus: function (status) {
+        return status >= 200 && status < 500; // Accepts all status codes from 200 to 499
+      },
     })
       .then(response => {
-         console.log('Response:', response.data);
+        console.log('Response:', response.data);
         //console.log('Response:', response.data.data);
-       // console.log('Response:', response.token);
+        // console.log('Response:', response.token);
 
-        if (response.data.success == true) {
-          rspMsg1(response.data.message);
-           //console.log("success");
-         // UserSession(response.data)
-          navigation.navigate('Reset_password');
+        if (response.data.success === true) {
+          successMsg(toast, response.data.message);
+          // UserSession(response.data);
+          // navigation.navigate('Emergency_nav');
         } else {
-          rspMsg1(response.data.message);
+          errorMsg(toast, response.data.message);
         }
+        setisLoading(false);
 
         setisLoading(false);
       })
@@ -77,16 +78,20 @@ const Forget_pass = ({navigation}) => {
         setisLoading(false);
       });
 
-    console.log("hello")
-  }
+    console.log('hello');
+  };
 
-
-  const rspMsg1 = (msg) => {
+  const rspMsg1 = msg => {
     toast.show({
       render: () => {
         return (
-          <Box bg="#5996f3" px="2" py="1"  mx="10"  rounded="sm" mb={5}>
-            <Text fontSize="12" w="100%" color="#ffffff" textAlign="center" fontWeight="700">
+          <Box bg="#5996f3" px="2" py="1" mx="10" rounded="sm" mb={5}>
+            <Text
+              fontSize="12"
+              w="100%"
+              color="#ffffff"
+              textAlign="center"
+              fontWeight="700">
               {msg}
             </Text>
           </Box>
@@ -108,61 +113,55 @@ const Forget_pass = ({navigation}) => {
       </Box>
 
       <FormControl w="100%" maxW="500" alignItems="left" mt="5">
-      <Box mb="2" mt="3">
-        <Input
-          type="text"
-          size="md"
-          variant="outline"
-          placeholder="Enter Email Address"
-          minWidth="300"
-          w="100%"
-          style={styles.input}
-         
-          onChangeText={val => setEmail(val)}
-          
-        />
-      </Box>
+        <Box mb="2" mt="3">
+          <Input
+            type="text"
+            size="md"
+            variant="outline"
+            placeholder="Enter Email Address"
+            minWidth="300"
+            w="100%"
+            style={styles.input}
+            onChangeText={val => setEmail(val)}
+          />
+        </Box>
 
-      <Pressable mt="8">
-        <Text style={{textAlign: 'center', color: '#000'}}>
-          You will receive an email of your verification code
-        </Text>
-      </Pressable>
+        <Pressable mt="8">
+          <Text style={{textAlign: 'center', color: '#000'}}>
+            You will receive an email of your verification code
+          </Text>
+        </Pressable>
 
-      {isLoading ? (
-              <Button
-                isLoading
-                spinnerPlacement="end"
-                isLoadingText="Loading.."
-                mt="90"
-                borderRadius="md" 
-                bg="#1C70EE">
-                Button
-              </Button>
-            ) : (
-              <Box alignItems="center">
-                <Button
-                  bg="#1C70EE"
-                  mt="90"
-                  borderRadius="md"
-                  w="300"
-                  onPress={onGetCode}>
-                  Get Code
-                </Button>
-              </Box>
-            )}
+        {isLoading ? (
+          <Button
+            isLoading
+            spinnerPlacement="end"
+            isLoadingText="Loading.."
+            mt="90"
+            borderRadius="md"
+            bg="#1C70EE">
+            Button
+          </Button>
+        ) : (
+          <Box alignItems="center">
+            <Button
+              bg="#1C70EE"
+              mt="90"
+              borderRadius="md"
+              w="300"
+              onPress={onGetCode}>
+              Get Code
+            </Button>
+          </Box>
+        )}
 
-      
-
-      <Pressable mt="8" onPress={()=> navigation.navigate("Create_account")}>
-        <Text style={{textAlign: 'center', color: '#000'}}>
-          Don’t have an Account?{' '}
-          <Text style={{fontWeight: 'bold'}}> Create now</Text>
-        </Text>
-      </Pressable>
-    </FormControl>
-
-     
+        <Pressable mt="8" onPress={() => navigation.navigate('Create_account')}>
+          <Text style={{textAlign: 'center', color: '#000'}}>
+            Don’t have an Account?{' '}
+            <Text style={{fontWeight: 'bold'}}> Create now</Text>
+          </Text>
+        </Pressable>
+      </FormControl>
     </VStack>
   );
 };
@@ -216,8 +215,6 @@ const styles = StyleSheet.create({
   //   borderRadius: 12,
   //   padding: 16,
   // },
-
-
 });
 
 export default Forget_pass;
