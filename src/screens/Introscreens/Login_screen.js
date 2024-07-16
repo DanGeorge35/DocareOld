@@ -43,6 +43,9 @@ const Login_screen = ({navigation}) => {
   const [errPass, seterrPass] = useState('');
   const toast = useToast();
 
+  
+ 
+
   const handleLogin = () => {
     setisLoading(true);
 
@@ -60,6 +63,7 @@ const Login_screen = ({navigation}) => {
 
     const config = {
       method: 'post',
+     // url: `${BASE_URL}/auth/login`,
       url: `${BASE_URL}/auth/login`,
       headers: {
         'Content-Type': 'application/json',
@@ -76,7 +80,8 @@ const Login_screen = ({navigation}) => {
         if (response.data.success === true) {
           successMsg(toast, response.data.message);
           UserSession(response.data);
-          // navigation.navigate('Emergency_nav');
+         // console.log(response.data);
+          navigation.navigate('EmergencyNav');
         } else {
           errorMsg(toast, response.data.message);
         }
@@ -119,6 +124,7 @@ const Login_screen = ({navigation}) => {
               color: '#499eff',
               fontWeight: '700',
               fontSize: 22,
+              lineHeight:30,
             }}>
             DOCARE
           </Text>
@@ -245,7 +251,7 @@ const Login_screen = ({navigation}) => {
           <View style={styles.bottomImageContainer}>
             <Image
               source={require('../../../assets/doctorsteam2.png')} // Specify the image source
-              style={{height: 400}} // Apply styles to the image
+              style={{height: 320}} // Apply styles to the image
               resizeMode="contain" // Set resizeMode to control how the image should be resized
               alt="logo"
             />
@@ -354,7 +360,7 @@ const styles = StyleSheet.create({
   logo: {
     height: 80,
     width: 80,
-    marginBottom: 10,
+    marginBottom: 2,
     alignSelf: 'center',
   },
 });

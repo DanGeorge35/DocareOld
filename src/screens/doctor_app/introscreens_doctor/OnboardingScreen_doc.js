@@ -23,7 +23,8 @@ const OnboardingScreen_doc = ({navigation}) => {
 
       <Onboarding
         DoneButtonComponent={Done}
-        onSkip={() => navigation.replace('Personal_info_doc')}
+       // onSkip={() => navigation.replace('Personal_info_doc')}
+        onSkip={() => navigation.replace('Login_screen')}
         onDone={() => navigation.navigate('Personal_info_doc')}
         pages={[
           {

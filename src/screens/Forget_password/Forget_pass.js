@@ -25,11 +25,13 @@ import {
   Button,
   Pressable,
 } from 'native-base';
-import {successMsg, errorMsg} from '../../constant';
 
+import {successMsg, errorMsg} from '../../constant';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useConfig} from '../../context/config.context';
+
 import EmailView from './Includes/Email_view';
 import PhoneView from './Includes/Phone_view';
 
@@ -40,6 +42,7 @@ const Forget_pass = ({navigation}) => {
   const [Email, setEmail] = useState('');
   const [errEmail, seterrEmail] = useState('');
   const toast = useToast();
+  const {BASE_URL} = useConfig();
 
   const onGetCode = () => {
     setisLoading(true);
@@ -49,56 +52,41 @@ const Forget_pass = ({navigation}) => {
       // password: Pass,
     };
 
-    axios({
+    const config = {
       method: 'post',
-      url: 'https://docare.posaccountant.com/api/v1/auth/resetpassword',
+    
+      url: `${BASE_URL}/auth/resetpassword`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
       data: ObjData,
       validateStatus: function (status) {
         return status >= 200 && status < 500; // Accepts all status codes from 200 to 499
       },
+    };
+
+    axios(config)
+    .then(response => {
+      // Handle successful response (200-499)
+      if (response.data.success === true) {
+        successMsg(toast, response.data.message);
+        //UserSession(response.data);
+        console.log(response.data);
+        navigation.navigate('Retrieve_otp');
+      } else {
+        errorMsg(toast, response.data.message);
+      }
+      setisLoading(false);
     })
-      .then(response => {
-        console.log('Response:', response.data);
-        //console.log('Response:', response.data.data);
-        // console.log('Response:', response.token);
-
-        if (response.data.success === true) {
-          successMsg(toast, response.data.message);
-          // UserSession(response.data);
-          // navigation.navigate('Emergency_nav');
-        } else {
-          errorMsg(toast, response.data.message);
-        }
-        setisLoading(false);
-
-        setisLoading(false);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        setisLoading(false);
-      });
-
+    .catch(error => {
+      // Handle error (status code 500 and above)
+      setisLoading(false);
+      console.error('Error:', error);
+    });
     console.log('hello');
   };
 
-  const rspMsg1 = msg => {
-    toast.show({
-      render: () => {
-        return (
-          <Box bg="#5996f3" px="2" py="1" mx="10" rounded="sm" mb={5}>
-            <Text
-              fontSize="12"
-              w="100%"
-              color="#ffffff"
-              textAlign="center"
-              fontWeight="700">
-              {msg}
-            </Text>
-          </Box>
-        );
-      },
-    });
-  };
+  
 
   return (
     <VStack space="2.5" pt="4" p="5" backgroundColor="#fff" flex={1}>

@@ -1,5 +1,5 @@
-import * as React from 'react';
-import { View, useWindowDimensions, StyleSheet,Dimensions } from 'react-native';
+import React, { useEffect,  useCallback } from 'react';
+import { View, useWindowDimensions, StyleSheet,Dimensions ,BackHandler,Alert} from 'react-native';
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 import { NativeBaseProvider,HStack,Spacer,FormControl,Input,isHovered,
     Box, Badge,CheckIcon,Center,Flex,WarningOutlineIcon,Text,isPressed,
@@ -11,18 +11,52 @@ import { NativeBaseProvider,HStack,Spacer,FormControl,Input,isHovered,
    import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
    import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 
+   import { useNavigation, useFocusEffect } from '@react-navigation/native';
+
 const Profile = ({navigation}) => {
     const { width } = Dimensions.get('window');
+
+    // useFocusEffect(
+    //     useCallback(() => {
+    //       const onBackPress = (e) => {
+    //         e.preventDefault();
+    //        // navigation.navigate('Emergency_nav');
+    //       };
+    
+    //       navigation.addListener('beforeRemove', onBackPress);
+    
+    //       return () => {
+    //         navigation.removeListener('beforeRemove', onBackPress);
+    //       };
+    //     }, [navigation])
+    //   );
+
+    // useEffect(() => {
+    //     const backAction = () => {
+    //       // Prevent back action
+    //       return true;
+    //     };
+    
+    //     const backHandler = BackHandler.addEventListener(
+    //       'hardwareBackPress',
+    //       backAction
+    //     );
+    
+    //     return () => backHandler.remove();
+    //   }, []);
+        
+    
+
+
   return (
     <VStack space="2"  style={{width}}   backgroundColor="#F9F9FA" flex={1} >
        
-   
 
         <Box backgroundColor="#FFF"  py="5" alignItems="center" justifyContent="center" >
 
              <Image source={require( "../../../../assets/edit_patient1.png") } alt="Alternate Text" size="lg" borderRadius="full" w="82" h="82" position="relative"  right="0" />
 
-            <Text width="148" fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="20" color="#000" mt="3" > Aniebiet-Oluwa</Text>
+            <Text width="148" fontFamily="GeneralSans-Bold" fontWeight="bold" fontSize="18" color="#000" mt="3" > Aniebiet-Oluwa</Text>
         </Box>
 
         <Box position="absolute" alignItems="center" top="20" right="36%" >

@@ -32,9 +32,11 @@ import {
   Pressable,
 } from 'native-base';
 
-import axios from 'axios';
+import {successMsg, errorMsg} from '../../../constant';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import axios from 'axios';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {useConfig} from '../../../context/config.context';
 import EmailView from './includes/Email_view';
 import PhoneView from './includes/Phone_view';
 
@@ -49,6 +51,8 @@ const getLabelStyle = index => {
 };
 
 const Login_screen = ({navigation}) => {
+
+  const {BASE_URL} = useConfig();
   const layout = useWindowDimensions();
 
   const [show, setShow] = useState(false);
@@ -61,71 +65,60 @@ const Login_screen = ({navigation}) => {
   const [errPass, seterrPass] = useState('');
   const toast = useToast();
 
-  const onForgotPass = () => {
-    console.log('forgt Pass');
-  };
-
-  const onSignUp = () => {
-    // console.log("Sign Up")
-    navigation.navigate('Personal_info_doc');
-  };
-
   const handleLogin = () => {
     setisLoading(true);
 
-  //   // const objLoginData = JSON.stringify({
-  //   //   email: Email,
-  //   //   password: Pass,
-  //   // });
+    const objLoginData = JSON.stringify({
+      email: Email,
+      password: Pass,
+    });
 
-  //   const objLoginData = JSON.stringify({
-  //     email: 'show1@gmail.com',
-  //     password: '222',
-  //   });
+    // const objLoginData = JSON.stringify({
+    //   email: 'ola@gmail.com',
+    //   password: '222',
+    // });
 
-  //   //console.log(objLoginData);
+    console.log(objLoginData);
 
-  //   const config = {
-  //     method: 'post',
-  //     url: 'https://docare.posaccountant.com/main/api/v1/auth/login',
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     data: objLoginData,
-  //   };
+    const config = {
+      method: 'post',
+      url: `${BASE_URL}/auth/login`,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: objLoginData,
+      validateStatus: function (status) {
+        return status >= 200 && status < 500; // Accepts all status codes from 200 to 499
+      },
+    };
 
-  //   //console.log(config)
+    axios(config)
+      .then(response => {
+        // Handle successful response (200-499)
+        if (response.data.success === true) {
+          successMsg(toast, response.data.message);
+          DocSession(response.data);
+          console.log(response.data);
+          //navigation.navigate('Upload_pix_doc');
+        } else {
+          console.log(response.data);
+          errorMsg(toast, response.data.message);
+        }
+        setisLoading(false);
+      })
+      .catch(error => {
+        // Handle error (status code 500 and above)
+        setisLoading(false);
+        console.error('Error:', error);
+      });
 
-  //   axios(config)
-  //     .then(response => {
-  //       //console.log('Response:', response.data);
-  //       //console.log('Response:', response.data.data);
-  //       // console.log('Response:', response.token);
-
-  //       if (response.data.success == true) {
-  //         rspMsg1('Successful');
-  //         DocSession(response.data);
-          navigation.navigate('Upload_pix_doc');
-  //       } else {
-  //         rspMsg1(response.message);
-  //       }
-
-  //       setisLoading(false);
-  //     })
-  //     .catch(error => {
-  //       // console.log("error")
-  //       console.error('Error:', error);
-  //       setisLoading(false);
-  //     });
-
-  //   //console.log('Login');
-   };
-
+    //console.log('Login');
+  };
 
 
-  const DocSession = async userData => {
+  const DocSession = async DocData => {
     try {
-      await AsyncStorage.setItem('DoctorData', JSON.stringify(userData));
+      await AsyncStorage.setItem('DoctorData', JSON.stringify(DocData));
     } catch (e) {
       //console.log(e);
     }
@@ -133,172 +126,221 @@ const Login_screen = ({navigation}) => {
 
   
 
-  const rspMsg1 = (msg) => {
-    toast.show({
-      render: () => {
-        return (
-          <Box bg="emerald.500" px="2" py="1" rounded="sm" mb={5}>
-            <Text fontSize="14" fontWeight="700">
-              {msg}
-            </Text>
-          </Box>
-        );
-      },
-    });
-  };
+ 
 
   return (
     <KeyboardAvoidingView
       style={{flex: 1}}
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-      <VStack space="2" px="3" backgroundColor="#fff" flex={1}>
-        <Box alignItems="center" mt="10">
+      <ScrollView
+        contentContainerStyle={styles.container}
+        keyboardShouldPersistTaps="handled">
+        <View style={styles.inputContainer}>
           <Image
-            w="70"
-            h="70"
-            source={require('../../../../assets/DOc3.png')}
-            alt="Alternate Text"
+            source={require('../../../../assets/DOc3.png')} // Specify the image source
+            style={styles.logo} // Apply styles to the image
+            resizeMode="contain" // Set resizeMode to control how the image should be resized
+            alt="logo"
           />
-        </Box>
+          <Text
+            style={{
+              textAlign: 'center',
+              color: '#499eff',
+              fontWeight: '700',
+              fontSize: 22,
+              lineHeight:30,
+            }}>
+            DOCARE
+          </Text>
 
-        <Text
-          mt="5"
-          fontSize="14"
-          color="#000000"
-          fontWeight="600"
-          lineHeight="25"
-          textAlign="center"
-          fontFamily="Inter-Black">
-          {' '}
-          Great to have you back!{' '}
-        </Text>
+          <Text
+            lineHeight="25"
+            fontFamily="Inter-Black"
+            style={{textAlign: 'center', color: '#1C70EE', marginTop: 50}}>
+           Doctor Login to your Account
+          </Text>
+          <FormControl
+            w="100%"
+            alignItems="left"
+            mt="5"
+            style={{
+              paddingLeft: 20,
+              paddingRight: 20,
+              paddingTop: 10,
+              paddingBottom: 40,
+              elevation: 1,
+              borderWidth: 2,
+              borderColor: '#eee',
+              backgroundColor: '#ffffff',
+              borderBottomLeftRadius: 20,
+              borderBottomRightRadius: 20,
+            }}>
+            <Box mb="2" mt="2">
+              <FormControl.Label style={{color: 'white'}}>
+                Email Address
+              </FormControl.Label>
 
-        <FormControl w="100%" maxW="500" alignItems="left" mt="5">
-          <Box mb="2" mt="2">
-            {/* <FormControl.Label >Email Address</FormControl.Label> */}
-
-            <Input
-              type="text"
-              placeholderTextColor="#000000"
-              size="md"
-              variant="outline"
-              placeholder="Enter Email Address"
-              minWidth="300"
-              w="100%"
-              onChangeText={val => setEmail(val)}
-            />
-
-            {/* <FormControl.Label >Password</FormControl.Label> */}
-
-            <Input
-              w={{
-                base: '100%',
-                md: '25%',
-              }}
-              type={show ? 'text' : 'password'}
-              size="md"
-              placeholderTextColor="#000000"
-              mt="5"
-              variant="outline"
-              onChangeText={val => setPass(val)}
-              InputRightElement={
-                <Pressable onPress={() => setShow(!show)}>
-                  <Icon
-                    as={<FontAwesome5 name={show ? 'eye' : 'eye-slash'} />}
-                    size={5}
-                    mr="5"
-                    color="muted.400"
-                  />
-                </Pressable>
-              }
-              placeholder="Password"
-            />
-
-            {/* <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
-            {errPhone}
-            </FormControl.ErrorMessage> */}
-          </Box>
-
-          <Pressable mb="8" onPress={onForgotPass}>
-            <Text textAlign="right" color="#000" fontWeight="bold">
-              Forgot Password?
-            </Text>
-          </Pressable>
-
-          {isLoading ? (
-            <Button
-              isLoading
-              spinnerPlacement="end"
-              isLoadingText="Loading.."
-              mt="6"
-              bg="#00004d">
-              Button
-            </Button>
-          ) : (
-            <Box alignItems="center">
-              <Button
-                bg="#1C70EE"
-                borderRadius="md"
+              <Input
+                type="text"
+                size="md"
+                variant="outline"
+                placeholder="Enter Email Address"
+                minWidth="280"
+                style={styles.input}
                 w="100%"
-                p="4"
-                onPress={handleLogin}>
-                Login
-              </Button>
+                autoCapitalize="none" // Prevents auto capitalization
+                onChangeText={val => setEmail(val)} // Store original case in state
+                autoCompleteType="email"
+              />
+
+              <FormControl.Label mt="5">Password</FormControl.Label>
+              <Input
+                type={show ? 'text' : 'password'}
+                size="lg"
+                variant="outline"
+                style={styles.input}
+                autoCapitalize="none" // Prevents auto capitalization
+                onChangeText={val => setPass(val)}
+                autoCompleteType="password" // Enable autocomplete for passwords
+                InputRightElement={
+                  <Pressable
+                    onPress={() => setShow(!show)}
+                    style={{
+                      width: 40,
+                      height: 40,
+                      justifyContent: 'center',
+                      alignItems: 'center',
+                    }}>
+                    <Icon
+                      style={{
+                        width: 40,
+                      }}
+                      as={<FontAwesome5 name={show ? 'eye' : 'eye-slash'} />}
+                      size={5}
+                      color="muted.400"
+                    />
+                  </Pressable>
+                }
+                placeholder="Password"
+              />
+
+              {/* <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+                  {errPhone}
+                  </FormControl.ErrorMessage> */}
             </Box>
-          )}
 
-          <Pressable mt="8" onPress={onSignUp}>
-            <Text textAlign="center" color="#000000">
-              Don’t have an Account?{' '}
-              <Text fontWeight="bold" color="#1C70EE">
-                {' '}
-                Create now
+            <Pressable
+              pb="4"
+              pt="3"
+              mb="4"
+              mt="0"
+              onPress={() => navigation.navigate('Forget_pass')}>
+              <Text
+                style={{textAlign: 'right', color: '#000', fontWeight: 'bold'}}>
+                Forgot Password?
               </Text>
-            </Text>
-          </Pressable>
-        </FormControl>
+            </Pressable>
 
-        {/* <TabView
-            navigationState={{index, routes}}
-            renderTabBar={renderTabBar}
-            renderScene={renderScene}
-            onIndexChange={setIndex}
-            activeTintColor="red"
-            // swipeEnabled={false}
-            initialLayout={{width: 335}}
-          /> */}
-      </VStack>
+            {isLoading ? (
+              <Button
+                isLoading
+                spinnerPlacement="end"
+                isLoadingText="Loading.."
+                mt="6"
+                bg="#00004d">
+                Button
+              </Button>
+            ) : (
+              <Box alignItems="center">
+                <Button
+                  bg="#1C70EE"
+                  borderRadius="md"
+                  w="100%"
+                  p="4"
+                  onPress={handleLogin}>
+                  Login
+                </Button>
+              </Box>
+            )}
+
+            <Pressable
+              mt="8"
+              onPress={() => navigation.navigate('Personal_info_doc')}>
+              <Text style={{textAlign: 'center', color: '#000'}}>
+                Don’t have an Account?
+                <Text style={{fontWeight: 'bold'}}> Create now</Text>
+              </Text>
+            </Pressable>
+          </FormControl>
+          <View style={styles.bottomImageContainer}>
+            <Image
+              source={require('../../../../assets/doctorsteam2.png')} // Specify the image source
+              style={{height: 320}} // Apply styles to the image
+              resizeMode="contain" // Set resizeMode to control how the image should be resized
+              alt="logo"
+            />
+          </View>
+        </View>
+      </ScrollView>
     </KeyboardAvoidingView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: '#FFFFFF',
-    color: '#fff',
+    paddingTop: 120,
+    flexGrow: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    //width: 375,
-    // height: 812,
+    minHeight: '100%',
+    backgroundColor: '#fff',
   },
+
+  inputContainer: {
+    width: '90%',
+    marginBottom: 20,
+    minHeight: '100%',
+  },
+
+  scrollContainer: {
+    flexGrow: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    minHeight: '100%',
+    paddingBottom: 100, // Adjusted padding to accommodate the fixed image
+  },
+
+  bottomImageContainer: {
+    position: 'absolute', // Position the image absolutely
+    bottom: -190, // Adjust this value as needed for the bottom offset
+    left: 0,
+    right: 0,
+    alignItems: 'center', // Center the image horizontally
+  },
+  input: {
+    height: 52,
+    padding: 16,
+  },
+
   DocareText: {
     fontSize: 40,
-
+    // fontWeight:'bold',
     color: '#1C70EE',
     lineHeight: 48.84,
     fontFamily: 'HelveticaNeueBold',
-
+    //width:156,
+    //height:49,
     marginTop: 60,
+    // marginLeft:110
   },
 
   tab_view: {
-    //width:335,
+    width: '100%',
     height: 50,
-    //backgroundColor:'#F4F7FA',
-    marginTop: 30,
-    // marginLeft:20,
-    color: 'red',
+    backgroundColor: '#1C70EE',
+    marginTop: 20,
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
   },
 
   form_view: {
@@ -339,15 +381,11 @@ const styles = StyleSheet.create({
     fontFamily: 'General Sans',
   },
 
-  get_start_btn: {
-    width: 327,
-    height: 52,
-    marginTop: 0,
-    //color:"red",
-    // backgroundColor:"1C70EE",
-
-    borderRadius: 12,
-    padding: 16,
+  logo: {
+    height: 80,
+    width: 80,
+    marginBottom: 10,
+    alignSelf: 'center',
   },
 });
 

@@ -42,6 +42,8 @@ import {useFocusEffect, useIsFocused} from '@react-navigation/native';
 import {SwipeablePanel} from 'rn-swipeable-panel';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import Search_order from './Search_order'
+
 import MapView, {
   Marker,
   Callout,
@@ -54,6 +56,13 @@ import {GooglePlacesAutocomplete} from 'react-native-google-places-autocomplete'
 const {height} = Dimensions.get('window');
 
 const Emergency_order_map = ({navigation}) => {
+
+  const [isOverlayVisible, setOverlayVisible] = useState(false);
+
+  const toggleOverlay = () => {
+    setOverlayVisible(!isOverlayVisible);
+  };
+
   const [userObj, setUserObj] = useState([]);
 
   const getUserData = async () => {
@@ -172,6 +181,7 @@ const Emergency_order_map = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      
       {/*
     <View style={styles.searchContainer}>
 
@@ -317,7 +327,15 @@ const Emergency_order_map = ({navigation}) => {
             ]}
           />
         </MapView>
-
+        {/* <Box >  {isOverlayVisible && <Search_order onClose={toggleOverlay} />} </Box> */}
+        <Stack 
+          position="absolute"
+          top="0"
+          left="0"
+          w="100%"
+          >  
+          {isOverlayVisible && <Search_order onClose={toggleOverlay} />}
+          </Stack>
         <Pressable
           position="absolute"
           top="2"
@@ -340,8 +358,13 @@ const Emergency_order_map = ({navigation}) => {
         </Pressable>
 
         <Box w="100%">
+          
+       
+
           <SwipeablePanel {...panelProps} isActive={isPanelActive}>
+           
             <Box mx="5" mt="12">
+           
               <Input
                 w={{
                   base: '100%',
@@ -358,66 +381,51 @@ const Emergency_order_map = ({navigation}) => {
                   />
                 }
                 placeholderTextColor="#000000"
-                placeholder="Where To?"
+                placeholder="Search Location"
                 backgroundColor="#eee"
                 onChangeText={() => {
                   console.log('');
                 }}
               />
 
-              <Stack direction="row" mt="2" space={3}>
-                <Box
-                  bg="#eee"
-                  borderWidth="1"
-                  p="2"
-                  borderRadius="sm"
-                  borderColor="#007bff">
-                  <Stack direction="row">
-                    <Image
-                      style={{height: 40, width: 30}}
-                      alt="custome Image"
-                      source={require('../../../../assets/doctor.png')}
-                    />
-                    <Box alignItems="center">
-                      <Text fontWeight="700" fontSize="16">
-                        {' '}
-                        Emergency{' '}
-                      </Text>
-                      <Text fontWeight="700" fontSize="12">
-                        {' '}
-                        Send Emergency{' '}
-                      </Text>
-                    </Box>
-                  </Stack>
+             
+
+                <Box alignItems="center" mt="3">
+                  <Button
+                    bg="#1C70EE"
+                    borderRadius="md"
+                    w="100%"
+                    size="sm"
+                    p="4"
+                    onPress={()=>console.log("I Have Emergency")}
+                    >
+                    I Have Emergency
+                  </Button>
                 </Box>
 
-                <Box
-                  bg="#eee"
-                  borderWidth="1"
-                  p="2"
-                  borderRadius="sm"
-                  borderColor="#007bff">
-                  <Stack direction="row">
-                    <Image
-                      style={{height: 40, width: 30}}
-                      alt="custome Image"
-                      source={require('../../../../assets/doctor.png')}
-                    />
-                    <Box alignItems="center">
-                      <Text fontWeight="700" fontSize="16">
-                        {' '}
-                        Emergency{' '}
-                      </Text>
-                      <Text fontWeight="700" fontSize="12">
-                        {' '}
-                        Send Emergency{' '}
-                      </Text>
-                    </Box>
-                  </Stack>
+                <Box alignItems="center" mt="2">
+                  <Button
+                    bg="#008000"
+                    borderRadius="md"
+                    w="100%"
+                    size="sm"
+                    p="4"
+                   // onPress={()=>console.log("  I need a specialist")}
+                   onPress={toggleOverlay} 
+                    >
+                    I need a specialist
+                  </Button>
                 </Box>
-              </Stack>
+             
 
               <Text> {userObj.Email} </Text>
+           
+              {/* <View style={styles.container11}>
+                <Text style={styles.mainText11}>Main Screen Data</Text>
+                <Button title="Toggle Overlay" onPress={toggleOverlay} />
+                {isOverlayVisible && <Search_order onClose={toggleOverlay} />}
+              </View> */}
+              
             </Box>
           </SwipeablePanel>
         </Box>
@@ -456,6 +464,17 @@ const Emergency_order_map = ({navigation}) => {
 };
 
 const styles = StyleSheet.create({
+
+  container11: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  mainText11: {
+    fontSize: 24,
+    marginBottom: 20,
+  },
+
   menuBotton: {
     position: 'absolute',
     top: 0,

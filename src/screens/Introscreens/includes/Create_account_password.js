@@ -5,30 +5,44 @@ import {
   Input,
   Box,
   Icon,
+  useToast,
   Pressable,
   WarningOutlineIcon,
   Button,
 } from 'native-base';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
+import {successMsg, errorMsg} from '../../../constant';
+
 const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
   const [show, setShow] = useState(false);
   const [errPass, setErrPass] = useState('');
   const [errCPass, setErrCPass] = useState('');
   const [isInvalid, setIsInvalid] = useState(false);
+  const toast = useToast();
+
+  const validatePassword = (password) => {
+    const strongPasswordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
+    return strongPasswordRegex.test(password);
+  };
+
 
   const validateInput = () => {
     let x = 0;
+   
     if (formData.password !== formData.cpassword) {
+  
       x = 1;
-      setErrCPass('Passwords do not match');
+      //setErrCPass('Passwords do not match');
+      errorMsg(toast, 'Passwords not match');
+     // console.log("not1")
     } else {
       setErrCPass('');
     }
 
-    if (formData.password === '') {
+    if (!validatePassword(formData.password)) {
       x = 1;
-      setErrPass('Password is required');
+      setErrPass('Strong Password Is Required');
     } else {
       setErrPass('');
     }
@@ -112,7 +126,7 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
         </FormControl.ErrorMessage>
       </Box>
 
-      <Box alignItems="center" mt="30%">
+      <Box alignItems="center" mt="10%">
         <Button
           bg="#1C70EE"
           borderRadius="md"
@@ -122,14 +136,7 @@ const CreateAccountPassword = ({onNext, formData, onInputChange}) => {
           Submit
         </Button>
       </Box>
-      <View style={styles.bottomImageContainer}>
-        <Image
-          source={require('../../../../assets/doctorsteam2.png')} // Specify the image source
-          style={{height: 400}} // Apply styles to the image
-          resizeMode="contain" // Set resizeMode to control how the image should be resized
-          alt="docs"
-        />
-      </View>
+      
     </FormControl>
   );
 };

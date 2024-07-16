@@ -33,6 +33,7 @@ const moveNextTab = () => {
 const Create_account_contacts = ({onNext, formData, onInputChange}) => {
   const [errEmail, errSetEmail] = useState('');
   const [errPhone, errSetPhone] = useState('');
+  const [isInvalid, setIsInvalid] = useState(false);
 
   const validateEmail = email => {
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -41,6 +42,7 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
 
   const validateInput = () => {
     let x = 0;
+    //console.log(formData.email)
     if (!validateEmail(formData.email)) {
       x = 1;
       errSetEmail('Valid Email is Required');
@@ -59,13 +61,14 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
       errSetPhone('');
     }
 
-    if (x == 0) {
+    if (x === 0) {
       onNext();
     }
+    setIsInvalid(x === 1);
   };
 
   return (
-    <FormControl w="100%" alignItems="left" mt="5">
+    <FormControl w="100%" alignItems="left" mt="5" isInvalid={isInvalid}>
       <View style={styles.inputContainer}>
         <Image
           source={require('../../../../assets/DOc3.png')} // Specify the image source
@@ -130,8 +133,8 @@ const Create_account_contacts = ({onNext, formData, onInputChange}) => {
         </FormControl.ErrorMessage>
       </Box>
 
-      <Box alignItems="center" mt="30%">
-        <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={onNext}>
+      <Box alignItems="center" mt="10%">
+        <Button bg="#1C70EE" borderRadius="md" w="300" h="12" onPress={validateInput}>
           Continue
         </Button>
       </Box>

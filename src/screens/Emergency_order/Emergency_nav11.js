@@ -80,8 +80,6 @@ const Emergency_nav = () => {
    />
 
 
-
-
     </Drawer.Navigator>
   )
 }

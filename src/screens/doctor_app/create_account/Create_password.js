@@ -26,6 +26,8 @@ import {
   Pressable,
 } from 'native-base';
 
+import {successMsg, errorMsg} from '../../../constant';
+
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
@@ -36,64 +38,109 @@ const Create_password = ({navigation, route}) => {
   //const Create_password = ({navigation}) => {
   const [show, setShow] = useState(false);
   const [pass, setPass] = useState('');
+  const [errPass, setErrPass] = useState('');
   const [cpass, setCPass] = useState('');
+  const [errCPass, setErrCPass] = useState('');
   const [isLoading, setisLoading] = useState(false);
+  const [isInvalid, setIsInvalid] = useState(false);
+  const toast = useToast();
 
   const {data} = route.params;
 
+  const validateInput = () => {
+    let x = 0;
+   
+    if (pass !== cpass) {
+  
+      x = 1;
+      //setErrCPass('Passwords do not match');
+      errorMsg(toast, 'Passwords not match');
+     // console.log("not1")
+    } else {
+      setErrCPass('');
+    }
+
+    if (pass === '') {
+      x = 1;
+      setErrPass('Password is required');
+    } else {
+      setErrPass('');
+    }
+
+    if (cpass === '') {
+      x = 1;
+      setErrCPass('Confirm Password is required');
+    } else {
+      setErrCPass('');
+    }
+
+    if (x === 0) {
+      CreateDoc();
+    }
+    setIsInvalid(x === 1);
+  };
+
+
   const CreateDoc = () => {
+
     objPass = {
       Password: pass,
     };
 
-    //const AllData = {...objPass, ...data};
-    const AllData = {
-      
-        FirstName: "Dan",
-        LastName: "George",
-        Email: "show1@gmail.com",
-        Password: "222",
-        Address:"sss",
-        PracticingTenure:"jj",
-        Specialization:"2ededd",
-        Dob:"23232"
-    
-    };
+    const AllData = {...objPass, ...data};
 
-    // const config = {
-    //   method: 'post',
-    //   url: 'https://docare.posaccountant.com/main/api/v1/doctors',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   data: AllData,
+    console.log(AllData)
+
+    // const AllData = {
+      
+    //     FirstName: "shomorin",
+    //     LastName: "Moshood",
+    //     Email: "showtechitconcept@gmail.com",
+    //     Password: "222",
+    //     Address:"no 6 komolafe",
+    //     PracticingTenure:"3 years",
+    //     Specialization:"Myocadiam",
+    //     Dob:"23232"
+    
     // };
 
-    // //
+    const config = {
+      method: 'post',
+      url: 'https://docare.posaccountant.com/api/v1/doctors',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      data: AllData,
+    };
 
-    // console.log(AllData);
+    //
 
-    // axios(config)
-    //   .then(response => {
-    //     console.log('Response:', response.data);
-    //     //console.log('Response:', response.data.data);
-    //     // console.log('Response:', response.token);
+    console.log(AllData);
 
-    //     if (response.data.success == true) {
-    //       // rspMsg1('Successful');
-    //       //UserSession(response.data);
-    //       navigation.navigate('Verify_account');
-    //     } else {
-    //       rspMsg1(response.message);
-    //     }
-    //     setisLoading(false);
-    //   })
-    //   .catch(error => {
-    //     // console.log("error")
-    //     console.error('Error:', error);
-    //   });
+    axios(config)
+      .then(response => {
+        console.log('Response:', response.data);
+        //console.log('Response:', response.data.data);
+        // console.log('Response:', response.token);
 
-     navigation.navigate('Verify_account');
+        if (response.data.success == true) {
+          successMsg(toast, 'Registered Successful ');
+          //UserSession(response.data);
+          navigation.navigate('Verify_account', { data: AllData });
+        } else {
+          //rspMsg1(response.message);
+          errorMsg(toast, response.message);
+        }
+        setisLoading(false);
+      })
+      .catch(error => {
+        // console.log("error")
+        console.error('Error:', error);
+      });
+
+    // navigation.navigate('Verify_account');
+
+    //Response: {"code": 201, "data": {"Address": "sss", "Email": "show1@gmail.com", "FirstName": "Dan", "LastName": "George", "PracticingTenure": "jj", "Specialization": "2ededd", "UserID": "DOC202407121255569", "account": {"Email": "show1@gmail.com", "FirstName": "Dan", "LastName": "George", "PasswordHash": "$2a$10$y0.UkIAXLPlxYuwmU078JO/1BL5U2f18JEFInMFukjKdLE/.6V6be", "RefreshToken": "$2a$10$y0.UkIAXLPlxYuwmU078JO/1BL5U2f18JEFInMFukjKdLE/.6V6be", "Role": "doctor", "Status": "Pending", "Token": 336189, "UserID": "DOC202407121255569", "UserType": "doctor", "Verified": "0", "createdAt": "2024-07-12T12:55:56.806Z", "id": 6, "updatedAt": "2024-07-12T12:55:56.806Z"}, "createdAt": "2024-07-12T12:55:56.816Z", "id": 2, "updatedAt": "2024-07-12T12:55:56.816Z"}, "message": "Account Successfully Created", "success": true}
     
   };
 
@@ -120,7 +167,7 @@ const Create_password = ({navigation, route}) => {
         Create Password{' '}
       </Text>
 
-      <FormControl w="100%" maxW="500" alignItems="left" mt="1">
+      <FormControl w="100%" maxW="500" alignItems="left" mt="1" isInvalid={isInvalid}>
         <Box mb="2" mt="1" px="3">
           <Input
             w={{
@@ -146,6 +193,10 @@ const Create_password = ({navigation, route}) => {
             onChangeText={val => setPass(val)}
           />
 
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+          {errPass}
+        </FormControl.ErrorMessage>
+
           <Input
             w={{
               base: '100%',
@@ -170,6 +221,10 @@ const Create_password = ({navigation, route}) => {
             onChangeText={val => setCPass(val)}
           />
 
+        <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
+          {errCPass}
+        </FormControl.ErrorMessage>
+
           {isLoading ? (
             <Button
               isLoading
@@ -180,12 +235,12 @@ const Create_password = ({navigation, route}) => {
               Button
             </Button>
           ) : (
-            <Box alignItems="center" bottom="-400">
+            <Box alignItems="center" bottom="-100">
               <Button
                 bg="#1C70EE"
                 borderRadius="md"
                 w="300"
-                onPress={CreateDoc}>
+                onPress={validateInput}>
                 Create Account
               </Button>
             </Box>

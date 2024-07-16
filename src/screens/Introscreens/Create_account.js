@@ -4,7 +4,7 @@ import {
   View,
   useWindowDimensions,
   StyleSheet,
-  Image,
+ 
   KeyboardAvoidingView,
   ScrollView,
   Platform,
@@ -13,9 +13,10 @@ import {
 import {TabView, SceneMap, TabBar} from 'react-native-tab-view';
 import {
   VStack,
+  Stack,
   Text,
   useToast,
-  FlatList,
+  FlatList,Image,
   Button,
   Pressable,
   Box,
@@ -29,6 +30,8 @@ import Create_account_name from './includes/Create_account_name';
 import Create_account_password from './includes/Create_account_password';
 
 import Create_account_contacts from './includes/Create_account_contacts';
+
+import {successMsg, errorMsg} from '../../constant';
 
 const renderTabBar = props => (
   <TabBar
@@ -64,6 +67,8 @@ const Create_account = ({navigation}) => {
   const toast = useToast();
   const [isLoading, setisLoading] = React.useState(false);
   const [index, setIndex] = React.useState(0);
+
+ 
 
   const [routes] = React.useState([
     {key: 'name', title: 'NAME'},
@@ -127,30 +132,16 @@ const Create_account = ({navigation}) => {
       .then(response => {
         console.log('Response:', response.data);
 
-        //if(response.success==true){
-        rspMsg1('Successful');
+        successMsg(toast,'Successful');
         navigation.navigate('Login_screen');
-        // }
+        
       })
       .catch(error => {
         console.error('Error:', error);
       });
   };
 
-  const rspMsg1 = msg => {
-    toast.show({
-      render: () => {
-        return (
-          <Box bg="emerald.500" px="2" py="1" rounded="sm" mb={5}>
-            <Text fontSize="14" fontWeight="700">
-              {' '}
-              {msg}{' '}
-            </Text>
-          </Box>
-        );
-      },
-    });
-  };
+ 
 
   const renderScene = ({route}) => {
     // const [index, setIndex] = useState(0);
@@ -210,9 +201,25 @@ const Create_account = ({navigation}) => {
             swipeEnabled={false}
             initialLayout={{width: '100%'}}
           />
+
+        <Stack position="absolute"  alignItems="center" left="0" right="0" bottom="-10"> 
+           <Image
+                source={require('../../../assets/doctorsteam2.png')} // Specify the image source
+                style={{height: 200}} // Apply styles to the image
+                resizeMode="contain" // Set resizeMode to control how the image should be resized
+                alt="logo"
+                width="600"
+              />
+          </Stack>
+
+         
+
         </View>
+        
       </ScrollView>
+     
     </KeyboardAvoidingView>
+   
   );
 };
 

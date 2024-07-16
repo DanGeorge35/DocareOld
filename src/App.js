@@ -46,6 +46,7 @@ export default function App() {
     }, 1000);
 
     return () => clearInterval(timer);
+    
   }, [count]);
 
   if (isLoading) {

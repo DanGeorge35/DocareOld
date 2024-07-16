@@ -16,6 +16,8 @@ import {
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const Retrieve_otp = ({navigation}) => {
+
+  
   return (
     <VStack space="2.5" p="4" backgroundColor="#fff" flex={1}>
       <Box mt="5">

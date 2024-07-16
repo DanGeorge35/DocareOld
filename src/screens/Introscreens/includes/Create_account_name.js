@@ -23,7 +23,6 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
     let x = 0;
     if (formData.fname === '') {
       x = 1;
-      console.log('enter fname');
       errSetFname1('First name is Required');
     } else {
       errSetFname1('');
@@ -88,6 +87,7 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
           <FormControl.ErrorMessage leftIcon={<WarningOutlineIcon size="xs" />}>
             {errFname1}
           </FormControl.ErrorMessage>
+          
         </Box>
 
         <Box>
@@ -112,7 +112,7 @@ const Create_account_name = ({onNext, formData, onInputChange}) => {
           </FormControl.ErrorMessage>
         </Box>
 
-        <Box alignItems="center" mt="20%">
+        <Box alignItems="center" mt="10%">
           <Button
             bg="#1C70EE"
             borderRadius="md"
